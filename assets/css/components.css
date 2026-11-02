@@ -16,20 +16,29 @@
   border: var(--bordo-forte) solid var(--btn-bd); border-radius: var(--r-0);
   font-family: var(--font-mono); font-size: .8125rem; font-weight: 500;
   letter-spacing: .06em; text-transform: uppercase; text-decoration: none; line-height: 1;
-  cursor: pointer; user-select: none; white-space: nowrap;
-  transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
-              border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+  cursor: pointer; user-select: none; white-space: nowrap; -webkit-tap-highlight-color: transparent;
+  transition-property: background-color, color, border-color, transform;
+  transition-duration: var(--dur-1);
+  transition-timing-function: var(--ease-colore), var(--ease-colore), var(--ease-colore), var(--ease);
 }
-.u-btn:hover { --btn-bg: var(--accent-hover); --btn-bd: var(--accent-hover); }
-.u-btn:active { transform: translateY(1px); }
+/* hover solo con mouse: sul touch il tap non deve "incollare" lo stato hover */
+@media (hover: hover) and (pointer: fine) {
+  .u-btn:hover { --btn-bg: var(--accent-hover); --btn-bd: var(--accent-hover); }
+  .u-btn--secondario:hover { --btn-bg: var(--text); --btn-fg: var(--bg); --btn-bd: var(--text); }
+  .u-btn--testo:hover { --btn-bg: transparent; --btn-bd: transparent; --btn-fg: var(--accent); }
+  .u-btn--inverso:hover { --btn-bg: var(--c-riso); --btn-bd: var(--c-riso); }
+}
+/* risposta tattile alla pressione */
+.u-btn:active { transform: scale(.97); }
 .u-btn[disabled], .u-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; transform: none; }
 
 .u-btn--secondario { --btn-bg: transparent; --btn-fg: var(--text); --btn-bd: var(--border-strong); }
-.u-btn--secondario:hover { --btn-bg: var(--text); --btn-fg: var(--bg); --btn-bd: var(--text); }
 .u-btn--testo { --btn-bg: transparent; --btn-fg: var(--text); --btn-bd: transparent; padding-inline: var(--s-2); text-decoration: underline; text-underline-offset: .3em; }
-.u-btn--testo:hover { --btn-bg: transparent; --btn-bd: transparent; --btn-fg: var(--accent); }
 .u-btn--inverso { --btn-bg: var(--c-bianco); --btn-fg: var(--c-corallo-scuro); --btn-bd: var(--c-bianco); }
-.u-btn--inverso:hover { --btn-bg: var(--c-riso); --btn-bd: var(--c-riso); }
+
+/* etichetta che cambia (Aggiungi → Aggiunto ✓): dissolvenza con leggera sfocatura, niente salto */
+.u-btn__testo { display: inline-block; transition: opacity var(--dur-2) var(--ease-colore), filter var(--dur-2) var(--ease-colore), transform var(--dur-2) var(--ease); }
+.u-btn.is-cambio .u-btn__testo { opacity: 0; filter: blur(3px); transform: scale(.96); }
 .u-btn--s { min-height: var(--tocco-min); padding-inline: var(--s-4); }
 .u-btn--l { min-height: 56px; padding-inline: var(--s-6); font-size: .875rem; }
 .u-btn--pieno { width: 100%; }
@@ -57,8 +66,10 @@
   letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; line-height: 1;
   color: var(--text-2); background: transparent; text-decoration: none;
 }
-button.u-tag, a.u-tag { min-height: var(--tocco-min); padding: 0 var(--s-4); cursor: pointer; color: var(--text); }
-button.u-tag:hover, a.u-tag:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+button.u-tag, a.u-tag { min-height: var(--tocco-min); padding: 0 var(--s-4); cursor: pointer; color: var(--text);
+  transition-property: background-color, color, border-color, transform; transition-duration: var(--dur-1); transition-timing-function: var(--ease-colore); }
+button.u-tag:active, a.u-tag:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { button.u-tag:hover, a.u-tag:hover { background: color-mix(in srgb, var(--text) 8%, transparent); } }
 .u-tag[aria-current="true"], .u-tag[aria-pressed="true"], .u-tag.is-attivo {
   background: var(--text); color: var(--bg); border-color: var(--text);
 }
@@ -101,7 +112,7 @@ button.u-tag:hover, a.u-tag:hover { background: color-mix(in srgb, var(--text) 8
 .u-prodotto { display: flex; flex-direction: column; background: var(--surface); border: var(--bordo) solid var(--border); position: relative; }
 .u-prodotto__media { aspect-ratio: 1; background: var(--c-corallo); overflow: hidden; position: relative; }
 .u-prodotto__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-3) var(--ease); }
-.u-prodotto:hover .u-prodotto__media img { transform: scale(1.03); }
+@media (hover: hover) and (pointer: fine) { .u-prodotto:hover .u-prodotto__media img { transform: scale(1.03); } }
 .u-prodotto__badge { position: absolute; top: var(--s-3); left: var(--s-3); background: var(--c-brace); color: var(--c-riso); }
 .u-prodotto__corpo { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-4); flex: 1; }
 .u-prodotto__meta { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -136,12 +147,14 @@ button.u-tag:hover, a.u-tag:hover { background: color-mix(in srgb, var(--text) 8
 .u-servizio { display: grid; grid-template-rows: auto 1fr; background: var(--surface); text-decoration: none; color: inherit; border: var(--bordo) solid var(--border); position: relative; overflow: hidden; }
 .u-servizio__media { aspect-ratio: 4 / 5; overflow: hidden; background: var(--c-corallo-profondo); }
 .u-servizio__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-3) var(--ease); }
-.u-servizio:hover .u-servizio__media img { transform: scale(1.04); }
+@media (hover: hover) and (pointer: fine) {
+  .u-servizio:hover .u-servizio__media img { transform: scale(1.04); }
+  .u-servizio:hover .u-servizio__cta::after { transform: translateX(4px); }
+}
 .u-servizio__corpo { padding: var(--s-5) var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); }
 .u-servizio__titolo { font-size: var(--fs-l); }
 .u-servizio__cta { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: .06em; text-transform: uppercase; }
-.u-servizio__cta::after { content: "→"; transition: transform var(--dur-1) var(--ease); }
-.u-servizio:hover .u-servizio__cta::after { transform: translateX(4px); }
+.u-servizio__cta::after { content: "→"; transition: transform var(--dur-2) var(--ease); }
 
 /* -------------------------------------------------------------------------
    HEADER  ·  Astra: #masthead, .ast-primary-header-bar  ·  Woo: mini-cart
@@ -301,3 +314,58 @@ textarea.u-input { min-height: 112px; padding-block: var(--s-3); resize: vertica
 .u-footer a { text-decoration: none; display: inline-flex; min-height: 32px; align-items: center; }
 .u-footer a:hover { text-decoration: underline; text-underline-offset: .25em; }
 .u-footer__base { margin-top: var(--s-7); padding-top: var(--s-4); border-top: var(--bordo) solid color-mix(in srgb, var(--c-riso) 20%, transparent); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); font-size: var(--fs-s); color: #A99D93; }
+
+/* =========================================================================
+   v0.2 · RIFINITURE E MOVIMENTO
+   ========================================================================= */
+
+/* ---- Hero: apertura editoriale, una volta sola ----
+   Le righe del titolo salgono da sotto una maschera; testo e azioni seguono in sequenza. */
+.u-hero__riga { display: block; overflow: hidden; padding-bottom: .04em; }
+.u-hero__riga > span { display: block; animation: u-sale var(--dur-4) var(--ease-move) both; animation-delay: calc(120ms + var(--i, 0) * 90ms); }
+.u-hero__segue { animation: u-appare var(--dur-3) var(--ease) both; animation-delay: calc(420ms + var(--i, 0) * var(--stagger)); }
+.u-hero__media img, .u-hero__media video { animation: u-messa-a-fuoco 1400ms var(--ease) both; }
+@keyframes u-sale { from { transform: translateY(105%); } }
+@keyframes u-appare { from { opacity: 0; transform: translateY(10px); filter: blur(4px); } }
+@keyframes u-messa-a-fuoco { from { transform: scale(1.06); filter: blur(6px); opacity: .6; } }
+@media (prefers-reduced-motion: reduce) {
+  .u-hero__riga > span, .u-hero__media img, .u-hero__media video { animation: none; }
+  .u-hero__segue { animation: u-solo-opacita var(--dur-3) ease both; }
+}
+@keyframes u-solo-opacita { from { opacity: 0; } }
+
+/* ---- Header: quando si scorre si compatta con una linea più netta ---- */
+.u-header { transition: background-color var(--dur-2) var(--ease-colore), box-shadow var(--dur-2) var(--ease-colore); }
+.u-header.is-scorso { box-shadow: 0 1px 0 var(--border-strong), 0 12px 24px -20px rgba(26,15,13,.5); }
+@media (hover: hover) and (pointer: fine) {
+  .u-header__nav a { transition: border-color var(--dur-1) var(--ease-colore); }
+}
+
+/* ---- Quantità: pressione tattile sui pulsanti ---- */
+.u-qty button { transition: background-color var(--dur-1) var(--ease-colore), transform var(--dur-1) var(--ease); }
+.u-qty button:active { transform: scale(.92); }
+
+/* ---- Toast di conferma (aggiunta al carrello)  ·  Woo: .woocommerce-message dopo AJAX ----
+   Entra dal basso con @starting-style (niente JS per l'animazione), esce più veloce di come entra. */
+.u-toast-area { position: fixed; z-index: var(--z-overlay); left: 50%; bottom: calc(72px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: grid; gap: var(--s-2); width: min(420px, calc(100vw - 32px)); pointer-events: none; }
+@media (min-width: 1024px) { .u-toast-area { left: auto; right: var(--gutter); bottom: var(--s-6); transform: none; } }
+.u-toast {
+  pointer-events: auto; display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4);
+  background: var(--c-brace); color: var(--c-riso); box-shadow: var(--ombra-2);
+  font-size: var(--fs-s); opacity: 1; transform: translateY(0);
+  transition: opacity var(--dur-2) var(--ease), transform var(--dur-2) var(--ease);
+}
+@starting-style { .u-toast { opacity: 0; transform: translateY(100%); } }
+.u-toast.is-uscita { opacity: 0; transform: translateY(8px); transition-duration: 150ms; }
+.u-toast__ico { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--c-successo); display: grid; place-items: center; font-size: .75rem; }
+.u-toast a { margin-left: auto; color: var(--c-riso); font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: .06em; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { @starting-style { .u-toast { transform: none; } } .u-toast.is-uscita { transform: none; } }
+
+/* ---- Scelte (ritiro/consegna): indicatore che si riempie ---- */
+.u-scelta label { position: relative; padding-right: calc(var(--s-4) + 28px); }
+.u-scelta label::after {
+  content: ""; position: absolute; right: var(--s-4); top: var(--s-4); width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border-strong); box-shadow: inset 0 0 0 0 var(--accent);
+  transition: box-shadow var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease-colore);
+}
+.u-scelta input:checked + label::after { border-color: var(--accent); box-shadow: inset 0 0 0 5px var(--accent); }

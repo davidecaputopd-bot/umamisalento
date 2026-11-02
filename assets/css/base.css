@@ -18,8 +18,45 @@ body {
   line-height: var(--lh-testo);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+  hanging-punctuation: first;
   overflow-x: hidden;
 }
+::selection { background: var(--c-corallo); color: #fff; }
+
+/* Numeri che cambiano (prezzi, contatori, quantità, orari) non devono "ballare" */
+.u-prezzo, .u-conta, .u-qty input, .u-riepilogo dd, time, .t-num { font-variant-numeric: tabular-nums; }
+
+/* Immagini: contorno neutro interno, così i bordi non si sciolgono nel fondo */
+.u-prodotto__media img, .u-servizio__media img, .u-riga-carrello__img img {
+  outline: 1px solid rgba(0,0,0,.08); outline-offset: -1px;
+}
+.tema-brace .u-prodotto__media img, .tema-brace .u-servizio__media img { outline-color: rgba(255,255,255,.08); }
+
+/* ---------- Grana fotografica (superfici piene) ---------- */
+.u-grana { position: relative; isolation: isolate; }
+.u-grana::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--grana); background-size: 160px; opacity: .14; mix-blend-mode: soft-light;
+}
+.u-grana > * { position: relative; z-index: 1; }
+
+/* ---------- Comparsa in pagina (aggiunta via JS: .rivela → .is-visibile) ---------- */
+.rivela { opacity: 0; transform: translateY(14px); filter: blur(4px);
+  transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease), filter var(--dur-3) var(--ease);
+  transition-delay: calc(var(--i, 0) * var(--stagger)); }
+.rivela.is-visibile { opacity: 1; transform: none; filter: none; }
+/* immagini: svelate dal basso con clip-path (riferimento editoriale) */
+.rivela-img { clip-path: inset(0 0 100% 0); transition: clip-path var(--dur-4) var(--ease-move); transition-delay: calc(var(--i, 0) * var(--stagger)); }
+.rivela-img.is-visibile { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) {
+  .rivela { transform: none; filter: none; }
+  .rivela-img { clip-path: none; opacity: 0; transition: opacity var(--dur-3) ease; }
+  .rivela-img.is-visibile { opacity: 1; }
+}
+/* senza JS tutto resta visibile */
+html:not(.js) .rivela, html:not(.js) .rivela-img { opacity: 1; transform: none; filter: none; clip-path: none; }
 
 img, video, svg { display: block; max-width: 100%; height: auto; }
 button, input, select, textarea { font: inherit; color: inherit; }

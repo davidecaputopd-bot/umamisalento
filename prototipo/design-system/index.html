@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="it">
+<script>document.documentElement.classList.add("js")</script>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,14 +62,14 @@
 <main id="contenuto">
 
 <!-- ============ HERO ============ -->
-<section class="u-hero" aria-labelledby="hero-t">
+<section class="u-hero u-grana" aria-labelledby="hero-t">
   <div class="u-hero__media"><img src="../../assets/img/provvisorie/copertina_misto.jpg" alt="" onerror="this.classList.add('manca')"></div>
   <div class="u-pattern" aria-hidden="true" id="pattern"></div>
   <div class="contenitore u-hero__testo">
-    <p class="t-mono">Design system · v0.1 · componente Hero</p>
-    <h1 class="u-hero__titolo" id="hero-t">Rosso Umami</h1>
-    <p class="t-lead" style="color:#fff;max-width:44ch">Gastronomia di mare e italian sushi a Leverano. Esempio di hero con foto provvisoria: in produzione ospiterà il video 16:9.</p>
-    <div class="u-hero__azioni">
+    <p class="t-mono u-hero__segue" style="--i:0">Design system · v0.2 · componente Hero</p>
+    <h1 class="u-hero__titolo" id="hero-t"><span class="u-hero__riga"><span style="--i:0">Rosso</span></span><span class="u-hero__riga"><span style="--i:1">Umami</span></span></h1>
+    <p class="t-lead u-hero__segue" style="--i:1;color:#fff;max-width:44ch">Gastronomia di mare e italian sushi a Leverano. Esempio di hero con foto provvisoria: in produzione ospiterà il video 16:9.</p>
+    <div class="u-hero__azioni u-hero__segue" style="--i:2">
       <a class="u-btn u-btn--l" href="#menu">Ordina ora</a>
       <a class="u-btn u-btn--l u-btn--inverso" href="#servizi">Catering ed eventi</a>
     </div>
@@ -116,8 +117,8 @@
   <div class="stack" style="--stack:var(--s-5)">
     <div class="ds-riga"><button class="u-btn u-btn--l" type="button">Ordina ora</button><button class="u-btn" type="button">Aggiungi</button><button class="u-btn u-btn--s" type="button">Aggiungi</button></div>
     <div class="ds-riga"><button class="u-btn u-btn--secondario" type="button">Vedi il menu</button><button class="u-btn u-btn--testo" type="button">Dettagli allergeni</button><button class="u-btn" type="button" disabled>Disattivato</button><button class="u-btn is-loading" type="button" aria-busy="true">Invio</button><button class="u-btn is-aggiunto" type="button">Aggiunto ✓</button></div>
-    <div class="tema-corallo ds-box ds-riga"><button class="u-btn u-btn--inverso" type="button">Su corallo: inverso</button><button class="u-btn" type="button">Su corallo: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button></div>
-    <div class="tema-brace ds-box ds-riga"><button class="u-btn" type="button">Su brace: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button><a class="u-link" href="#">Link nel testo</a></div>
+    <div class="tema-corallo u-grana ds-box ds-riga"><button class="u-btn u-btn--inverso" type="button">Su corallo: inverso</button><button class="u-btn" type="button">Su corallo: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button></div>
+    <div class="tema-brace u-grana ds-box ds-riga"><button class="u-btn" type="button">Su brace: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button><a class="u-link" href="#">Link nel testo</a></div>
   </div>
 </section>
 
@@ -230,7 +231,7 @@
 </div>
 </main>
 
-<footer class="u-footer">
+<footer class="u-footer u-grana">
   <div class="contenitore">
     <div class="u-footer__griglia">
       <div><a class="u-logo" href="#" aria-label="UMAMI Salento"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a></div>
@@ -242,6 +243,7 @@
   </div>
 </footer>
 
+<div class="u-toast-area" id="toast" role="status" aria-live="polite"></div>
 <nav class="u-barra" aria-label="Azioni rapide"><a href="#menu">Menu</a><a href="#servizi">Info</a><a class="u-barra__cta" href="#carrello">Carrello · <span id="tot-fisso">€ 0,00</span></a></nav>
 
 <script>
@@ -277,7 +279,7 @@
     var v = cs.getPropertyValue("--c-" + n[0]).trim().toUpperCase();
     var rb = cr(v,"#FFFFFF"), rr = cr(v,"#F6F1E7"), rk = cr(v,"#1A0F0D");
     var fg = rb >= rk ? "#FFFFFF" : "#1A0F0D";
-    out += '<div class="ds-sw" style="background:' + v + ';color:' + fg + '"><b>' + n[1] + '</b><code>' + v + '<br>testo bianco ' + badge(rb) + '<br>su riso ' + badge(rr) + '<br>su brace ' + badge(rk) + '</code></div>';
+    out += '<div class="ds-sw rivela" style="--i:' + (out.split('ds-sw').length % 7) + ';background:' + v + ';color:' + fg + '"><b>' + n[1] + '</b><code>' + v + '<br>testo bianco ' + badge(rb) + '<br>su riso ' + badge(rr) + '<br>su brace ' + badge(rk) + '</code></div>';
   });
   document.getElementById("palette").innerHTML = out;
 
@@ -301,10 +303,10 @@
   }
   function prezzo(x) { return '<span class="u-prezzo">' + (x.pieno ? "<del>" + eur(x.pieno) + "</del><ins>" + eur(x.p) + "</ins>" : eur(x.p)) + '</span>'; }
   document.getElementById("griglia-prodotti").innerHTML = prodotti.map(function (x) {
-    return '<article class="u-prodotto' + (x.img ? "" : " u-prodotto--senza-foto") + '">' + media(x) +
+    return '<article class="u-prodotto rivela' + (x.img ? "" : " u-prodotto--senza-foto") + '" style="--i:' + (prodotti.indexOf(x) % 4) + '">' + media(x) +
       '<div class="u-prodotto__corpo"><div class="u-prodotto__meta"><span class="u-tag">' + x.c + '</span><span class="u-tag">' + x.pz + '</span></div>' +
       '<h3 class="u-prodotto__nome"><a href="#">' + x.n + '</a></h3>' + (x.d ? '<p class="u-prodotto__desc">' + x.d + '</p>' : "") + (x.al ? allergeni(x.al) : "") +
-      '<div class="u-prodotto__piede">' + prezzo(x) + '<button class="u-btn u-btn--s js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello">Aggiungi</button></div></div></article>';
+      '<div class="u-prodotto__piede">' + prezzo(x) + '<button class="u-btn u-btn--s js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello"><span class="u-btn__testo">Aggiungi</span></button></div></div></article>';
   }).join("");
 
   /* ---- categorie + righe compatte ---- */
@@ -324,8 +326,8 @@
     { t:"Chef a domicilio", d:"Contenuti in arrivo dal cliente.", img:"buffet2.jpg" },
     { t:"Street food", d:"Food truck, fiere ed eventi. Arriva con la mascotte.", img:"" }
   ];
-  document.getElementById("griglia-servizi").innerHTML = servizi.map(function (s) {
-    return '<a class="u-servizio" href="#"><div class="u-servizio__media">' + (s.img ? '<img src="' + IMG + s.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' : "") + '</div>' +
+  document.getElementById("griglia-servizi").innerHTML = servizi.map(function (s, i) {
+    return '<a class="u-servizio rivela" style="--i:' + i + '" href="#"><div class="u-servizio__media rivela-img" style="--i:' + i + '">' + (s.img ? '<img src="' + IMG + s.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' : "") + '</div>' +
       '<div class="u-servizio__corpo"><h3 class="u-servizio__titolo">' + s.t + '</h3><p class="t-meta">' + s.d + '</p><span class="u-servizio__cta">Scopri</span></div></a>';
   }).join("");
 
@@ -338,6 +340,30 @@
       '<button class="u-riga-carrello__rimuovi" type="button">Rimuovi</button></div></div><span class="u-prezzo">' + eur(x.p) + '</span></div>';
   }).join("");
 
+  /* ---- etichetta del pulsante: dissolvenza con sfocatura (niente salto di testo) ---- */
+  function cambiaTesto(b, testo, ok) {
+    var el = b.querySelector(".u-btn__testo"); if (!el) return;
+    b.classList.add("is-cambio");
+    setTimeout(function () { el.textContent = testo; b.classList.toggle("is-aggiunto", ok); b.classList.remove("is-cambio"); }, 110);
+  }
+  /* ---- toast: massimo 2 visibili, esce dopo 2,6 s ---- */
+  function toast(nome, totale) {
+    var area = document.getElementById("toast");
+    var el = document.createElement("div"); el.className = "u-toast";
+    el.innerHTML = '<span class="u-toast__ico" aria-hidden="true">✓</span><span><b>' + nome + '</b> aggiunto · ' + eur(totale) + '</span><a href="#carrello">Carrello</a>';
+    area.appendChild(el);
+    while (area.children.length > 2) area.removeChild(area.firstChild);
+    setTimeout(function () { el.classList.add("is-uscita"); setTimeout(function () { el.remove(); }, 160); }, 2600);
+  }
+  /* ---- comparsa in pagina ---- */
+  var io = "IntersectionObserver" in window ? new IntersectionObserver(function (voci) {
+    voci.forEach(function (v) { if (v.isIntersecting) { v.target.classList.add("is-visibile"); io.unobserve(v.target); } });
+  }, { rootMargin: "0px 0px -8% 0px" }) : null;
+  document.querySelectorAll(".rivela, .rivela-img").forEach(function (el) { io ? io.observe(el) : el.classList.add("is-visibile"); });
+  /* ---- header compatto quando si scorre ---- */
+  var hd = document.querySelector(".u-header");
+  addEventListener("scroll", function () { hd.classList.toggle("is-scorso", scrollY > 8); }, { passive: true });
+
   /* ---- interazioni ---- */
   var n = 0, t = 0;
   document.addEventListener("click", function (e) {
@@ -348,7 +374,8 @@
       document.getElementById("tot-barra").textContent = eur(t);
       document.getElementById("tot-fisso").textContent = eur(t);
       var cb = document.getElementById("btn-carrello"); cb.classList.remove("is-pulsa"); void cb.offsetWidth; cb.classList.add("is-pulsa");
-      if (!b.classList.contains("u-btn--icona")) { var txt = b.textContent; b.classList.add("is-aggiunto"); b.textContent = "Aggiunto ✓"; setTimeout(function () { b.classList.remove("is-aggiunto"); b.textContent = txt; }, 1400); }
+      if (!b.classList.contains("u-btn--icona")) { cambiaTesto(b, "Aggiunto ✓", true); clearTimeout(b._t); b._t = setTimeout(function () { cambiaTesto(b, "Aggiungi", false); }, 1600); }
+      toast(b.getAttribute("aria-label").replace("Aggiungi ", "").replace(" al carrello", ""), t);
     }
     var q = e.target.closest(".u-qty button");
     if (q) { var inp = q.parentNode.querySelector("input"); var v = (parseInt(inp.value, 10) || 0) + (q.getAttribute("aria-label") === "Aumenta" ? 1 : -1); inp.value = Math.max(0, Math.min(20, v)); }
