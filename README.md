@@ -27,7 +27,7 @@ data/
 |---|---|---|
 | 0 | Analisi del sito attuale | ✅ Completata |
 | 1 | Direzione artistica "Rosso Umami" | ✅ Decisa (corallo, Bricolage + Plex Mono) |
-| 2 | Design system | In corso (ramo `fase-2-design-system`) |
+| 2 | Design system | v0.3 in revisione (ramo `fase-2-design-system`) |
 | 3 | Home + Ordina (menu, carrello, checkout) | — |
 | 4 | Pagine servizio, Chi siamo, Contatti | — |
 | 5 | QA: accessibilità, prestazioni, SEO, mobile | — |

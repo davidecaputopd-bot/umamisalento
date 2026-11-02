@@ -29,7 +29,8 @@ Le immagini non sono salvate nel repository perché sono di terzi.
 ## Decisioni prese il 2/11/2026
 
 - **Colore:** corallo `#C23B2E`.
-- **Tipografia:** abbinamento **C**, cioè Bricolage Grotesque (marchio, titoli condensati, testo) con IBM Plex Mono (dati, prezzi, allergeni).
+- ~~**Tipografia:** abbinamento C, Bricolage Grotesque + IBM Plex Mono~~ → **sostituita il 2/11/2026** (giudicata cheap; vedi `STUDIO-SETTORE.md`).
+- **Tipografia (definitiva):** **Neue Haas Grotesk** Display (titoli, peso medio, minuscolo normale) e Text (testo 18 px), **Input Mono** solo per i dati. Adobe Fonts: il kit web di produzione va creato sull'account Creative Cloud del cliente.
 - **Video:** orizzontale 16:9. Il ritaglio verticale per mobile lo preparo io (vedi `CONTENUTI-MEDIA.md`).
 
 ## Opzioni valutate

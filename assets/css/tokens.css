@@ -14,8 +14,8 @@
   --c-brace:            #1A0F0D;  /* nero caldo · testo principale */
   --c-brace-80:         #3B2F2C;  /* testo secondario su chiaro 11.3:1 su riso */
   --c-brace-60:         #6A5E5A;  /* testo terziario/meta 5.6:1 su riso */
-  --c-riso:             #F6F1E7;  /* bianco caldo · fondo pagina */
-  --c-riso-scuro:       #EAE2D3;  /* fondo alternato, separatori */
+  --c-riso:             #F4EFE6;  /* crema · fondo pagina (come Dishoom, Momofuku, Marugame) */
+  --c-riso-scuro:       #E9E2D5;  /* fondo alternato, schede senza foto */
   --c-bianco:           #FFFFFF;
   --c-kraft:            #D9C3A0;  /* materiale, mai per testo */
   --c-ottone:           #B8913A;  /* dettagli, mai per testo su chiaro */
@@ -39,28 +39,33 @@
   --error:         var(--c-corallo-scuro);
   --success:       var(--c-successo);
 
-  /* ---------- Tipografia ---------- */
-  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  /* ---------- Tipografia ----------
+     Neue Haas Grotesk (Monotype · Christian Schwartz) via Adobe Fonts, kit web.
+     Display per i titoli (peso medio, minuscolo normale), Text per tutto il resto.
+     Input Mono (DJR) SOLO per dati: prezzi, pezzi, allergeni, orari. */
+  --font-display: "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans:    "neue-haas-grotesk-text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "input-mono", ui-monospace, "SFMono-Regular", monospace;
 
-  /* larghezze (asse wdth) e pesi */
-  --wdth-titolo: 75;   --wght-titolo: 800;
-  --wdth-marchio: 100; --wght-marchio: 500; --track-marchio: .42em;
-  --wdth-testo: 100;   --wght-testo: 400;   --wght-forte: 600;
+  --wght-titolo: 500;  /* 65 Medium: il volume lo fa la dimensione, non il nero */
+  --wght-testo: 400;   /* 55 Roman */
+  --wght-forte: 500;   /* 65 Medium */
+  --track-titolo: -0.022em;
+  --track-marchio: .32em;
 
   /* scala fluida (mobile → desktop) */
-  --fs-mono:    0.75rem;                                /* 12  etichette mono */
-  --fs-s:       0.875rem;                               /* 14  meta */
-  --fs-base:    1.0625rem;                              /* 17  testo */
-  --fs-m:       1.25rem;                                /* 20  lead */
-  --fs-l:       clamp(1.5rem, 1.2rem + 1.2vw, 2rem);    /* 24 → 32  titolo scheda */
-  --fs-xl:      clamp(2rem, 1.4rem + 2.6vw, 3.5rem);    /* 32 → 56  titolo sezione */
-  --fs-xxl:     clamp(2.75rem, 1.6rem + 5vw, 7rem);     /* 44 → 112 titolo pagina */
-  --fs-display: clamp(3.5rem, 1.5rem + 10vw, 12.5rem);  /* 56 → 200 hero */
+  --fs-mono:    0.8125rem;                              /* 13  dati */
+  --fs-s:       0.9375rem;                              /* 15  meta */
+  --fs-base:    1.125rem;                               /* 18  testo */
+  --fs-m:       clamp(1.25rem, 1.1rem + .5vw, 1.5rem);  /* 20 → 24  lead */
+  --fs-l:       clamp(1.5rem, 1.25rem + 1vw, 2.125rem); /* 24 → 34  titolo scheda */
+  --fs-xl:      clamp(2.25rem, 1.5rem + 3vw, 4.5rem);   /* 36 → 72  titolo sezione */
+  --fs-xxl:     clamp(3rem, 1.8rem + 5vw, 7.5rem);      /* 48 → 120 titolo pagina */
+  --fs-display: clamp(3.25rem, 1.6rem + 7.5vw, 10rem);  /* 52 → 160 hero */
 
-  --lh-titolo: 0.9;
-  --lh-testo:  1.55;
-  --misura:    66ch;  /* lunghezza riga massima per i testi */
+  --lh-titolo: 0.98;
+  --lh-testo:  1.5;
+  --misura:    62ch;
 
   /* ---------- Spazi (scala 4) ---------- */
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;  --s-5: 24px;
@@ -73,9 +78,9 @@
   --colonne: 12;
 
   /* ---------- Forme ---------- */
-  --r-0: 0;           /* default: angoli vivi, editoriale */
+  --r-0: 0;           /* immagini e superfici: angoli vivi */
   --r-s: 2px;
-  --r-pill: 999px;    /* solo etichette e allergeni */
+  --r-pill: 999px;    /* pulsanti e scelte (pattern di Momofuku, Afuri, Sticks'n'Sushi) */
   --bordo: 1px;
   --bordo-forte: 2px;
   --ombra-1: 0 1px 0 color-mix(in srgb, var(--c-brace) 12%, transparent);

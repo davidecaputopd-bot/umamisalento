@@ -1,5 +1,5 @@
 /* =========================================================================
-   UMAMI — Base: reset leggero, tipografia, layout di pagina
+   UMAMI — Base: reset leggero, tipografia, layout di pagina  ·  v0.3
    Dipende da tokens.css
    ========================================================================= */
 
@@ -14,116 +14,98 @@ body {
   font-family: var(--font-sans);
   font-size: var(--fs-base);
   font-weight: var(--wght-testo);
-  font-variation-settings: "wdth" var(--wdth-testo), "opsz" 16;
   line-height: var(--lh-testo);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-kerning: normal;
+  font-feature-settings: "kern", "liga";
   hanging-punctuation: first;
   overflow-x: hidden;
 }
 ::selection { background: var(--c-corallo); color: #fff; }
-
-/* Numeri che cambiano (prezzi, contatori, quantità, orari) non devono "ballare" */
-.u-prezzo, .u-conta, .u-qty input, .u-riepilogo dd, time, .t-num { font-variant-numeric: tabular-nums; }
-
-/* Immagini: contorno neutro interno, così i bordi non si sciolgono nel fondo */
-.u-prodotto__media img, .u-servizio__media img, .u-riga-carrello__img img {
-  outline: 1px solid rgba(0,0,0,.08); outline-offset: -1px;
-}
-.tema-brace .u-prodotto__media img, .tema-brace .u-servizio__media img { outline-color: rgba(255,255,255,.08); }
-
-/* ---------- Grana fotografica (superfici piene) ---------- */
-.u-grana { position: relative; isolation: isolate; }
-.u-grana::after {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: var(--grana); background-size: 160px; opacity: .14; mix-blend-mode: soft-light;
-}
-.u-grana > * { position: relative; z-index: 1; }
-
-/* ---------- Comparsa in pagina (aggiunta via JS: .rivela → .is-visibile) ---------- */
-.rivela { opacity: 0; transform: translateY(14px); filter: blur(4px);
-  transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease), filter var(--dur-3) var(--ease);
-  transition-delay: calc(var(--i, 0) * var(--stagger)); }
-.rivela.is-visibile { opacity: 1; transform: none; filter: none; }
-/* immagini: svelate dal basso con clip-path (riferimento editoriale) */
-.rivela-img { clip-path: inset(0 0 100% 0); transition: clip-path var(--dur-4) var(--ease-move); transition-delay: calc(var(--i, 0) * var(--stagger)); }
-.rivela-img.is-visibile { clip-path: inset(0 0 0 0); }
-@media (prefers-reduced-motion: reduce) {
-  .rivela { transform: none; filter: none; }
-  .rivela-img { clip-path: none; opacity: 0; transition: opacity var(--dur-3) ease; }
-  .rivela-img.is-visibile { opacity: 1; }
-}
-/* senza JS tutto resta visibile */
-html:not(.js) .rivela, html:not(.js) .rivela-img { opacity: 1; transform: none; filter: none; clip-path: none; }
 
 img, video, svg { display: block; max-width: 100%; height: auto; }
 button, input, select, textarea { font: inherit; color: inherit; }
 p, h1, h2, h3, h4, h5, h6, figure, blockquote, dl, dd, ul, ol { margin: 0; }
 ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 
-:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
-/* ---------- Titoli: condensati, maiuscoli, pesanti ---------- */
+/* ---------- Titoli: Display, peso medio, minuscolo normale, interlinea stretta ---------- */
 h1, h2, h3, .t-display, .t-xxl, .t-xl, .t-l {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-weight: var(--wght-titolo);
-  font-variation-settings: "wdth" var(--wdth-titolo), "opsz" 96;
   line-height: var(--lh-titolo);
-  text-transform: uppercase;
-  letter-spacing: -0.005em;
+  letter-spacing: var(--track-titolo);
   text-wrap: balance;
 }
-.t-display { font-size: var(--fs-display); line-height: .84; }
-h1, .t-xxl { font-size: var(--fs-xxl); }
+.t-display { font-size: var(--fs-display); line-height: .92; letter-spacing: -0.03em; }
+h1, .t-xxl { font-size: var(--fs-xxl); letter-spacing: -0.028em; }
 h2, .t-xl  { font-size: var(--fs-xl); }
-h3, .t-l   { font-size: var(--fs-l); line-height: .95; }
+h3, .t-l   { font-size: var(--fs-l); line-height: 1.05; letter-spacing: -0.012em; }
 h4, .t-m   { font-size: var(--fs-m); font-weight: var(--wght-forte); line-height: 1.25; }
 
 /* ---------- Testo ---------- */
 p, li { max-width: var(--misura); text-wrap: pretty; }
-.t-lead { font-size: var(--fs-m); line-height: 1.45; color: var(--text-2); }
+.t-lead { font-size: var(--fs-m); line-height: 1.4; color: var(--text-2); letter-spacing: -0.005em; }
 .t-meta { font-size: var(--fs-s); color: var(--text-3); }
 strong, b { font-weight: var(--wght-forte); }
 
-/* Etichette mono: dati, prezzi, pezzi, allergeni, sovratitoli */
-.t-mono, .eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--fs-mono);
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-.eyebrow { color: var(--text-3); }
+/* Dati (prezzi, pezzi, allergeni, orari): mono piccolo, MAI per pulsanti o titoli */
+.t-mono { font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: 0; line-height: 1.4; }
+/* Sovratitolo: testo normale piccolo, non mono maiuscolo */
+.eyebrow { font-size: var(--fs-s); color: var(--text-3); font-weight: var(--wght-testo); }
 
-/* Marchio spaziato (sovratitoli di marca, segnaposto logo) */
-.t-marchio {
-  font-weight: var(--wght-marchio);
-  font-variation-settings: "wdth" var(--wdth-marchio);
-  letter-spacing: var(--track-marchio);
-  text-transform: uppercase;
-}
+/* Marchio spaziato: solo per il segnaposto del logo e rarissime etichette */
+.t-marchio { font-family: var(--font-display); font-weight: var(--wght-forte); letter-spacing: var(--track-marchio); text-transform: uppercase; }
+
+/* Numeri che cambiano non devono "ballare" */
+.u-prezzo, .u-conta, .u-qty input, .u-riepilogo dd, time, .t-num { font-variant-numeric: tabular-nums; }
 
 /* ---------- Link nel testo ---------- */
 a { color: inherit; }
 .prose a, a.u-link {
-  color: var(--accent);
+  color: inherit;
   text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
   text-decoration-thickness: 1px;
-  text-underline-offset: .2em;
-  transition: color var(--dur-1) var(--ease), text-decoration-thickness var(--dur-1);
+  text-underline-offset: .22em;
+  transition: text-decoration-color var(--dur-1) var(--ease-colore);
 }
-.prose a:hover, a.u-link:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
-.tema-brace .prose a, .tema-brace a.u-link { color: var(--c-riso); }
+.prose a:hover, a.u-link:hover { text-decoration-color: currentColor; }
 
 /* ---------- Layout ---------- */
 .contenitore { width: 100%; max-width: var(--contenitore); margin-inline: auto; padding-inline: var(--gutter); }
 .sezione { padding-block: var(--sezione); }
 .stack > * + * { margin-top: var(--stack, var(--s-4)); }
-.griglia { display: grid; gap: var(--gap, var(--s-5)); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 260px)), 1fr)); }
+.griglia { display: grid; gap: var(--gap, var(--s-6) var(--s-5)); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 280px)), 1fr)); }
 .tema-brace, .tema-corallo { background: var(--bg); color: var(--text); }
+
+/* Immagini: contorno neutro interno, i bordi non si sciolgono nel fondo */
+.u-prodotto__media img, .u-servizio__media img, .u-riga-carrello__img img { outline: 1px solid rgba(0,0,0,.06); outline-offset: -1px; }
+
+/* ---------- Grana fotografica (solo superfici piene di colore) ---------- */
+.u-grana { position: relative; isolation: isolate; }
+.u-grana::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--grana); background-size: 160px; opacity: .10; mix-blend-mode: soft-light;
+}
+.u-grana > * { position: relative; z-index: 1; }
+
+/* ---------- Comparsa in pagina (.rivela → .is-visibile via JS) ---------- */
+.rivela { opacity: 0; transform: translateY(16px);
+  transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease);
+  transition-delay: calc(var(--i, 0) * var(--stagger)); }
+.rivela.is-visibile { opacity: 1; transform: none; }
+.rivela-img { clip-path: inset(0 0 100% 0); transition: clip-path var(--dur-4) var(--ease-move); transition-delay: calc(var(--i, 0) * var(--stagger)); }
+.rivela-img.is-visibile { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) {
+  .rivela { transform: none; }
+  .rivela-img { clip-path: none; opacity: 0; transition: opacity var(--dur-3) ease; }
+  .rivela-img.is-visibile { opacity: 1; }
+}
+html:not(.js) .rivela, html:not(.js) .rivela-img { opacity: 1; transform: none; clip-path: none; }
 
 /* Solo per screen reader */
 .sr-only {

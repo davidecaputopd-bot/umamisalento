@@ -6,23 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Design system · UMAMI Salento</title>
 <meta name="description" content="Design system Rosso Umami: token, tipografia, componenti e mappatura WooCommerce per il redesign di UMAMI Salento.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Adobe Fonts: kit di prototipo. In produzione: kit web sull'account Creative Cloud del cliente -->
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/ebd6arl.css">
 <link rel="stylesheet" href="../../assets/css/tokens.css">
 <link rel="stylesheet" href="../../assets/css/base.css">
 <link rel="stylesheet" href="../../assets/css/components.css">
 <style>
   /* solo per la pagina di documentazione */
-  .ds-sez { padding-block: var(--s-9); border-top: var(--bordo) solid var(--border); }
+  .ds-sez { padding-block: var(--s-10); border-top: 1px solid var(--border); }
   .ds-testa { display: grid; grid-template-columns: 90px 1fr; gap: var(--s-4); margin-bottom: var(--s-7); align-items: baseline; }
   .ds-testa p { grid-column: 2; color: var(--text-2); }
   @media (max-width: 640px) { .ds-testa { grid-template-columns: 1fr; } .ds-testa p { grid-column: 1; } }
-  .ds-nota { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--text-3); text-transform: uppercase; margin-top: var(--s-2); }
+  .ds-nota { font-size: 14px; color: var(--text-3); margin-top: var(--s-3); }
   .ds-riga { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
-  .ds-box { padding: var(--s-5); border: var(--bordo) dashed var(--border); }
-  .ds-sw { min-height: 150px; padding: var(--s-4); display: flex; flex-direction: column; justify-content: space-between; border: var(--bordo) solid var(--border); }
-  .ds-sw b { font-weight: 800; font-variation-settings: "wdth" 75; text-transform: uppercase; font-size: 1.5rem; line-height: 1; }
+  .ds-box { padding: var(--s-6); border-radius: 20px; }
+  .ds-sw { min-height: 168px; padding: var(--s-4); display: flex; flex-direction: column; justify-content: space-between; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+  .ds-sw b { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; line-height: 1.1; letter-spacing: -0.01em; }
   .ds-sw code { font-family: var(--font-mono); font-size: 11px; line-height: 1.7; }
   .ds-ok { background: #fff; color: #000; padding: 0 4px; }
   .ds-no { background: #000; color: #fff; padding: 0 4px; text-decoration: line-through; }
@@ -31,10 +31,10 @@
   .ds-spazi i { display: block; height: 16px; background: var(--accent); }
   .ds-tab { width: 100%; border-collapse: collapse; font-size: var(--fs-s); }
   .ds-tab th, .ds-tab td { text-align: left; padding: 10px 12px; border-bottom: var(--bordo) solid var(--border); vertical-align: top; }
-  .ds-tab th { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; background: var(--c-brace); color: var(--c-riso); }
+  .ds-tab th { font-size: 13px; font-weight: 500; background: transparent; color: var(--text-3); border-bottom: 1px solid var(--text); }
   .ds-tab td code { font-family: var(--font-mono); font-size: 12px; background: var(--surface-alt); padding: 1px 4px; }
   .ds-scroll { overflow-x: auto; }
-  .ds-mob { max-width: 390px; border: var(--bordo-forte) solid var(--c-brace); background: var(--bg); }
+  .ds-mob { max-width: 390px; border-radius: 28px; overflow: hidden; box-shadow: 0 0 0 1px var(--border), 0 30px 60px -30px rgba(26,15,13,.35); background: var(--bg); }
   .ds-due { display: grid; gap: var(--s-6); grid-template-columns: 1fr; }
   @media (min-width: 1024px) { .ds-due { grid-template-columns: 1.4fr 1fr; } }
   img.manca { display: none; }
@@ -64,14 +64,13 @@
 <!-- ============ HERO ============ -->
 <section class="u-hero u-grana" aria-labelledby="hero-t">
   <div class="u-hero__media"><img src="../../assets/img/provvisorie/copertina_misto.jpg" alt="" onerror="this.classList.add('manca')"></div>
-  <div class="u-pattern" aria-hidden="true" id="pattern"></div>
   <div class="contenitore u-hero__testo">
-    <p class="t-mono u-hero__segue" style="--i:0">Design system · v0.2 · componente Hero</p>
-    <h1 class="u-hero__titolo" id="hero-t"><span class="u-hero__riga"><span style="--i:0">Rosso</span></span><span class="u-hero__riga"><span style="--i:1">Umami</span></span></h1>
-    <p class="t-lead u-hero__segue" style="--i:1;color:#fff;max-width:44ch">Gastronomia di mare e italian sushi a Leverano. Esempio di hero con foto provvisoria: in produzione ospiterà il video 16:9.</p>
+    <p class="u-hero__segue" style="--i:0;opacity:.85">Design system v0.3 · componente hero</p>
+    <h1 class="u-hero__titolo" id="hero-t"><span class="u-hero__riga"><span style="--i:0">Italian sushi</span></span><span class="u-hero__riga"><span style="--i:1">a Leverano</span></span></h1>
+    <p class="t-lead u-hero__segue" style="--i:1;color:#fff;max-width:44ch">Gastronomia di mare, take away e catering. Foto provvisoria: in produzione qui gira il video 16:9.</p>
     <div class="u-hero__azioni u-hero__segue" style="--i:2">
       <a class="u-btn u-btn--l" href="#menu">Ordina ora</a>
-      <a class="u-btn u-btn--l u-btn--inverso" href="#servizi">Catering ed eventi</a>
+      <a class="u-btn u-btn--l u-btn--secondario" style="--text:#fff" href="#servizi">Catering ed eventi</a>
     </div>
   </div>
 </section>
@@ -89,45 +88,44 @@
 <!-- ============ TIPOGRAFIA ============ -->
 <section class="ds-sez" aria-labelledby="h-tipo">
   <div class="ds-testa"><span class="eyebrow">02</span><h2 id="h-tipo">Tipografia</h2>
-    <p>Bricolage Grotesque in larghezze diverse: condensata e pesante per i titoli, normale per il testo, spaziata per il marchio. IBM Plex Mono per dati, prezzi, pezzi e allergeni.</p></div>
+    <p>Neue Haas Grotesk di Christian Schwartz (Monotype), via Adobe Fonts. Display per i titoli, a peso medio e in minuscolo normale: il volume lo fa la dimensione. Text per il testo, a 18 px. Input Mono di David Jonathan Ross solo per i dati.</p></div>
   <div class="ds-scala">
-    <div><span class="eyebrow">Display</span><span class="t-display" style="color:var(--accent)">Leverano</span></div>
+    <div><span class="eyebrow">Display</span><span class="t-display">Leverano Roll</span></div>
     <div><span class="eyebrow">H1 · xxl</span><span class="t-xxl">Uramaki special</span></div>
     <div><span class="eyebrow">H2 · xl</span><span class="t-xl">Porto Selvaggio</span></div>
     <div><span class="eyebrow">H3 · l</span><span class="t-l">Tartare di tonno</span></div>
-    <div><span class="eyebrow">Lead · 20</span><span class="t-lead">Due cuochi salentini, prodotti del territorio e sapori da tutto il mondo.</span></div>
-    <div><span class="eyebrow">Testo · 17</span><span>Umami nasce dalla connessione di due cuochi salentini, appassionati e ricercatori di prodotti del territorio che contaminano con sapori unici provenienti da tutto il mondo.</span></div>
-    <div><span class="eyebrow">Meta · 14</span><span class="t-meta">Tutti i giorni 19:00–23:30 · mercoledì chiuso</span></div>
-    <div><span class="eyebrow">Mono · 12</span><span class="t-mono">8 pz · Allergeni PES SES · € 13,00</span></div>
-    <div><span class="eyebrow">Marchio</span><span class="t-marchio" style="font-size:1.25rem">Umami Salento</span></div>
+    <div><span class="eyebrow">Lead · 24</span><span class="t-lead">Due cuochi salentini, prodotti del territorio e sapori da tutto il mondo.</span></div>
+    <div><span class="eyebrow">Testo · 18</span><span>Umami nasce dalla connessione di due cuochi salentini, appassionati e ricercatori di prodotti del territorio che contaminano con sapori unici provenienti da tutto il mondo.</span></div>
+    <div><span class="eyebrow">Meta · 15</span><span class="t-meta">Tutti i giorni 19:00–23:30 · mercoledì chiuso</span></div>
+    <div><span class="eyebrow">Dati · mono 13</span><span class="t-mono">8 pz · PES SES · € 13,00</span></div>
   </div>
 </section>
 
 <!-- ============ SPAZI ============ -->
 <section class="ds-sez" aria-labelledby="h-spazi">
   <div class="ds-testa"><span class="eyebrow">03</span><h2 id="h-spazi">Spazi e griglia</h2>
-    <p>Scala fissa in multipli di 4. Contenitore massimo 1360 px, margini laterali fluidi da 16 a 48 px. Angoli vivi: un solo raggio, zero, tranne le etichette arrotondate.</p></div>
+    <p>Scala fissa in multipli di 4, molto spazio tra le sezioni. Contenitore massimo 1360 px, margini laterali da 16 a 48 px. Forme: pillola per pulsanti e scelte, 12 px per immagini e campi.</p></div>
   <div class="ds-spazi stack" style="--stack:var(--s-2)" id="spazi"></div>
 </section>
 
 <!-- ============ PULSANTI ============ -->
 <section class="ds-sez" aria-labelledby="h-btn">
   <div class="ds-testa"><span class="eyebrow">04</span><h2 id="h-btn">Pulsanti</h2>
-    <p>Un primario per schermata. Altezza minima 44 px (48 standard, 56 grande). Testo in mono maiuscolo. Stati: hover, premuto, focus da tastiera, disattivato, in caricamento, aggiunto.</p></div>
+    <p>Un primario per schermata. Pillola, testo normale in minuscolo, altezza 48 px (44 piccolo, 56 grande). Stati: hover, premuto, focus da tastiera, disattivato, in caricamento, aggiunto.</p></div>
   <div class="stack" style="--stack:var(--s-5)">
-    <div class="ds-riga"><button class="u-btn u-btn--l" type="button">Ordina ora</button><button class="u-btn" type="button">Aggiungi</button><button class="u-btn u-btn--s" type="button">Aggiungi</button></div>
-    <div class="ds-riga"><button class="u-btn u-btn--secondario" type="button">Vedi il menu</button><button class="u-btn u-btn--testo" type="button">Dettagli allergeni</button><button class="u-btn" type="button" disabled>Disattivato</button><button class="u-btn is-loading" type="button" aria-busy="true">Invio</button><button class="u-btn is-aggiunto" type="button">Aggiunto ✓</button></div>
-    <div class="tema-corallo u-grana ds-box ds-riga"><button class="u-btn u-btn--inverso" type="button">Su corallo: inverso</button><button class="u-btn" type="button">Su corallo: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button></div>
-    <div class="tema-brace u-grana ds-box ds-riga"><button class="u-btn" type="button">Su brace: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button><a class="u-link" href="#">Link nel testo</a></div>
+    <div class="ds-riga"><button class="u-btn u-btn--l" type="button">Ordina ora</button><button class="u-btn" type="button">Vedi il menu</button><button class="u-btn u-btn--s" type="button">Aggiungi</button></div>
+    <div class="ds-riga"><button class="u-btn u-btn--secondario" type="button">Vedi il menu</button><button class="u-btn u-btn--testo" type="button">Allergeni</button><button class="u-btn" type="button" disabled>Disattivato</button><button class="u-btn is-loading" type="button" aria-busy="true">Invio</button><button class="u-btn is-aggiunto" type="button">Aggiunto ✓</button></div>
+    <div class="tema-corallo u-grana ds-box ds-riga"><button class="u-btn u-btn--inverso" type="button">Su corallo</button><button class="u-btn u-btn--secondario" type="button">Secondario</button></div>
+    <div class="tema-brace u-grana ds-box ds-riga"><button class="u-btn" type="button">Su brace</button><button class="u-btn u-btn--secondario" type="button">Secondario</button><a class="u-link" href="#">Link nel testo</a></div>
   </div>
 </section>
 
 <!-- ============ ELEMENTI PICCOLI ============ -->
 <section class="ds-sez" aria-labelledby="h-el">
-  <div class="ds-testa"><span class="eyebrow">05</span><h2 id="h-el">Etichette, allergeni, prezzi, quantità</h2>
-    <p>Gli allergeni non sono più numeri da decodificare: hanno un codice di tre lettere, il nome completo per gli screen reader e il riferimento al numero del Regolamento UE 1169/2011.</p></div>
+  <div class="ds-testa"><span class="eyebrow">05</span><h2 id="h-el">Dati, filtri, quantità</h2>
+    <p>Categoria e pezzi come testo semplice, non pillole. Gli allergeni hanno un codice di tre lettere al posto del numero e il nome completo per gli screen reader. Le pillole servono solo per ciò che si tocca.</p></div>
   <div class="stack" style="--stack:var(--s-5)">
-    <div class="ds-riga"><span class="u-tag">Uramaki special</span><span class="u-tag">8 pz</span><span class="u-tag u-tag--accento">Novità</span><button class="u-tag" type="button" aria-pressed="true">Poke</button><button class="u-tag" type="button" aria-pressed="false">Gyoza</button></div>
+    <div class="ds-riga"><span><span class="u-tag">Uramaki special</span><span class="u-tag">8 pz</span><span class="u-tag u-tag--accento">Novità</span></span></div><div class="ds-riga"><button class="u-tag" type="button" aria-pressed="true">Poke</button><button class="u-tag" type="button" aria-pressed="false">Gyoza</button><button class="u-tag" type="button" aria-pressed="false">Bao buns</button></div>
     <ul class="u-allergeni" aria-label="Allergeni" id="allergeni-demo"></ul>
     <div class="ds-riga"><span class="u-prezzo">€ 13,00</span><span class="u-prezzo"><del>€ 4,00</del><ins>€ 3,00</ins></span></div>
     <div class="u-qty" role="group" aria-label="Quantità"><button type="button" aria-label="Diminuisci">−</button><input type="number" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantità"><button type="button" aria-label="Aumenta">+</button></div>
@@ -137,14 +135,14 @@
 <!-- ============ SCHEDE PRODOTTO ============ -->
 <section class="ds-sez" aria-labelledby="h-prod" id="menu">
   <div class="ds-testa"><span class="eyebrow">06</span><h2 id="h-prod">Scheda prodotto</h2>
-    <p>Nomi, categorie e prezzi dal catalogo reale. Tre varianti: con foto (le 30 dello shooting), senza foto (gli altri 80 prodotti, con fondo pieno, iniziale e luogo) e riga compatta per il menu su mobile. Le foto sono provvisorie e non corrispondono al piatto.</p></div>
+    <p>Nomi, categorie e prezzi dal catalogo reale. Nessun box: foto, nome, descrizione, prezzo. Senza foto (gli 80 prodotti fuori dallo shooting) resta una superficie crema con il luogo del piatto. Le foto sono provvisorie e non corrispondono al piatto.</p></div>
   <div class="griglia" style="--min:250px" id="griglia-prodotti"></div>
 </section>
 
 <!-- ============ MENU MOBILE ============ -->
 <section class="ds-sez" aria-labelledby="h-menu">
   <div class="ds-testa"><span class="eyebrow">07</span><h2 id="h-menu">Menu: categorie e lista</h2>
-    <p>Le categorie restano fisse sotto l'header e scorrono in orizzontale. Su mobile la lista usa le righe compatte con aggiunta rapida e la barra fissa in basso con il totale.</p></div>
+    <p>Categorie fisse sotto l'header, scorrevoli. Su mobile righe compatte con aggiunta rapida e barra in basso con il totale.</p></div>
   <div class="ds-mob">
     <nav class="u-categorie" style="position:relative;top:0" aria-label="Categorie del menu">
       <ul class="u-categorie__lista" style="padding-inline:var(--s-4)" id="cat-lista"></ul>
@@ -263,7 +261,7 @@
 
   /* ---- pattern toponimi ---- */
   var luoghi = ["Porto Selvaggio","San Foca","Leverano","Santa Caterina","Porto Badisco","Sant'Andrea","La Strea","Salento"];
-  var p = document.getElementById("pattern"), cols = innerWidth < 640 ? 5 : 11;
+  var p = document.getElementById("pattern"), cols = p ? (innerWidth < 640 ? 5 : 11) : 0;
   for (var c = 0; c < cols; c++) {
     var col = document.createElement("div"); col.className = "u-pattern__col"; var h = "";
     for (var k = 0; k < 2; k++) for (var i = 0; i < luoghi.length; i++) h += "<span>" + luoghi[(i + c) % luoghi.length] + "</span>";
@@ -298,7 +296,7 @@
     { n:"Ramune soda", c:"Bevande", pz:"Bottiglia", p:3, pieno:4, luogo:"Leverano" }
   ];
   function media(x, riga) {
-    if (x.img) return '<div class="u-prodotto__media"><img src="' + IMG + x.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' + (riga ? "" : '<span class="u-prodotto__badge u-tag" style="border:0">Foto provvisoria</span>') + '</div>';
+    if (x.img) return '<div class="u-prodotto__media"><img src="' + IMG + x.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' + (riga ? "" : '<span class="u-prodotto__badge">Foto provvisoria</span>') + '</div>';
     return '<div class="u-prodotto__media" aria-hidden="true"><span class="u-prodotto__iniziale">' + x.n.charAt(0) + '</span><span class="u-prodotto__luogo">' + (x.luogo || "Salento") + '</span></div>';
   }
   function prezzo(x) { return '<span class="u-prezzo">' + (x.pieno ? "<del>" + eur(x.pieno) + "</del><ins>" + eur(x.p) + "</ins>" : eur(x.p)) + '</span>'; }
@@ -306,7 +304,7 @@
     return '<article class="u-prodotto rivela' + (x.img ? "" : " u-prodotto--senza-foto") + '" style="--i:' + (prodotti.indexOf(x) % 4) + '">' + media(x) +
       '<div class="u-prodotto__corpo"><div class="u-prodotto__meta"><span class="u-tag">' + x.c + '</span><span class="u-tag">' + x.pz + '</span></div>' +
       '<h3 class="u-prodotto__nome"><a href="#">' + x.n + '</a></h3>' + (x.d ? '<p class="u-prodotto__desc">' + x.d + '</p>' : "") + (x.al ? allergeni(x.al) : "") +
-      '<div class="u-prodotto__piede">' + prezzo(x) + '<button class="u-btn u-btn--s js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello"><span class="u-btn__testo">Aggiungi</span></button></div></div></article>';
+      '<div class="u-prodotto__piede">' + prezzo(x) + '<button class="u-btn u-btn--s u-btn--secondario js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello"><span class="u-btn__testo">Aggiungi</span></button></div></div></article>';
   }).join("");
 
   /* ---- categorie + righe compatte ---- */
@@ -315,7 +313,7 @@
   document.getElementById("lista-righe").innerHTML = prodotti.slice(0, 5).map(function (x) {
     return '<article class="u-prodotto u-prodotto--riga' + (x.img ? "" : " u-prodotto--senza-foto") + '">' + media(x, true) +
       '<div class="u-prodotto__corpo"><h3 class="u-prodotto__nome">' + x.n + '</h3><span class="t-mono" style="color:var(--text-3)">' + x.pz + ' · ' + eur(x.p) + '</span></div>' +
-      '<div class="u-prodotto__piede"><button class="u-btn u-btn--icona js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello">+</button></div></article>';
+      '<div class="u-prodotto__piede"><button class="u-btn u-btn--icona u-btn--secondario js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello"><svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></article>';
   }).join("");
 
   /* ---- servizi ---- */
