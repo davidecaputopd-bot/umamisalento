@@ -26,7 +26,7 @@ data/
 | Fase | Contenuto | Stato |
 |---|---|---|
 | 0 | Analisi del sito attuale | ✅ Completata |
-| 1 | Direzione artistica + brief dei contenuti mancanti | In attesa di approvazione |
+| 1 | Direzione artistica "Rosso Umami" | In corso (ramo `fase-1-direzione-artistica`) |
 | 2 | Design system | — |
 | 3 | Home + Ordina (menu, carrello, checkout) | — |
 | 4 | Pagine servizio, Chi siamo, Contatti | — |

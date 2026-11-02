@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosso Umami — Moodboard</title>
+<meta name="description" content="Fase 1 · Direzione artistica UMAMI Salento: palette, tipografia, pattern dei toponimi, prime prove di interfaccia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Big+Shoulders+Display:wght@500;800&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOKEN — Rosso Umami (bozza fase 1)
+   ========================================================= */
+:root{
+  --rosso:#C23B2E;          /* corallo: 5.30:1 con bianco */
+  --rosso-scuro:#8E2A20;
+  --rosso-profondo:#5A1712;
+  --brace:#1A0F0D;          /* nero caldo */
+  --riso:#F6F1E7;           /* bianco caldo */
+  --kraft:#D9C3A0;
+  --ottone:#B8913A;
+  --elettrico:#1F3CFF;      /* unico contrasto, uso raro */
+  --bianco:#FFFFFF;
+
+  --f-marchio:"Archivo",sans-serif;  --w-marchio:125; --t-marchio:.42em;
+  --f-titolo:"Archivo",sans-serif;   --w-titolo:62;   --wt-titolo:800;
+  --f-testo:"Archivo",sans-serif;    --w-testo:100;
+  --f-mono:"JetBrains Mono",monospace;
+
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;
+  --r:2px;
+  --gutter:clamp(16px,4vw,48px);
+}
+:root[data-colore="rosso"]{--rosso:#D21F1A;--rosso-scuro:#9A1612;--rosso-profondo:#5E0E0B;}
+body.tipo-b{--f-marchio:"Outfit",sans-serif;--w-marchio:100;--t-marchio:.5em;--f-titolo:"Big Shoulders Display",sans-serif;--w-titolo:100;--wt-titolo:800;--f-testo:"Outfit",sans-serif;--f-mono:"Space Mono",monospace;}
+body.tipo-c{--f-marchio:"Bricolage Grotesque",sans-serif;--w-marchio:100;--t-marchio:.38em;--f-titolo:"Bricolage Grotesque",sans-serif;--w-titolo:75;--wt-titolo:800;--f-testo:"Bricolage Grotesque",sans-serif;--f-mono:"IBM Plex Mono",monospace;}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--riso);color:var(--brace);font-family:var(--f-testo);font-stretch:calc(var(--w-testo)*1%);font-size:17px;line-height:1.5;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--elettrico);outline-offset:3px}
+
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.wrap{padding:0 var(--gutter);max-width:1400px;margin:0 auto}
+.sez{padding-top:var(--s9);padding-bottom:var(--s9);border-top:1px solid color-mix(in srgb,var(--brace) 15%,transparent)}
+.sez-head{display:grid;grid-template-columns:120px 1fr;gap:var(--s5);margin-bottom:var(--s7);align-items:baseline}
+.sez-head h2{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:clamp(36px,6vw,72px);line-height:.95;text-transform:uppercase}
+.sez-head p{grid-column:2;max-width:62ch;opacity:.8}
+@media(max-width:640px){.sez-head{grid-template-columns:1fr}.sez-head p{grid-column:1}}
+
+/* ---------- barra strumenti ---------- */
+.tools{position:sticky;top:0;z-index:20;background:var(--brace);color:var(--riso);display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);align-items:center;padding:var(--s3) var(--gutter)}
+.tools .mono{opacity:.7}
+.seg{display:inline-flex;border:1px solid color-mix(in srgb,var(--riso) 40%,transparent)}
+.seg button{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:12px;text-transform:uppercase;padding:6px 12px;letter-spacing:.04em}
+.seg button[aria-pressed="true"]{background:var(--riso);color:var(--brace)}
+
+/* ---------- logo segnaposto ---------- */
+.logo{display:inline-grid;border:2px solid currentColor;text-align:center;line-height:1}
+.logo span{padding:8px 14px;border-bottom:2px solid currentColor}
+.logo span:last-child{border-bottom:0}
+.logo .nome{font-family:var(--f-marchio);font-stretch:calc(var(--w-marchio)*1%);font-weight:500;letter-spacing:var(--t-marchio);padding-right:calc(14px - var(--t-marchio));font-size:20px}
+.logo .sotto{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em}
+.logo-h{grid-auto-flow:column}
+.logo-h span{border-bottom:0;border-right:2px solid currentColor;display:flex;align-items:center}
+.logo-h span:last-child{border-right:0}
+.segnaposto{font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;background:var(--elettrico);color:#fff;padding:2px 6px;display:inline-block}
+
+/* ---------- hero ---------- */
+.hero{background:var(--rosso);color:var(--bianco);position:relative;min-height:88vh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;padding:var(--s5) var(--gutter);position:relative;z-index:2;gap:var(--s4)}
+.hero-titolo{position:relative;z-index:2;align-self:end;padding:0 var(--gutter) var(--s6)}
+.hero-titolo h1{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:clamp(56px,13vw,200px);line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+.hero-titolo p{max-width:40ch;margin-top:var(--s5);font-size:clamp(17px,1.6vw,21px)}
+.hero-base{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:var(--s3) var(--s6);padding:var(--s4) var(--gutter);border-top:1px solid color-mix(in srgb,#fff 35%,transparent)}
+
+/* ---------- pattern toponimi ---------- */
+.pattern{position:absolute;inset:0;display:flex;justify-content:space-around;gap:var(--s5);opacity:.22;pointer-events:none;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.col{display:flex;flex-direction:column;align-items:center;gap:var(--s4);animation:scorri 60s linear infinite}
+.col:nth-child(even){animation-direction:reverse;animation-duration:75s}
+.col span{writing-mode:vertical-rl;font-family:var(--f-marchio);font-stretch:calc(var(--w-marchio)*1%);font-size:14px;letter-spacing:.5em;text-transform:uppercase;white-space:nowrap}
+.col i{font-style:normal;font-family:var(--f-mono);font-size:11px}
+@keyframes scorri{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@media(prefers-reduced-motion:reduce){.col{animation:none}}
+@media(max-width:640px){.pattern{opacity:.12}}
+
+/* ---------- palette ---------- */
+.palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--s3)}
+.sw{min-height:180px;padding:var(--s4);display:flex;flex-direction:column;justify-content:space-between;border:1px solid color-mix(in srgb,var(--brace) 12%,transparent)}
+.sw b{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:28px;text-transform:uppercase;line-height:1}
+.sw .cr{font-family:var(--f-mono);font-size:11px;line-height:1.6}
+.ok{background:#fff;color:#000;padding:0 4px}
+.no{background:#000;color:#fff;padding:0 4px;text-decoration:line-through}
+
+/* ---------- tipografia ---------- */
+.specimen{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--s7)}
+@media(max-width:900px){.specimen{grid-template-columns:1fr}}
+.spec-big{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:clamp(48px,9vw,128px);line-height:.88;text-transform:uppercase;color:var(--rosso)}
+.spec-scala div{display:grid;grid-template-columns:90px 1fr;align-items:baseline;gap:var(--s4);padding:var(--s3) 0;border-bottom:1px solid color-mix(in srgb,var(--brace) 12%,transparent)}
+.t-marchio{font-family:var(--f-marchio);font-stretch:calc(var(--w-marchio)*1%);letter-spacing:var(--t-marchio);text-transform:uppercase}
+.t-titolo{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);text-transform:uppercase;line-height:1}
+
+/* ---------- menu / prodotto ---------- */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--s4)}
+.card{background:var(--bianco);display:flex;flex-direction:column;border:1px solid color-mix(in srgb,var(--brace) 10%,transparent)}
+.card-img{aspect-ratio:1;background:var(--rosso);color:#fff;position:relative;overflow:hidden;display:grid;place-items:center}
+.card-img .piatto{width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E8C77A,var(--ottone) 55%,#7A5A1A);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.card-img .nota{position:absolute;left:var(--s3);bottom:var(--s3)}
+.card-img.senza-foto{background:var(--rosso-profondo)}
+.card-img.senza-foto .luogo{writing-mode:vertical-rl;font-family:var(--f-marchio);font-stretch:calc(var(--w-marchio)*1%);letter-spacing:.5em;text-transform:uppercase;font-size:13px;position:absolute;opacity:.5}
+.card-img.senza-foto .iniz{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:96px;line-height:1}
+.card-body{padding:var(--s4);display:flex;flex-direction:column;gap:var(--s3);flex:1}
+.card-body h3{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:30px;text-transform:uppercase;line-height:.95}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--f-mono);font-size:11px;border:1px solid currentColor;border-radius:999px;padding:2px 8px;text-transform:uppercase}
+.desc{display:grid;gap:6px}.desc i{display:block;height:8px;background:color-mix(in srgb,var(--brace) 10%,transparent)}.desc i:last-child{width:60%}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:var(--s3);border-top:1px dashed color-mix(in srgb,var(--brace) 25%,transparent)}
+.prezzo{font-family:var(--f-mono);font-size:20px;font-weight:600}
+.btn{all:unset;cursor:pointer;background:var(--rosso);color:#fff;font-family:var(--f-mono);font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:12px 16px;min-height:20px;transition:background .15s, transform .15s}
+.btn:hover{background:var(--rosso-scuro)}
+.btn:active{transform:translateY(1px)}
+.btn.aggiunto{background:var(--brace)}
+
+/* ---------- header prove ---------- */
+.prove{display:grid;grid-template-columns:1fr 360px;gap:var(--s6);align-items:start}
+@media(max-width:1000px){.prove{grid-template-columns:1fr}}
+.frame{border:1px solid color-mix(in srgb,var(--brace) 20%,transparent);background:var(--bianco);overflow:hidden}
+.frame-lab{padding:6px 10px;background:var(--brace);color:var(--riso)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding:var(--s4) var(--s5);background:var(--riso);border-bottom:2px solid var(--brace);flex-wrap:wrap}
+.hd nav{display:flex;gap:var(--s5);flex-wrap:wrap}
+.hd nav a{text-decoration:none;font-family:var(--f-mono);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.hd nav a.attivo{border-bottom:2px solid var(--rosso)}
+.carrello{display:inline-flex;align-items:center;gap:8px;background:var(--rosso);color:#fff;padding:10px 14px;font-family:var(--f-mono);font-size:13px;text-transform:uppercase;text-decoration:none}
+.carrello b{background:#fff;color:var(--rosso);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px}
+.mob{width:100%;max-width:360px;aspect-ratio:9/17;display:flex;flex-direction:column;background:var(--riso)}
+.mob-hd{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:2px solid var(--brace)}
+.mob-tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 16px;scrollbar-width:none}
+.mob-tabs .tag{white-space:nowrap}
+.mob-tabs .tag.on{background:var(--brace);color:var(--riso);border-color:var(--brace)}
+.mob-list{flex:1;overflow:auto;padding:0 16px}
+.riga{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid color-mix(in srgb,var(--brace) 12%,transparent)}
+.riga .th{aspect-ratio:1;background:var(--rosso);display:grid;place-items:center}
+.riga .th i{width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E8C77A,var(--ottone) 55%,#7A5A1A)}
+.riga h4{font-family:var(--f-titolo);font-stretch:calc(var(--w-titolo)*1%);font-weight:var(--wt-titolo);font-size:20px;text-transform:uppercase;line-height:1}
+.piu{all:unset;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;background:var(--rosso);color:#fff;font-size:22px}
+.mob-bar{display:grid;grid-template-columns:1fr 1fr 1.4fr;border-top:2px solid var(--brace);background:var(--riso)}
+.mob-bar a{display:grid;place-items:center;padding:14px 4px;text-decoration:none;font-family:var(--f-mono);font-size:11px;text-transform:uppercase}
+.mob-bar a.cta{background:var(--rosso);color:#fff}
+
+/* ---------- foto ---------- */
+.foto{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+@media(max-width:800px){.foto{grid-template-columns:1fr}}
+.foto figure{aspect-ratio:4/3;position:relative;display:grid;place-items:center;overflow:hidden}
+.foto figcaption{position:absolute;left:0;right:0;bottom:0;padding:var(--s4);color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.f-prod{background:var(--rosso)}
+.f-prod .piatto{width:46%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E8C77A,var(--ottone) 55%,#7A5A1A);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.f-notte{background:radial-gradient(circle at 50% 40%,#5a3a2a,#120a08 70%);filter:contrast(1.1)}
+.f-notte::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:3px 3px;mix-blend-mode:screen}
+.f-notte .kraft{width:50%;aspect-ratio:4/3;background:var(--kraft);transform:rotate(-8deg);display:grid;place-items:center;color:var(--brace)}
+
+.slot{border:2px dashed var(--rosso);padding:var(--s7);display:grid;gap:var(--s3);text-align:center;place-items:center;color:var(--rosso)}
+
+footer{background:var(--brace);color:var(--riso);padding:var(--s8) 0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s6)}
+</style>
+</head>
+<body>
+
+<div class="tools" role="toolbar" aria-label="Opzioni della moodboard">
+  <span class="mono">Fase 1 · Bozza</span>
+  <span class="mono">Colore</span>
+  <div class="seg" data-gruppo="colore">
+    <button type="button" data-v="corallo" aria-pressed="true">Corallo</button>
+    <button type="button" data-v="rosso" aria-pressed="false">Rosso puro</button>
+  </div>
+  <span class="mono">Tipografia</span>
+  <div class="seg" data-gruppo="tipo">
+    <button type="button" data-v="a" aria-pressed="true">A · Archivo</button>
+    <button type="button" data-v="b" aria-pressed="false">B · Big Shoulders</button>
+    <button type="button" data-v="c" aria-pressed="false">C · Bricolage</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="pattern" aria-hidden="true" id="pattern"></div>
+  <div class="hero-top">
+    <div>
+      <div class="logo"><span class="nome">UMAMI</span><span class="sotto">SALENTO</span></div>
+      <div style="margin-top:8px"><span class="segnaposto">Logo segnaposto · in ridisegno</span></div>
+    </div>
+    <span class="mono" style="text-align:right">Leverano · LE<br>19:00 — 23:30</span>
+  </div>
+  <div class="hero-titolo">
+    <h1>Rosso<br>Umami</h1>
+    <p>Direzione artistica: street food pop, griglia editoriale, il Salento raccontato con i nomi dei suoi luoghi.</p>
+  </div>
+  <div class="hero-base">
+    <span class="mono">Sushi take away</span><span class="mono">Ramen</span><span class="mono">Catering</span><span class="mono">Chef a domicilio</span><span class="mono">Street food</span>
+  </div>
+</header>
+
+<main>
+
+<section class="sez wrap" aria-labelledby="h-principi">
+  <div class="sez-head"><span class="mono">01</span><h2 id="h-principi">Principi</h2>
+    <p>Dai riferimenti prendiamo i principi, non le forme. Niente archi, niente gatti, niente simboli con gli occhi.</p></div>
+  <div class="menu-grid">
+    <div><p class="mono">A · Un colore</p><p>Un rosso caldo, pieno, usato tono su tono. Il resto è carta, brace e ottone.</p></div>
+    <div><p class="mono">B · Il pattern è il brand</p><p>Colonne verticali con i luoghi del menu: Porto Selvaggio, San Foca, Leverano. La mappa della costa diventa texture.</p></div>
+    <div><p class="mono">C · Griglia editoriale</p><p>Testi piccoli su grandi campi di colore, titoli condensati, dati in mono.</p></div>
+    <div><p class="mono">D · Due fotografie</p><p>Prodotto dall'alto su fondo pieno. Vita reale col flash, di notte, per truck ed eventi.</p></div>
+  </div>
+</section>
+
+<section class="sez wrap" aria-labelledby="h-palette">
+  <div class="sez-head"><span class="mono">02</span><h2 id="h-palette">Palette</h2>
+    <p>Contrasti calcolati dal vivo (WCAG 2.1). Con ≥ 4.5:1 il testo normale è leggibile; tra 3 e 4.5 solo per testo grande (≥ 24px).</p></div>
+  <div class="palette" id="palette"></div>
+</section>
+
+<section class="sez wrap" aria-labelledby="h-tipo">
+  <div class="sez-head"><span class="mono">03</span><h2 id="h-tipo">Tipografia</h2>
+    <p>Tre abbinamenti da confrontare con il selettore in alto. Marchio (spaziato), titoli (condensati), testo, mono per prezzi, pezzi e allergeni.</p></div>
+  <div class="specimen">
+    <div class="spec-big">Leverano<br>Roll<br>13,00</div>
+    <div class="spec-scala">
+      <div><span class="mono">Marchio</span><span class="t-marchio" style="font-size:22px">Umami Salento</span></div>
+      <div><span class="mono">Titolo XL</span><span class="t-titolo" style="font-size:56px">Uramaki</span></div>
+      <div><span class="mono">Titolo M</span><span class="t-titolo" style="font-size:30px">Porto Selvaggio</span></div>
+      <div><span class="mono">Testo</span><span>Due cuochi salentini, prodotti del territorio e sapori da tutto il mondo.</span></div>
+      <div><span class="mono">Mono</span><span class="mono" style="font-size:14px">8 pz · Allergeni 1 4 6 11 · € 13,00</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sez wrap" aria-labelledby="h-prodotto">
+  <div class="sez-head"><span class="mono">04</span><h2 id="h-prodotto">Scheda prodotto</h2>
+    <p>Nomi, categorie e prezzi dal catalogo reale. Due stati: con foto (piatto dall'alto su fondo pieno) e senza foto, finché il servizio fotografico non è pronto. Le descrizioni sono segnaposto.</p></div>
+  <div class="menu-grid" id="prodotti"></div>
+</section>
+
+<section class="sez wrap" aria-labelledby="h-ui">
+  <div class="sez-head"><span class="mono">05</span><h2 id="h-ui">Header e mobile</h2>
+    <p>Navigazione divisa in due percorsi: Ordina ed Esperienze. Su mobile: tab delle categorie, aggiunta rapida, barra fissa con il carrello.</p></div>
+  <div class="prove">
+    <div class="frame">
+      <div class="frame-lab mono">Desktop · header</div>
+      <div class="hd">
+        <div class="logo logo-h"><span class="nome">UMAMI</span><span class="sotto">SALENTO</span></div>
+        <nav aria-label="Esempio di navigazione">
+          <a href="#" class="attivo">Ordina</a><a href="#">Ramen</a><a href="#">Catering</a><a href="#">Chef</a><a href="#">Street food</a><a href="#">Chi siamo</a>
+        </nav>
+        <a href="#" class="carrello">Carrello <b id="cnt">0</b></a>
+      </div>
+      <div style="background:var(--rosso);color:#fff;padding:var(--s7) var(--s5);position:relative;overflow:hidden">
+        <p class="mono">Ordina · ritiro o consegna</p>
+        <p class="t-titolo" style="font-size:clamp(40px,6vw,80px);margin-top:8px">Stasera<br>dalle 19:00</p>
+        <div style="display:flex;gap:8px;margin-top:var(--s5);flex-wrap:wrap">
+          <button class="btn" style="background:#fff;color:var(--rosso)" type="button">Ritiro</button>
+          <button class="btn" style="background:var(--brace)" type="button">Consegna · CAP</button>
+        </div>
+      </div>
+    </div>
+    <div class="frame mob">
+      <div class="frame-lab mono">Mobile · menu</div>
+      <div class="mob-hd"><div class="logo"><span class="nome" style="font-size:14px">UMAMI</span></div><span class="mono">Ritiro · 20:30</span></div>
+      <div class="mob-tabs"><span class="tag on">Uramaki special</span><span class="tag">Poke</span><span class="tag">Gyoza</span><span class="tag">Bao buns</span><span class="tag">Dolci</span></div>
+      <div class="mob-list" id="mob-list"></div>
+      <div class="mob-bar"><a href="#">Menu</a><a href="#">Info</a><a href="#" class="cta">Carrello · <span id="tot">€ 0,00</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sez wrap" aria-labelledby="h-foto">
+  <div class="sez-head"><span class="mono">06</span><h2 id="h-foto">Fotografia</h2>
+    <p>Indicazioni per il servizio fotografico. Le immagini qui sono schemi, non foto.</p></div>
+  <div class="foto">
+    <figure class="f-prod"><div class="piatto"></div><figcaption><p class="mono">Prodotto</p><p>Dall'alto, fondo rosso pieno, ottone e metallo, luce morbida. Stessa inquadratura per tutti i 110 prodotti.</p></figcaption></figure>
+    <figure class="f-notte"><div class="kraft t-marchio" style="font-size:14px">Umami</div><figcaption><p class="mono">Vita reale</p><p>Flash diretto, notte, grana, mani e tavoli. Per food truck, fiere, eventi, catering on site.</p></figcaption></figure>
+  </div>
+</section>
+
+<section class="sez wrap" aria-labelledby="h-mascotte">
+  <div class="sez-head"><span class="mono">07</span><h2 id="h-mascotte">Mascotte</h2>
+    <p>Arriva con la parte del food truck. Lo spazio nel sistema è già previsto: hero street food, stati vuoti, conferma d'ordine, packaging.</p></div>
+  <div class="slot"><span class="t-titolo" style="font-size:40px">Spazio riservato</span><span class="mono">Mascotte · fase successiva</span></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:var(--riso)"><span class="nome">UMAMI</span><span class="sotto">SALENTO</span></div>
+    <p class="mono" style="max-width:44ch">Bozza di direzione artistica · Fase 1 · Dati prodotto dal catalogo pubblico rilevato il 2/11/2026. Nessun ordine reale.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, body=document.body;
+
+  /* ---- pattern toponimi ---- */
+  var luoghi=["Porto Selvaggio","San Foca","Leverano","Santa Caterina","Porto Badisco","Sant'Andrea","La Strea","Salento"];
+  var p=document.getElementById("pattern"), cols=window.innerWidth<640?5:11;
+  for(var c=0;c<cols;c++){
+    var col=document.createElement("div");col.className="col";
+    var html="";
+    for(var k=0;k<2;k++)for(var i=0;i<luoghi.length;i++){var l=luoghi[(i+c)%luoghi.length];html+="<span>"+l+"</span><i>"+(c%2?"✳":"·")+"</i>";}
+    col.innerHTML=html;p.appendChild(col);
+  }
+
+  /* ---- palette con contrasto ---- */
+  function lum(h){var r=[1,3,5].map(function(i){var v=parseInt(h.substr(i,2),16)/255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*r[0]+.7152*r[1]+.0722*r[2]}
+  function cr(a,b){var x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+  function badge(r){var s=r.toFixed(2)+":1";return r>=4.5?'<span class="ok">'+s+' AA</span>':r>=3?'<span class="ok">'+s+' grande</span>':'<span class="no">'+s+'</span>'}
+  var nomi=[["rosso","Rosso"],["rosso-scuro","Rosso scuro"],["rosso-profondo","Profondo"],["brace","Brace"],["riso","Riso"],["kraft","Kraft"],["ottone","Ottone"],["elettrico","Elettrico"]];
+  function disegnaPalette(){
+    var cs=getComputedStyle(root),out="";
+    nomi.forEach(function(n){
+      var v=cs.getPropertyValue("--"+n[0]).trim().toUpperCase();
+      var bw=cr(v,"#FFFFFF"),bb=cr(v,"#1A0F0D"),fg=bw>=bb?"#FFFFFF":"#1A0F0D";
+      out+='<div class="sw" style="background:'+v+';color:'+fg+'"><b>'+n[1]+'</b><div class="cr">'+v+'<br>su bianco '+badge(bw)+'<br>su brace '+badge(bb)+'</div></div>';
+    });
+    document.getElementById("palette").innerHTML=out;
+  }
+
+  /* ---- prodotti reali (nome, categoria, prezzo) ---- */
+  var prodotti=[
+    {n:"Leverano Roll",c:"Uramaki special",pz:"8 pz",p:13,foto:true,luogo:"Leverano"},
+    {n:"Porto Selvaggio",c:"Poke",pz:"Bowl",p:13,foto:false,luogo:"Porto Selvaggio"},
+    {n:"Salento Roll",c:"I vegetariani",pz:"8 pz",p:9,foto:true,luogo:"Salento"},
+    {n:"San Foca",c:"Poke",pz:"Bowl",p:13,foto:false,luogo:"San Foca"}
+  ];
+  var eur=function(v){return "€ "+v.toFixed(2).replace(".",",")};
+  var g=document.getElementById("prodotti"),ml=document.getElementById("mob-list"),hc="",hm="";
+  prodotti.forEach(function(x,i){
+    var img=x.foto?'<div class="card-img"><div class="piatto" role="img" aria-label="Schema foto: '+x.n+' dall\'alto"></div><span class="nota mono">Foto · da scattare</span></div>'
+      :'<div class="card-img senza-foto"><span class="luogo" aria-hidden="true">'+x.luogo+'</span><span class="iniz" aria-hidden="true">'+x.n.charAt(0)+'</span><span class="nota mono">Stato senza foto</span></div>';
+    hc+='<article class="card">'+img+'<div class="card-body"><div class="meta"><span class="tag">'+x.c+'</span><span class="tag">'+x.pz+'</span></div><h3>'+x.n+'</h3><div class="desc" aria-label="Descrizione segnaposto"><i></i><i></i></div><div class="card-foot"><span class="prezzo">'+eur(x.p)+'</span><button class="btn add" type="button" data-p="'+x.p+'">Aggiungi</button></div></div></article>';
+    hm+='<div class="riga"><div class="th"><i></i></div><div><h4>'+x.n+'</h4><span class="mono">'+x.pz+' · '+eur(x.p)+'</span></div><button class="piu add" type="button" aria-label="Aggiungi '+x.n+'" data-p="'+x.p+'">+</button></div>';
+  });
+  g.innerHTML=hc;ml.innerHTML=hm;
+
+  var n=0,t=0;
+  document.addEventListener("click",function(e){
+    var b=e.target.closest(".add");if(!b)return;
+    n++;t+=parseFloat(b.dataset.p);
+    document.getElementById("cnt").textContent=n;document.getElementById("tot").textContent=eur(t);
+    if(b.classList.contains("btn")){b.classList.add("aggiunto");b.textContent="Aggiunto ✓";setTimeout(function(){b.classList.remove("aggiunto");b.textContent="Aggiungi"},1200);}
+  });
+
+  /* ---- selettori ---- */
+  document.querySelectorAll(".seg").forEach(function(s){
+    s.addEventListener("click",function(e){
+      var b=e.target.closest("button");if(!b)return;
+      s.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});
+      if(s.dataset.gruppo==="colore"){root.dataset.colore=b.dataset.v;disegnaPalette();}
+      else{body.classList.remove("tipo-b","tipo-c");if(b.dataset.v!=="a")body.classList.add("tipo-"+b.dataset.v);}
+    });
+  });
+  disegnaPalette();
+})();
+</script>
+</body>
+</html>
