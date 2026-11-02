@@ -1,0 +1,133 @@
+/* =========================================================================
+   UMAMI — Layout delle pagine  ·  fase 3  (Home, Menu, Cassa)
+   Solo composizione: colori, tipi e componenti vengono da tokens/base/components.
+   In integrazione: Home → pagina Elementor; Menu → archivio Food Store;
+   Cassa → template woocommerce/checkout/form-checkout.php nel tema figlio.
+   ========================================================================= */
+
+/* ---------- Header: menu su mobile ---------- */
+.u-nav-mobile { border-top: 1px solid var(--border); padding-block: var(--s-3) var(--s-5); }
+.u-nav-mobile ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.u-nav-mobile a { display: flex; align-items: center; min-height: 52px; font-family: var(--font-display); font-size: 1.75rem; text-decoration: none; border-bottom: 1px solid var(--border); }
+.u-nav-mobile .u-stato { margin-top: var(--s-4); }
+@media (min-width: 1024px) { .u-nav-mobile { display: none !important; } }
+
+/* Intestazione di sezione: sovratitolo, titolo, filetto d'ottone */
+.p-testa { display: grid; gap: var(--s-4); margin-bottom: var(--s-8); max-width: 46rem; }
+.p-testa .u-filo { margin-top: var(--s-2); }
+.p-testa--riga { max-width: none; grid-template-columns: 1fr auto; align-items: end; }
+@media (max-width: 720px) { .p-testa--riga { grid-template-columns: 1fr; } }
+
+/* =========================== HOME =========================== */
+.h-hero .u-hero__titolo { max-width: 11ch; }
+.h-hero__stato { display: inline-flex; padding: 6px 14px 6px 12px; border-radius: var(--r-pill); background: rgba(22,16,14,.42); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #fff; width: fit-content; }
+.h-hero__stato .u-stato { color: #fff; }
+.h-hero__nota { position: absolute; left: var(--gutter); top: var(--s-5); z-index: 2; font-family: var(--font-mono); font-size: .6875rem; color: rgba(255,255,255,.8); }
+
+/* Dichiarazione: serif grande, una frase sola */
+.h-dichiarazione { display: grid; gap: var(--s-7); grid-template-columns: 1fr; }
+.h-dichiarazione__frase { font-family: var(--font-display); font-size: clamp(2rem, 1.2rem + 3.2vw, 4.25rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 20ch; text-wrap: balance; }
+.h-dichiarazione__frase em { font-style: italic; }
+.h-dichiarazione__testo { display: grid; gap: var(--s-4); align-content: end; color: var(--text-2); }
+@media (min-width: 1024px) { .h-dichiarazione { grid-template-columns: 1.6fr 1fr; align-items: end; } }
+
+/* Piatti firmati: quattro schede 4:5 */
+.h-firme { --min: 260px; --gap: var(--s-8) var(--s-5); }
+
+/* Come si ordina: tre passi numerati, filetto d'ottone sopra */
+.h-passi { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-6); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); counter-reset: passo; }
+.h-passi li { counter-increment: passo; display: grid; gap: var(--s-3); padding-top: var(--s-4); border-top: 1px solid var(--filo); max-width: none; }
+.h-passi li::before { content: "0" counter(passo); font-family: var(--font-mono); font-size: var(--fs-mono); color: var(--text-3); }
+.h-passi h3 { font-size: var(--fs-l); }
+.h-passi p { color: var(--text-2); }
+
+/* Servizi su lacca */
+.h-servizi { --min: 220px; --gap: var(--s-7) var(--s-5); }
+.u-servizio--in-arrivo .u-servizio__media { display: grid; place-items: center; }
+.u-servizio--in-arrivo .u-servizio__media span { font-family: var(--font-mono); font-size: .75rem; color: var(--text-3); }
+
+/* Dove e quando */
+.h-info { display: grid; gap: var(--s-7); grid-template-columns: 1fr; }
+@media (min-width: 900px) { .h-info { grid-template-columns: 1fr 1fr; } }
+.h-info dl { display: grid; grid-template-columns: 8.5rem 1fr; gap: var(--s-4) var(--s-5); margin: 0; }
+.h-info dt { color: var(--text-3); font-size: var(--fs-s); padding-top: 2px; }
+.h-info dd { margin: 0; }
+@media (max-width: 480px) { .h-info dl { grid-template-columns: 1fr; gap: 2px; } .h-info dd { margin-bottom: var(--s-4); } }
+
+/* =========================== MENU =========================== */
+.m-testa { padding-block: var(--s-8) var(--s-6); display: grid; gap: var(--s-5); }
+.m-testa__riga { display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-6); align-items: end; justify-content: space-between; }
+.m-cerca { position: relative; width: min(100%, 360px); }
+.m-cerca .u-input { padding-left: 44px; border-radius: var(--r-pill); }
+.m-cerca svg { position: absolute; left: 16px; top: 50%; translate: 0 -50%; width: 18px; height: 18px; color: var(--text-3); pointer-events: none; }
+.m-legenda { font-size: var(--fs-s); color: var(--text-3); }
+.m-legenda summary { cursor: pointer; min-height: var(--tocco-min); display: inline-flex; align-items: center; color: var(--text-2); text-decoration: underline; text-underline-offset: .22em; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }
+.m-legenda ul { list-style: none; padding: var(--s-3) 0 0; margin: 0; display: grid; gap: 4px var(--s-5); grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); max-width: 52rem; }
+.m-legenda li { max-width: none; }
+.m-legenda b { font-family: var(--font-mono); font-weight: 400; font-size: .75rem; margin-right: 8px; color: var(--text); }
+
+.m-categorie { border-bottom: 1px solid var(--border); }
+.m-categorie .u-categorie__lista { padding-inline: var(--gutter); max-width: var(--contenitore); margin-inline: auto; }
+
+.m-sezione { padding-block: var(--s-8) var(--s-4); scroll-margin-top: 140px; }
+.m-sezione[hidden] { display: none; }
+.m-sezione__testa { display: flex; align-items: baseline; gap: var(--s-4); padding-bottom: var(--s-4); border-bottom: 1px solid var(--filo); }
+.m-sezione__testa h2 { font-size: var(--fs-xl); }
+.m-sezione__testa .t-mono { color: var(--text-3); margin-left: auto; }
+
+.m-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; column-gap: var(--s-8); }
+@media (min-width: 900px) { .m-lista { grid-template-columns: 1fr 1fr; } }
+.m-voce { display: grid; grid-template-columns: 1fr auto; gap: var(--s-2) var(--s-5); padding-block: var(--s-5); border-bottom: 1px solid var(--border); max-width: none; align-items: start; }
+.m-voce[hidden] { display: none; }
+.m-voce--foto { grid-template-columns: 88px 1fr auto; }
+.m-voce__foto { width: 88px; aspect-ratio: 1; border-radius: var(--r-s); overflow: hidden; background: var(--surface-alt); grid-row: span 2; }
+.m-voce__foto img { width: 100%; height: 100%; object-fit: cover; }
+.m-voce__corpo { display: grid; gap: 6px; min-width: 0; }
+.m-voce__nome { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.1; letter-spacing: -0.01em; font-weight: var(--wght-titolo); }
+.m-voce__desc { font-size: var(--fs-s); color: var(--text-2); line-height: 1.45; max-width: 46ch; }
+.m-voce__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px var(--s-4); }
+.m-voce__nota { font-size: .8125rem; color: var(--text-3); }
+.m-voce__lato { display: grid; justify-items: end; gap: var(--s-3); }
+.m-voce__lato [data-controllo] { min-height: var(--tocco-min); display: flex; }
+@media (max-width: 480px) {
+  .m-voce, .m-voce--foto { grid-template-columns: 1fr; }
+  .m-voce--foto .m-voce__foto { display: none; }
+  .m-voce__lato { grid-auto-flow: column; justify-content: space-between; align-items: center; }
+}
+.m-vuoto { padding-block: var(--s-9); text-align: center; color: var(--text-3); }
+.m-fine { padding-block: var(--s-9); color: var(--text-3); font-size: var(--fs-s); }
+
+/* =========================== CASSA =========================== */
+.c-testa { padding-block: var(--s-8) var(--s-6); display: grid; gap: var(--s-4); }
+.c-layout { display: grid; gap: var(--s-8); grid-template-columns: 1fr; padding-bottom: var(--s-9); align-items: start; }
+@media (min-width: 1024px) { .c-layout { grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr); gap: var(--s-9); } .c-layout .u-riepilogo { position: sticky; top: 100px; } }
+.c-modulo { display: grid; gap: var(--s-8); }
+.c-blocco { display: grid; gap: var(--s-5); border: 0; margin: 0; padding: 0; min-width: 0; }
+.c-blocco__testa { display: flex; align-items: baseline; gap: var(--s-4); padding-bottom: var(--s-3); border-bottom: 1px solid var(--filo); }
+.c-blocco__testa .t-mono { color: var(--text-3); }
+.c-blocco__testa h2 { font-size: var(--fs-l); }
+.c-due { display: grid; gap: var(--s-5); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .c-due { grid-template-columns: 1fr 1fr; } .c-due--cap { grid-template-columns: 2fr 1fr; } }
+.c-fasce { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.c-fascia { position: relative; }
+.c-fascia input { position: absolute; opacity: 0; inset: 0; cursor: pointer; margin: 0; }
+.c-fascia label { display: inline-flex; align-items: center; min-height: var(--tocco-min); padding: 0 var(--s-4); border: 1px solid color-mix(in srgb, var(--text) 18%, transparent); border-radius: var(--r-pill); font-family: var(--font-mono); font-size: .875rem; cursor: pointer; transition: background-color var(--dur-1) var(--ease-colore), color var(--dur-1) var(--ease-colore), border-color var(--dur-1) var(--ease-colore); }
+.c-fascia input:checked + label { background: var(--text); color: var(--bg); border-color: var(--text); }
+.c-fascia input:focus-visible + label { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) { .c-fascia input:not(:checked):hover + label { border-color: var(--text); } }
+.c-fasce-giorno { font-size: var(--fs-s); color: var(--text-2); }
+.c-pagamento { display: grid; gap: 4px; padding: var(--s-4) var(--s-5); border-radius: var(--r-m); background: var(--surface); box-shadow: 0 0 0 1px var(--text); }
+.c-pagamento span { font-size: var(--fs-s); color: var(--text-3); }
+.c-invia { display: grid; gap: var(--s-3); }
+.c-errori ul { display: grid; gap: 4px; }
+.c-errori[hidden] { display: none; }
+.c-errori ul { margin: 0; padding-left: 1.1em; }
+.c-errori a { color: inherit; }
+.c-righe { display: grid; }
+.c-righe .u-riga-carrello { grid-template-columns: 56px 1fr auto; }
+.c-conferma { padding-block: var(--s-9); display: grid; gap: var(--s-5); max-width: 44rem; }
+.c-conferma__azioni { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.c-demo { font-family: var(--font-mono); font-size: .75rem; color: var(--text-3); }
+
+/* Comportamenti JS non disponibili: rendiamo visibile ciò che serve */
+html:not(.js) [data-solo-js] { display: none; }

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="it" data-radice="../../">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu e ordine online · UMAMI Salento</title>
+<meta name="description" content="Il menu completo di UMAMI Salento: uramaki, poke, tartare, gyoza, bao buns, dolci, birre e vini. Ordina con ritiro o consegna a Leverano.">
+<!-- PROTOTIPO fase 3: dati dimostrativi, nessun ordine reale. Non è il sito online. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/kub8tzm.css">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/pagine.css">
+<style>img.manca { display: none; }</style>
+</head>
+<body>
+<a class="salta-contenuto" href="#contenuto">Salta al contenuto</a>
+
+<header class="u-header">
+  <div class="contenitore u-header__riga">
+    <a class="u-logo" href="../" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a>
+    <nav class="u-header__nav" aria-label="Principale">
+      <a href="./" aria-current="page">Menu</a><a href="../#servizi">Ramen</a><a href="../#servizi">Catering</a><a href="../#servizi">Street food</a><a href="../#chi-siamo">Chi siamo</a>
+    </nav>
+    <div class="u-header__gruppo">
+      <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
+      <button class="u-btn u-btn--s u-btn--segnale u-carrello-btn js-apri-carrello" type="button" aria-controls="cassetto" aria-expanded="false" data-solo-js>Carrello <span class="u-conta" data-conta>0</span><span class="sr-only"> articoli</span></button>
+      <button class="u-btn u-btn--secondario u-btn--icona u-header__menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav-mobile">
+        <svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="u-nav-mobile contenitore" id="nav-mobile" aria-label="Principale, mobile" hidden>
+    <ul><li><a href="./" aria-current="page">Menu</a></li><li><a href="../#servizi">Ramen</a></li><li><a href="../#servizi">Catering</a></li><li><a href="../#servizi">Street food</a></li><li><a href="../#chi-siamo">Chi siamo</a></li></ul>
+    <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
+  </nav>
+</header>
+
+<main id="contenuto">
+  <div class="contenitore m-testa">
+    <p class="eyebrow">Ritiro o consegna · pagamento alla fine</p>
+    <div class="m-testa__riga">
+      <h1>Il <em>menu</em></h1>
+      <div class="m-cerca" role="search" data-solo-js>
+        <label class="sr-only" for="cerca">Cerca nel menu</label>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
+        <input class="u-input" id="cerca" type="search" placeholder="Cerca un piatto o un ingrediente" autocomplete="off">
+      </div>
+    </div>
+    <details class="m-legenda" id="allergeni">
+      <summary>Allergeni e legenda</summary>
+      <ul id="legenda"></ul>
+      <p style="margin-top:var(--s-3)">Prodotti surgelati all'origine: indicati su ogni piatto. Per allergie gravi chiamaci prima di ordinare: <a class="u-link" href="tel:+393476168387">+39 347 616 8387</a>.</p>
+    </details>
+    <p class="sr-only" id="esito" role="status" aria-live="polite"></p>
+  </div>
+
+  <nav class="u-categorie m-categorie" aria-label="Categorie del menu">
+    <ul class="u-categorie__lista" id="categorie"></ul>
+  </nav>
+
+  <div class="contenitore" id="menu"></div>
+  <p class="contenitore m-vuoto" id="vuoto" hidden>Nessun piatto trovato. Prova con un altro nome o ingrediente.</p>
+  <p class="contenitore m-fine">Nomi, prezzi, descrizioni e allergeni come pubblicati oggi sul sito. Foto provvisorie, non corrispondono al piatto. Prototipo: nessun ordine reale.</p>
+</main>
+
+<footer class="u-footer tema-inchiostro u-grana">
+  <div class="contenitore">
+    <div class="u-footer__griglia">
+      <div><a class="u-logo" href="../" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a></div>
+      <div><h2>Ordina</h2><ul><li><a href="./">Menu</a></li><li><a href="../checkout/">Cassa</a></li><li><a href="#allergeni">Allergeni</a></li></ul></div>
+      <div><h2>Esperienze</h2><ul><li><a href="../#servizi">Catering</a></li><li><a href="../#servizi">Chef a domicilio</a></li><li><a href="../#servizi">Street food</a></li><li><a href="../#servizi">Ramen</a></li></ul></div>
+      <div><h2>Dove siamo</h2><ul><li>Via della Consolazione 55</li><li>73045 Leverano (LE)</li><li><a href="tel:+393476168387">+39 347 616 8387</a></li><li>19:00–23:30 · mercoledì chiuso</li></ul></div>
+    </div>
+    <div class="u-footer__base"><span>Prototipo fase 3 · dati dimostrativi, foto provvisorie</span><span>Nessun ordine reale</span></div>
+  </div>
+</footer>
+
+<nav class="u-barra" aria-label="Azioni rapide"><a href="#categorie">Categorie</a><a href="../">Home</a><a class="u-barra__cta js-apri-carrello" href="#cassetto">Carrello · <span data-totale>€ 0,00</span></a></nav>
+
+<script src="../../data/catalogo.js"></script>
+<script src="../../assets/js/umami.js"></script>
+<script>
+(function () {
+  var U = window.UMAMI, esc = U.esc;
+
+  /* legenda allergeni */
+  document.getElementById("legenda").innerHTML = Object.keys(U.AL).map(function (n) {
+    return "<li><b>" + U.AL[n][0] + "</b>" + U.AL[n][1] + "</li>";
+  }).join("");
+
+  /* categorie e voci */
+  document.getElementById("categorie").innerHTML = U.CATALOGO.map(function (c, i) {
+    return '<li><a class="u-tag" href="#' + c.id + '"' + (i === 0 ? ' aria-current="true"' : "") + ">" + c.nome + "</a></li>";
+  }).join("");
+
+  function voce(x) {
+    var meta = [];
+    if (x.surgelato) meta.push('<span class="m-voce__nota">Surgelato all\'origine</span>');
+    if (x.pieno) meta.push('<span class="m-voce__nota">In offerta</span>');
+    return '<li class="m-voce' + (x.foto ? " m-voce--foto" : "") + '" data-testo="' + esc((x.nome + " " + x.d + " " + x.catNome).toLowerCase()) + '">' +
+      (x.foto ? '<div class="m-voce__foto u-foto-calda"><img src="' + U.IMG + x.foto + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')"></div>' : "") +
+      '<div class="m-voce__corpo"><h3 class="m-voce__nome">' + esc(x.nome) + "</h3>" +
+        (x.d ? '<p class="m-voce__desc">' + esc(x.d) + "</p>" : "") +
+        '<div class="m-voce__meta">' + U.allergeni(x.al) + meta.join("") + "</div></div>" +
+      '<div class="m-voce__lato">' + U.prezzo(x) + '<div data-controllo="' + x.id + '"></div></div></li>';
+  }
+  document.getElementById("menu").innerHTML = U.CATALOGO.map(function (c) {
+    return '<section class="m-sezione" id="' + c.id + '" aria-labelledby="t-' + c.id + '">' +
+      '<div class="m-sezione__testa"><h2 id="t-' + c.id + '">' + c.nome + "</h2>" + '<span class="t-mono">' + (c.nota ? c.nota + " · " : "") + c.prodotti.length + " voci</span></div>" +
+      '<ul class="m-lista" role="list">' + c.prodotti.map(voce).join("") + "</ul></section>";
+  }).join("");
+
+  /* categoria attiva mentre si scorre */
+  var lista = document.getElementById("categorie"), link = {};
+  lista.querySelectorAll("a").forEach(function (a) { link[a.getAttribute("href").slice(1)] = a; });
+  function attiva(id) {
+    Object.keys(link).forEach(function (k) { if (k === id) link[k].setAttribute("aria-current", "true"); else link[k].removeAttribute("aria-current"); });
+    var a = link[id]; if (a) lista.scrollTo({ left: a.parentNode.offsetLeft - 16, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+  /* attiva = ultima sezione il cui inizio ha superato la barra delle categorie */
+  var sezioni = [].slice.call(document.querySelectorAll(".m-sezione")), corrente = "", rq = 0;
+  function calcola() {
+    rq = 0; var linea = lista.getBoundingClientRect().bottom + 24, id = sezioni[0].id;
+    sezioni.forEach(function (s) { if (!s.hidden && s.getBoundingClientRect().top <= linea) id = s.id; });
+    if (id !== corrente) { corrente = id; attiva(id); }
+  }
+  addEventListener("scroll", function () { if (!rq) rq = requestAnimationFrame(calcola); }, { passive: true });
+  calcola();
+
+  /* ricerca: nome, descrizione, categoria */
+  var cerca = document.getElementById("cerca"), esito = document.getElementById("esito"), tRic = 0;
+  cerca.addEventListener("input", function () {
+    clearTimeout(tRic);
+    tRic = setTimeout(function () {
+      var q = cerca.value.trim().toLowerCase(), n = 0;
+      document.querySelectorAll(".m-sezione").forEach(function (s) {
+        var visibiliSez = 0;
+        s.querySelectorAll(".m-voce").forEach(function (v) { var ok = !q || v.getAttribute("data-testo").indexOf(q) > -1; v.hidden = !ok; if (ok) visibiliSez++; });
+        s.hidden = !visibiliSez; n += visibiliSez;
+        var li = link[s.id] && link[s.id].parentNode; if (li) li.hidden = !visibiliSez;
+      });
+      document.getElementById("vuoto").hidden = n > 0;
+      esito.textContent = q ? (n === 1 ? "1 piatto trovato" : n + " piatti trovati") : "";
+    }, 120);
+  });
+})();
+</script>
+</body>
+</html>

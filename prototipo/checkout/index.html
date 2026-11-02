@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="it" data-radice="../../">
+<head>
+<script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cassa · UMAMI Salento</title>
+<meta name="description" content="Completa l'ordine: ritiro o consegna, orario, contatti. Pagamento al ritiro o alla consegna.">
+<!-- PROTOTIPO fase 3: il modulo NON invia dati. Nessun ordine reale, nessun pagamento. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/kub8tzm.css">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="stylesheet" href="../../assets/css/pagine.css">
+<style>img.manca { display: none; } .u-barra { display: none; } .u-footer { padding-bottom: var(--s-6); }</style>
+</head>
+<body>
+<a class="salta-contenuto" href="#contenuto">Salta al contenuto</a>
+
+<!-- In cassa l'header si riduce: niente navigazione che porti fuori a metà ordine -->
+<header class="u-header">
+  <div class="contenitore u-header__riga">
+    <a class="u-logo" href="../" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a>
+    <div class="u-header__gruppo">
+      <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
+      <a class="u-btn u-btn--s u-btn--testo" href="../ordina/">Torna al menu</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto" class="contenitore">
+  <div class="c-testa">
+    <ol class="u-passi" aria-label="Passaggi dell'ordine">
+      <li class="is-fatto">Menu</li><li aria-current="step">Ritiro o consegna</li><li>Conferma</li>
+    </ol>
+    <h1>Quasi <em>pronto</em></h1>
+  </div>
+
+  <div id="vista-vuota" hidden>
+    <div class="c-conferma" style="padding-top:0">
+      <p class="t-lead">Il carrello è vuoto: scegli qualcosa dal menu e torna qui.</p>
+      <div class="c-conferma__azioni"><a class="u-btn u-btn--l" href="../ordina/">Vai al menu</a></div>
+    </div>
+  </div>
+
+  <div class="c-layout" id="vista-modulo">
+    <!-- Corrispondenza con WooCommerce: i name dei campi sono quelli standard del checkout classico
+         (billing_*, shipping_method, order_comments). Food Store aggiunge tipo di servizio e orario. -->
+    <form class="c-modulo" id="modulo" novalidate>
+      <div class="u-avviso u-avviso--errore c-errori" id="errori" role="alert" tabindex="-1" hidden><span class="u-avviso__ico" aria-hidden="true">!</span><div><strong>Controlla questi campi</strong><ul id="errori-lista"></ul></div></div>
+
+      <fieldset class="c-blocco">
+        <legend class="sr-only">Come vuoi ricevere l'ordine</legend>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">01</span><h2>Come lo ricevi</h2></div>
+        <div class="u-scelte">
+          <div class="u-scelta"><input type="radio" name="servizio" id="s-ritiro" value="ritiro" checked><label for="s-ritiro"><strong>Ritiro</strong><span>Via della Consolazione 55, Leverano</span></label></div>
+          <div class="u-scelta"><input type="radio" name="servizio" id="s-consegna" value="consegna"><label for="s-consegna"><strong>Consegna</strong><span>A domicilio · costo in base alla zona</span></label></div>
+        </div>
+        <div class="c-blocco" id="indirizzo" hidden>
+          <div class="u-campo" data-campo="via"><label for="f-via">Indirizzo e numero civico</label><input class="u-input" id="f-via" name="billing_address_1" autocomplete="address-line1" aria-describedby="e-via"><span class="u-campo__errore" id="e-via">Scrivi via e numero civico.</span></div>
+          <div class="c-due c-due--cap">
+            <div class="u-campo" data-campo="citta"><label for="f-citta">Città</label><input class="u-input" id="f-citta" name="billing_city" autocomplete="address-level2" aria-describedby="e-citta"><span class="u-campo__errore" id="e-citta">Scrivi la città.</span></div>
+            <div class="u-campo" data-campo="cap"><label for="f-cap">CAP</label><input class="u-input" id="f-cap" name="billing_postcode" inputmode="numeric" autocomplete="postal-code" maxlength="5" aria-describedby="e-cap a-cap"><span class="u-campo__errore" id="e-cap">Il CAP ha 5 cifre.</span><span class="u-campo__aiuto" id="a-cap">Zone e costi di consegna arrivano da Flexible Shipping: qui non sono simulati.</span></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="c-blocco">
+        <legend class="sr-only">Orario</legend>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">02</span><h2>Per che ora</h2></div>
+        <p class="c-fasce-giorno" id="fasce-giorno"></p>
+        <div class="c-fasce" id="fasce" role="radiogroup" aria-labelledby="fasce-giorno"></div>
+        <p class="u-campo__aiuto">Fasce di 15 minuti negli orari di apertura, con 30 minuti di preparazione: valori di esempio, quelli veri vengono dalla configurazione di Food Store.</p>
+      </fieldset>
+
+      <fieldset class="c-blocco">
+        <legend class="sr-only">I tuoi dati</legend>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">03</span><h2>I tuoi dati</h2></div>
+        <div class="c-due">
+          <div class="u-campo" data-campo="nome"><label for="f-nome">Nome</label><input class="u-input" id="f-nome" name="billing_first_name" autocomplete="given-name" aria-describedby="e-nome"><span class="u-campo__errore" id="e-nome">Scrivi il tuo nome.</span></div>
+          <div class="u-campo" data-campo="cognome"><label for="f-cognome">Cognome</label><input class="u-input" id="f-cognome" name="billing_last_name" autocomplete="family-name" aria-describedby="e-cognome"><span class="u-campo__errore" id="e-cognome">Scrivi il tuo cognome.</span></div>
+        </div>
+        <div class="u-campo" data-campo="tel"><label for="f-tel">Telefono</label><input class="u-input" id="f-tel" name="billing_phone" type="tel" autocomplete="tel" aria-describedby="e-tel a-tel"><span class="u-campo__errore" id="e-tel">Il numero sembra incompleto: controlla le cifre.</span><span class="u-campo__aiuto" id="a-tel">Ti chiamiamo solo se serve per l'ordine.</span></div>
+        <div class="u-campo" data-campo="email"><label for="f-email">Email</label><input class="u-input" id="f-email" name="billing_email" type="email" autocomplete="email" aria-describedby="e-email a-email"><span class="u-campo__errore" id="e-email">Controlla l'indirizzo email, ad esempio nome@dominio.it.</span><span class="u-campo__aiuto" id="a-email">Per la conferma dell'ordine. Con Checkout Field Editor si può rendere facoltativa.</span></div>
+        <div class="u-campo"><label for="f-note">Note per la cucina <span class="u-facoltativo">(facoltativo)</span></label><textarea class="u-input" id="f-note" name="order_comments" placeholder="Es. citofono, intolleranze, bacchette"></textarea></div>
+      </fieldset>
+
+      <fieldset class="c-blocco">
+        <legend class="sr-only">Pagamento</legend>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">04</span><h2>Pagamento</h2></div>
+        <!-- Woo: unico metodo attivo oggi sul sito = cod (pagamento alla consegna) -->
+        <div class="c-pagamento"><strong id="pag-t">Al ritiro</strong><span id="pag-d">Paghi in negozio quando ritiri l'ordine.</span></div>
+      </fieldset>
+
+      <div class="c-invia">
+        <button class="u-btn u-btn--l u-btn--pieno" type="submit" id="invia"><span class="u-btn__testo">Conferma l'ordine · <span data-totale>€ 0,00</span></span></button>
+        <p class="c-demo" style="text-align:center">Prototipo: la conferma non invia nulla e non crea ordini.</p>
+      </div>
+    </form>
+
+    <aside class="u-riepilogo" aria-labelledby="riep-t">
+      <h2 id="riep-t" class="t-l">Il tuo ordine</h2>
+      <div class="c-righe" id="righe"></div>
+      <dl>
+        <dt>Prodotti</dt><dd data-totale>€ 0,00</dd>
+        <dt id="cons-t">Ritiro in negozio</dt><dd id="cons-v">gratis</dd>
+        <dt class="u-totale">Totale</dt><dd class="u-totale" id="totale">€ 0,00</dd>
+      </dl>
+      <p class="t-meta" id="nota-totale">Pagamento al ritiro.</p>
+    </aside>
+  </div>
+
+  <div id="vista-conferma" hidden>
+    <div class="c-conferma" style="padding-top:0" tabindex="-1" id="conferma">
+      <div class="u-avviso u-avviso--ok"><span class="u-avviso__ico" aria-hidden="true">✓</span><div><strong>Ordine di prova completato</strong>Nessun dato è stato inviato e nessun ordine è stato creato: è il prototipo.</div></div>
+      <h2>Grazie, <em id="conf-nome"></em></h2>
+      <p class="t-lead" id="conf-testo"></p>
+      <p class="t-meta">Nel sito vero qui arrivano il numero d'ordine di WooCommerce e l'email di conferma.</p>
+      <div class="c-conferma__azioni"><a class="u-btn u-btn--l" href="../ordina/">Torna al menu</a><a class="u-btn u-btn--l u-btn--secondario" href="../">Home</a></div>
+    </div>
+  </div>
+</main>
+
+<footer class="u-footer tema-inchiostro u-grana">
+  <div class="contenitore">
+    <div class="u-footer__griglia">
+      <div><a class="u-logo" href="../" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a></div>
+      <div><h2>Dove siamo</h2><ul><li>Via della Consolazione 55</li><li>73045 Leverano (LE)</li></ul></div>
+      <div><h2>Serve aiuto?</h2><ul><li><a href="tel:+393476168387">+39 347 616 8387</a></li><li>19:00–23:30 · mercoledì chiuso</li></ul></div>
+    </div>
+    <div class="u-footer__base"><span>Prototipo fase 3 · dati dimostrativi</span><span>Nessun ordine reale</span></div>
+  </div>
+</footer>
+
+<script src="../../data/catalogo.js"></script>
+<script src="../../assets/js/umami.js"></script>
+<script>
+(function () {
+  var U = window.UMAMI, $ = function (id) { return document.getElementById(id); };
+  var modulo = $("modulo");
+
+  function servizio() { return modulo.querySelector('input[name="servizio"]:checked').value; }
+
+  /* riepilogo, ridisegnato a ogni cambio del carrello */
+  function riepilogo() {
+    var rr = U.righe(), cons = servizio() === "consegna";
+    $("vista-vuota").hidden = rr.length > 0 || !$("vista-conferma").hidden;
+    $("vista-modulo").hidden = !rr.length || !$("vista-conferma").hidden;
+    $("righe").innerHTML = rr.map(function (r) {
+      return '<div class="u-riga-carrello"><div class="u-riga-carrello__img" aria-hidden="true">' + (r.x.foto ? '<img src="' + U.IMG + r.x.foto + '" alt="" onerror="this.remove()">' : U.esc(r.x.nome.charAt(0))) + "</div>" +
+        '<div><div class="u-riga-carrello__nome">' + U.esc(r.x.nome) + '</div><div class="u-riga-carrello__nota">' + r.q + " × " + U.eur(r.x.p) + "</div></div>" +
+        '<span class="u-prezzo">' + U.eur(r.x.p * r.q) + "</span></div>";
+    }).join("") + '<p style="padding-top:var(--s-3)"><button class="u-btn u-btn--s u-btn--testo js-apri-carrello" type="button">Modifica quantità</button></p>';
+    $("cons-t").textContent = cons ? "Consegna" : "Ritiro in negozio";
+    $("cons-v").textContent = cons ? "da calcolare" : "gratis";
+    $("totale").textContent = U.eur(U.totale()) + (cons ? " + consegna" : "");
+    $("nota-totale").textContent = cons ? "Il costo di consegna si aggiunge in base al CAP. Pagamento alla consegna." : "Pagamento al ritiro.";
+    $("pag-t").textContent = cons ? "Alla consegna" : "Al ritiro";
+    $("pag-d").textContent = cons ? "Paghi al corriere quando ricevi l'ordine." : "Paghi in negozio quando ritiri l'ordine.";
+  }
+  document.addEventListener("umami:carrello", riepilogo);
+
+  /* ritiro / consegna */
+  modulo.addEventListener("change", function (e) {
+    if (e.target.name === "servizio") { $("indirizzo").hidden = servizio() !== "consegna"; riepilogo(); }
+    var c = e.target.closest("[data-campo]"); if (c && c.classList.contains("is-errore")) valida(true);
+  });
+
+  /* fasce orarie */
+  var f = U.fasce();
+  $("fasce-giorno").textContent = f.fasce.length ? f.giorno + " · scegli una fascia" : "Nessuna fascia disponibile";
+  $("fasce").innerHTML = f.fasce.map(function (t, i) {
+    return '<div class="c-fascia"><input type="radio" name="fascia" id="fa-' + i + '" value="' + t + '"' + (i === 0 ? " checked" : "") + '><label for="fa-' + i + '">' + t + "</label></div>";
+  }).join("");
+
+  /* validazione: al primo invio mostra tutto, poi aggiorna mentre si corregge */
+  var regole = {
+    nome: function () { return $("f-nome").value.trim().length > 0; },
+    cognome: function () { return $("f-cognome").value.trim().length > 0; },
+    tel: function () { return $("f-tel").value.replace(/\D/g, "").length >= 9; },
+    email: function () { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($("f-email").value.trim()); },
+    via: function () { return servizio() !== "consegna" || $("f-via").value.trim().length > 3; },
+    citta: function () { return servizio() !== "consegna" || $("f-citta").value.trim().length > 1; },
+    cap: function () { return servizio() !== "consegna" || /^\d{5}$/.test($("f-cap").value.trim()); }
+  };
+  var tentato = false;
+  function valida(silenzioso) {
+    var sbagliati = [];
+    Object.keys(regole).forEach(function (k) {
+      var box = modulo.querySelector('[data-campo="' + k + '"]'), inp = box.querySelector("input"), ok = regole[k]();
+      box.classList.toggle("is-errore", !ok);
+      if (ok) inp.removeAttribute("aria-invalid"); else { inp.setAttribute("aria-invalid", "true"); sbagliati.push({ id: inp.id, label: box.querySelector("label").textContent, msg: box.querySelector(".u-campo__errore").textContent }); }
+    });
+    $("errori-lista").innerHTML = sbagliati.map(function (s) { return '<li><a href="#' + s.id + '">' + s.label + "</a>: " + s.msg + "</li>"; }).join("");
+    $("errori").hidden = !sbagliati.length;
+    if (!silenzioso && sbagliati.length) $("errori").focus();
+    return !sbagliati.length;
+  }
+  modulo.addEventListener("input", function () { if (tentato) valida(true); });
+  $("errori").addEventListener("click", function (e) { var a = e.target.closest("a"); if (a) { e.preventDefault(); var t = $(a.getAttribute("href").slice(1)); t.focus(); t.scrollIntoView({ block: "center" }); } });
+
+  /* invio simulato: nessuna richiesta di rete */
+  modulo.addEventListener("submit", function (e) {
+    e.preventDefault(); tentato = true;
+    if (!valida(false)) return;
+    var b = $("invia"); b.classList.add("is-loading"); b.setAttribute("aria-busy", "true");
+    setTimeout(function () {
+      var cons = servizio() === "consegna", fa = modulo.querySelector('input[name="fascia"]:checked');
+      $("conf-nome").textContent = $("f-nome").value.trim();
+      $("conf-testo").textContent = (cons ? "Consegna in " + $("f-via").value.trim() + ", " + $("f-citta").value.trim() : "Ritiro in Via della Consolazione 55, Leverano") +
+        (fa ? " · " + f.giorno.toLowerCase() + " " + fa.value : "") + " · " + U.eur(U.totale()) + (cons ? " più la consegna" : "") + ", da pagare " + (cons ? "alla consegna." : "al ritiro.");
+      $("vista-conferma").hidden = false; $("vista-modulo").hidden = true;
+      document.querySelector(".u-passi li[aria-current]").classList.add("is-fatto");
+      document.querySelector(".u-passi li[aria-current]").removeAttribute("aria-current");
+      document.querySelector(".u-passi li:last-child").setAttribute("aria-current", "step");
+      U.svuota();
+      $("conferma").focus(); scrollTo(0, 0);
+    }, 700);
+  });
+
+  riepilogo();
+})();
+</script>
+</body>
+</html>
