@@ -104,7 +104,7 @@ button.u-tag:active, a.u-tag:active { transform: scale(.97); }
 .u-prodotto__badge { position: absolute; left: var(--s-3); bottom: var(--s-3); padding: 4px 10px; border-radius: var(--r-pill); background: rgba(244,239,230,.9); color: var(--c-brace); font-size: .75rem; backdrop-filter: blur(6px); }
 .u-prodotto__corpo { display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .u-prodotto__meta { display: block; }
-.u-prodotto__nome { font-size: clamp(1.375rem, 1.2rem + .5vw, 1.625rem); line-height: 1.1; letter-spacing: -0.015em; }
+.u-prodotto__nome { font-size: clamp(1.5rem, 1.3rem + .6vw, 1.875rem); line-height: 1.08; letter-spacing: -0.01em; }
 .u-prodotto__nome a { text-decoration: none; }
 .u-prodotto__nome a::after { content: ""; position: absolute; inset: 0; }
 .u-prodotto__desc { font-size: var(--fs-s); color: var(--text-2); line-height: 1.45; max-width: 34ch; }
@@ -157,7 +157,7 @@ button.u-tag:active, a.u-tag:active { transform: scale(.97); }
 
 /* Logo segnaposto (sostituire con l'SVG definitivo) */
 .u-logo { display: inline-flex; align-items: baseline; gap: 10px; min-height: var(--tocco-min); align-items: center; text-decoration: none; line-height: 1; }
-.u-logo__nome { font-family: var(--font-display); font-weight: var(--wght-forte); letter-spacing: var(--track-marchio); font-size: 1.0625rem; }
+.u-logo__nome { font-family: var(--font-sans); font-weight: var(--wght-forte); letter-spacing: var(--track-marchio); font-size: 1rem; }
 .u-logo__luogo { font-size: .75rem; color: var(--text-3); letter-spacing: .08em; }
 @media (max-width: 480px) { .u-logo__luogo { display: none; } }
 
@@ -190,7 +190,7 @@ button.u-tag:active, a.u-tag:active { transform: scale(.97); }
 .u-hero__media img, .u-hero__media video { width: 100%; height: 100%; object-fit: cover; object-position: var(--fuoco, 50% 50%); }
 .u-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(26,15,13,0) 35%, rgba(26,15,13,.62) 100%); }
 .u-hero__testo { padding-block: var(--s-10) var(--s-8); display: grid; gap: var(--s-5); }
-.u-hero__titolo { font-size: var(--fs-display); line-height: .92; letter-spacing: -0.035em; max-width: 11ch; }
+.u-hero__titolo { font-size: var(--fs-display); line-height: .95; letter-spacing: -0.025em; max-width: 12ch; }
 .u-hero__azioni { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-2); }
 .u-hero__pausa { position: absolute; right: var(--gutter); bottom: var(--s-6); z-index: 2; }
 .u-hero__pausa.u-btn { --btn-bg: rgba(26,15,13,.35); --btn-bd: rgba(255,255,255,.35); --btn-fg: #fff; backdrop-filter: blur(8px); }
@@ -270,7 +270,7 @@ textarea.u-input { min-height: 112px; padding-block: var(--s-3); resize: vertica
 .u-riepilogo dl { display: grid; grid-template-columns: 1fr auto; gap: var(--s-2) var(--s-4); margin: 0; }
 .u-riepilogo dt { color: var(--text-2); }
 .u-riepilogo dd { font-family: var(--font-mono); font-size: .9375rem; text-align: right; }
-.u-riepilogo .u-totale { border-top: 1px solid var(--border); padding-top: var(--s-3); margin-top: var(--s-2); color: var(--text); font-family: var(--font-display); font-size: 1.375rem; font-weight: var(--wght-forte); }
+.u-riepilogo .u-totale { border-top: 1px solid var(--border); padding-top: var(--s-3); margin-top: var(--s-2); color: var(--text); font-family: var(--font-display); font-size: 1.5rem; font-weight: var(--wght-titolo); }
 
 .u-passi { display: flex; gap: var(--s-5); list-style: none; padding: 0; margin: 0; counter-reset: passo; flex-wrap: wrap; }
 .u-passi li { display: flex; align-items: center; gap: 8px; font-size: .9375rem; color: var(--text-3); counter-increment: passo; }

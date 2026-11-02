@@ -40,17 +40,17 @@
   --success:       var(--c-successo);
 
   /* ---------- Tipografia ----------
-     Neue Haas Grotesk (Monotype · Christian Schwartz) via Adobe Fonts, kit web.
-     Display per i titoli (peso medio, minuscolo normale), Text per tutto il resto.
-     Input Mono (DJR) SOLO per dati: prezzi, pezzi, allergeni, orari. */
-  --font-display: "neue-haas-grotesk-display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+     Formula "upscale moderno" (Noma, Mirazur, Qissa, Eleven Madison Park):
+     serif per i titoli, grottesco per testo e interfaccia, mono per i dati.
+     Warbler Display (DJR) · Neue Haas Grotesk Text (Monotype) · Input Mono (DJR), via Adobe Fonts. */
+  --font-display: "warbler-display", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-sans:    "neue-haas-grotesk-text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono:    "input-mono", ui-monospace, "SFMono-Regular", monospace;
 
-  --wght-titolo: 500;  /* 65 Medium: il volume lo fa la dimensione, non il nero */
+  --wght-titolo: 400;  /* serif a peso normale: eleganza da dimensione + tratto sottile */
   --wght-testo: 400;   /* 55 Roman */
   --wght-forte: 500;   /* 65 Medium */
-  --track-titolo: -0.022em;
+  --track-titolo: -0.018em;
   --track-marchio: .32em;
 
   /* scala fluida (mobile → desktop) */
@@ -63,7 +63,7 @@
   --fs-xxl:     clamp(3rem, 1.8rem + 5vw, 7.5rem);      /* 48 → 120 titolo pagina */
   --fs-display: clamp(3.25rem, 1.6rem + 7.5vw, 10rem);  /* 52 → 160 hero */
 
-  --lh-titolo: 0.98;
+  --lh-titolo: 1.0;
   --lh-testo:  1.5;
   --misura:    62ch;
 

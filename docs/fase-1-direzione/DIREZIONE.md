@@ -30,7 +30,7 @@ Le immagini non sono salvate nel repository perché sono di terzi.
 
 - **Colore:** corallo `#C23B2E`.
 - ~~**Tipografia:** abbinamento C, Bricolage Grotesque + IBM Plex Mono~~ → **sostituita il 2/11/2026** (giudicata cheap; vedi `STUDIO-SETTORE.md`).
-- **Tipografia (definitiva):** **Neue Haas Grotesk** Display (titoli, peso medio, minuscolo normale) e Text (testo 18 px), **Input Mono** solo per i dati. Adobe Fonts: il kit web di produzione va creato sull'account Creative Cloud del cliente.
+- **Tipografia (definitiva, v0.4 "upscale moderno"):** **Warbler Display** (DJR) per i titoli, a peso normale e con il corsivo per gli accenti. **Neue Haas Grotesk Text** per testo e interfaccia (18 px). **Input Mono** solo per i dati. Deriva dallo studio mondiale (`STUDIO-SETTORE.md`, parte 2). Adobe Fonts: il kit web di produzione va creato sull'account Creative Cloud del cliente.
 - **Video:** orizzontale 16:9. Il ritaglio verticale per mobile lo preparo io (vedi `CONTENUTI-MEDIA.md`).
 
 ## Opzioni valutate

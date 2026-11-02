@@ -8,7 +8,7 @@
 <meta name="description" content="Design system Rosso Umami: token, tipografia, componenti e mappatura WooCommerce per il redesign di UMAMI Salento.">
 <!-- Adobe Fonts: kit di prototipo. In produzione: kit web sull'account Creative Cloud del cliente -->
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-<link rel="stylesheet" href="https://use.typekit.net/ebd6arl.css">
+<link rel="stylesheet" href="https://use.typekit.net/kub8tzm.css">
 <link rel="stylesheet" href="../../assets/css/tokens.css">
 <link rel="stylesheet" href="../../assets/css/base.css">
 <link rel="stylesheet" href="../../assets/css/components.css">
@@ -48,7 +48,7 @@
   <div class="contenitore u-header__riga">
     <a class="u-logo" href="#" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a>
     <nav class="u-header__nav" aria-label="Principale">
-      <a href="#" aria-current="page">Ordina</a><a href="#">Ramen</a><a href="#">Catering</a><a href="#">Chef a domicilio</a><a href="#">Street food</a><a href="#">Chi siamo</a>
+      <a href="#" aria-current="page">Menu</a><a href="#">Ramen</a><a href="#">Catering</a><a href="#">Street food</a><a href="#">Chi siamo</a>
     </nav>
     <div class="u-header__gruppo">
       <a class="u-btn u-btn--s u-carrello-btn" href="#carrello" id="btn-carrello">Carrello <span class="u-conta" id="conta">0</span><span class="sr-only"> articoli</span></a>
@@ -65,8 +65,8 @@
 <section class="u-hero u-grana" aria-labelledby="hero-t">
   <div class="u-hero__media"><img src="../../assets/img/provvisorie/copertina_misto.jpg" alt="" onerror="this.classList.add('manca')"></div>
   <div class="contenitore u-hero__testo">
-    <p class="u-hero__segue" style="--i:0;opacity:.85">Design system v0.3 · componente hero</p>
-    <h1 class="u-hero__titolo" id="hero-t"><span class="u-hero__riga"><span style="--i:0">Italian sushi</span></span><span class="u-hero__riga"><span style="--i:1">a Leverano</span></span></h1>
+    <p class="u-hero__segue" style="--i:0;opacity:.85">Design system v0.4 · componente hero</p>
+    <h1 class="u-hero__titolo" id="hero-t"><span class="u-hero__riga"><span style="--i:0">Italian sushi</span></span><span class="u-hero__riga"><span style="--i:1"><em>a Leverano</em></span></span></h1>
     <p class="t-lead u-hero__segue" style="--i:1;color:#fff;max-width:44ch">Gastronomia di mare, take away e catering. Foto provvisoria: in produzione qui gira il video 16:9.</p>
     <div class="u-hero__azioni u-hero__segue" style="--i:2">
       <a class="u-btn u-btn--l" href="#menu">Ordina ora</a>
@@ -88,11 +88,11 @@
 <!-- ============ TIPOGRAFIA ============ -->
 <section class="ds-sez" aria-labelledby="h-tipo">
   <div class="ds-testa"><span class="eyebrow">02</span><h2 id="h-tipo">Tipografia</h2>
-    <p>Neue Haas Grotesk di Christian Schwartz (Monotype), via Adobe Fonts. Display per i titoli, a peso medio e in minuscolo normale: il volume lo fa la dimensione. Text per il testo, a 18 px. Input Mono di David Jonathan Ross solo per i dati.</p></div>
+    <p>La formula dell'alta ristorazione contemporanea: Warbler Display di David Jonathan Ross per i titoli, a peso normale, con il corsivo per gli accenti. Neue Haas Grotesk Text di Christian Schwartz per testo e interfaccia, a 18 px. Input Mono solo per i dati.</p></div>
   <div class="ds-scala">
-    <div><span class="eyebrow">Display</span><span class="t-display">Leverano Roll</span></div>
+    <div><span class="eyebrow">Display</span><span class="t-display">Leverano <em>Roll</em></span></div>
     <div><span class="eyebrow">H1 · xxl</span><span class="t-xxl">Uramaki special</span></div>
-    <div><span class="eyebrow">H2 · xl</span><span class="t-xl">Porto Selvaggio</span></div>
+    <div><span class="eyebrow">H2 · xl</span><span class="t-xl">Poke <em>Porto Selvaggio</em></span></div>
     <div><span class="eyebrow">H3 · l</span><span class="t-l">Tartare di tonno</span></div>
     <div><span class="eyebrow">Lead · 24</span><span class="t-lead">Due cuochi salentini, prodotti del territorio e sapori da tutto il mondo.</span></div>
     <div><span class="eyebrow">Testo · 18</span><span>Umami nasce dalla connessione di due cuochi salentini, appassionati e ricercatori di prodotti del territorio che contaminano con sapori unici provenienti da tutto il mondo.</span></div>
@@ -134,9 +134,9 @@
 
 <!-- ============ SCHEDE PRODOTTO ============ -->
 <section class="ds-sez" aria-labelledby="h-prod" id="menu">
-  <div class="ds-testa"><span class="eyebrow">06</span><h2 id="h-prod">Scheda prodotto</h2>
+  <div class="ds-testa"><span class="eyebrow">06</span><h2 id="h-prod">Scheda <em>prodotto</em></h2>
     <p>Nomi, categorie e prezzi dal catalogo reale. Nessun box: foto, nome, descrizione, prezzo. Senza foto (gli 80 prodotti fuori dallo shooting) resta una superficie crema con il luogo del piatto. Le foto sono provvisorie e non corrispondono al piatto.</p></div>
-  <div class="griglia" style="--min:250px" id="griglia-prodotti"></div>
+  <div class="griglia" style="--min:300px;--gap:var(--s-8) var(--s-6)" id="griglia-prodotti"></div>
 </section>
 
 <!-- ============ MENU MOBILE ============ -->
@@ -154,7 +154,7 @@
 
 <!-- ============ SERVIZI ============ -->
 <section class="ds-sez" aria-labelledby="h-serv" id="servizi">
-  <div class="ds-testa"><span class="eyebrow">08</span><h2 id="h-serv">Scheda servizio</h2>
+  <div class="ds-testa"><span class="eyebrow">08</span><h2 id="h-serv">Le cinque <em>anime</em> di Umami</h2>
     <p>Per le cinque attività di UMAMI. Formato 4:5, adatto alle scene di preparazione dello shooting. Street food resta in attesa della mascotte e delle foto del truck.</p></div>
   <div class="griglia" style="--min:220px" id="griglia-servizi"></div>
 </section>

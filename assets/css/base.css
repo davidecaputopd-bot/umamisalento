@@ -40,10 +40,12 @@ h1, h2, h3, .t-display, .t-xxl, .t-xl, .t-l {
   letter-spacing: var(--track-titolo);
   text-wrap: balance;
 }
-.t-display { font-size: var(--fs-display); line-height: .92; letter-spacing: -0.03em; }
-h1, .t-xxl { font-size: var(--fs-xxl); letter-spacing: -0.028em; }
+.t-display { font-size: var(--fs-display); line-height: .95; letter-spacing: -0.025em; }
+h1, .t-xxl { font-size: var(--fs-xxl); letter-spacing: -0.022em; }
+/* corsivo del serif per gli accenti dentro i titoli (es. "Italian sushi <em>a Leverano</em>") */
+h1 em, h2 em, h3 em, .t-display em, .t-xxl em, .t-xl em, .t-corsivo { font-style: italic; font-weight: var(--wght-titolo); }
 h2, .t-xl  { font-size: var(--fs-xl); }
-h3, .t-l   { font-size: var(--fs-l); line-height: 1.05; letter-spacing: -0.012em; }
+h3, .t-l   { font-size: var(--fs-l); line-height: 1.08; letter-spacing: -0.008em; }
 h4, .t-m   { font-size: var(--fs-m); font-weight: var(--wght-forte); line-height: 1.25; }
 
 /* ---------- Testo ---------- */
@@ -58,7 +60,7 @@ strong, b { font-weight: var(--wght-forte); }
 .eyebrow { font-size: var(--fs-s); color: var(--text-3); font-weight: var(--wght-testo); }
 
 /* Marchio spaziato: solo per il segnaposto del logo e rarissime etichette */
-.t-marchio { font-family: var(--font-display); font-weight: var(--wght-forte); letter-spacing: var(--track-marchio); text-transform: uppercase; }
+.t-marchio { font-family: var(--font-sans); font-weight: var(--wght-forte); letter-spacing: var(--track-marchio); text-transform: uppercase; }
 
 /* Numeri che cambiano non devono "ballare" */
 .u-prezzo, .u-conta, .u-qty input, .u-riepilogo dd, time, .t-num { font-variant-numeric: tabular-nums; }
