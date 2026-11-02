@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design system · UMAMI Salento</title>
+<meta name="description" content="Design system Rosso Umami: token, tipografia, componenti e mappatura WooCommerce per il redesign di UMAMI Salento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<style>
+  /* solo per la pagina di documentazione */
+  .ds-sez { padding-block: var(--s-9); border-top: var(--bordo) solid var(--border); }
+  .ds-testa { display: grid; grid-template-columns: 90px 1fr; gap: var(--s-4); margin-bottom: var(--s-7); align-items: baseline; }
+  .ds-testa p { grid-column: 2; color: var(--text-2); }
+  @media (max-width: 640px) { .ds-testa { grid-template-columns: 1fr; } .ds-testa p { grid-column: 1; } }
+  .ds-nota { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--text-3); text-transform: uppercase; margin-top: var(--s-2); }
+  .ds-riga { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+  .ds-box { padding: var(--s-5); border: var(--bordo) dashed var(--border); }
+  .ds-sw { min-height: 150px; padding: var(--s-4); display: flex; flex-direction: column; justify-content: space-between; border: var(--bordo) solid var(--border); }
+  .ds-sw b { font-weight: 800; font-variation-settings: "wdth" 75; text-transform: uppercase; font-size: 1.5rem; line-height: 1; }
+  .ds-sw code { font-family: var(--font-mono); font-size: 11px; line-height: 1.7; }
+  .ds-ok { background: #fff; color: #000; padding: 0 4px; }
+  .ds-no { background: #000; color: #fff; padding: 0 4px; text-decoration: line-through; }
+  .ds-scala > div { display: grid; grid-template-columns: 110px 1fr; gap: var(--s-4); align-items: baseline; padding-block: var(--s-3); border-bottom: var(--bordo) solid var(--border); }
+  .ds-spazi div { display: flex; align-items: center; gap: var(--s-3); font-family: var(--font-mono); font-size: 12px; }
+  .ds-spazi i { display: block; height: 16px; background: var(--accent); }
+  .ds-tab { width: 100%; border-collapse: collapse; font-size: var(--fs-s); }
+  .ds-tab th, .ds-tab td { text-align: left; padding: 10px 12px; border-bottom: var(--bordo) solid var(--border); vertical-align: top; }
+  .ds-tab th { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; background: var(--c-brace); color: var(--c-riso); }
+  .ds-tab td code { font-family: var(--font-mono); font-size: 12px; background: var(--surface-alt); padding: 1px 4px; }
+  .ds-scroll { overflow-x: auto; }
+  .ds-mob { max-width: 390px; border: var(--bordo-forte) solid var(--c-brace); background: var(--bg); }
+  .ds-due { display: grid; gap: var(--s-6); grid-template-columns: 1fr; }
+  @media (min-width: 1024px) { .ds-due { grid-template-columns: 1.4fr 1fr; } }
+  img.manca { display: none; }
+</style>
+</head>
+<body>
+<a class="salta-contenuto" href="#contenuto">Salta al contenuto</a>
+
+<!-- ============ HEADER ============ -->
+<header class="u-header">
+  <div class="contenitore u-header__riga">
+    <a class="u-logo" href="#" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a>
+    <nav class="u-header__nav" aria-label="Principale">
+      <a href="#" aria-current="page">Ordina</a><a href="#">Ramen</a><a href="#">Catering</a><a href="#">Chef a domicilio</a><a href="#">Street food</a><a href="#">Chi siamo</a>
+    </nav>
+    <div class="u-header__gruppo">
+      <a class="u-btn u-btn--s u-carrello-btn" href="#carrello" id="btn-carrello">Carrello <span class="u-conta" id="conta">0</span><span class="sr-only"> articoli</span></a>
+      <button class="u-btn u-btn--secondario u-btn--icona u-header__menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false">
+        <svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="contenuto">
+
+<!-- ============ HERO ============ -->
+<section class="u-hero" aria-labelledby="hero-t">
+  <div class="u-hero__media"><img src="../../assets/img/provvisorie/copertina_misto.jpg" alt="" onerror="this.classList.add('manca')"></div>
+  <div class="u-pattern" aria-hidden="true" id="pattern"></div>
+  <div class="contenitore u-hero__testo">
+    <p class="t-mono">Design system · v0.1 · componente Hero</p>
+    <h1 class="u-hero__titolo" id="hero-t">Rosso Umami</h1>
+    <p class="t-lead" style="color:#fff;max-width:44ch">Gastronomia di mare e italian sushi a Leverano. Esempio di hero con foto provvisoria: in produzione ospiterà il video 16:9.</p>
+    <div class="u-hero__azioni">
+      <a class="u-btn u-btn--l" href="#menu">Ordina ora</a>
+      <a class="u-btn u-btn--l u-btn--inverso" href="#servizi">Catering ed eventi</a>
+    </div>
+  </div>
+</section>
+
+<div class="contenitore">
+
+<!-- ============ COLORI ============ -->
+<section class="ds-sez" aria-labelledby="h-col">
+  <div class="ds-testa"><span class="eyebrow">01</span><h2 id="h-col">Colori</h2>
+    <p>Un solo colore di marca, il corallo, con scuri e chiari derivati. Contrasti calcolati dal vivo secondo WCAG 2.1: AA richiede 4,5:1 per il testo normale e 3:1 per quello grande.</p></div>
+  <div class="griglia" style="--min:170px;--gap:var(--s-3)" id="palette"></div>
+  <p class="ds-nota">Kraft e ottone: solo superfici e dettagli, mai testo. Elettrico: solo per il focus da tastiera.</p>
+</section>
+
+<!-- ============ TIPOGRAFIA ============ -->
+<section class="ds-sez" aria-labelledby="h-tipo">
+  <div class="ds-testa"><span class="eyebrow">02</span><h2 id="h-tipo">Tipografia</h2>
+    <p>Bricolage Grotesque in larghezze diverse: condensata e pesante per i titoli, normale per il testo, spaziata per il marchio. IBM Plex Mono per dati, prezzi, pezzi e allergeni.</p></div>
+  <div class="ds-scala">
+    <div><span class="eyebrow">Display</span><span class="t-display" style="color:var(--accent)">Leverano</span></div>
+    <div><span class="eyebrow">H1 · xxl</span><span class="t-xxl">Uramaki special</span></div>
+    <div><span class="eyebrow">H2 · xl</span><span class="t-xl">Porto Selvaggio</span></div>
+    <div><span class="eyebrow">H3 · l</span><span class="t-l">Tartare di tonno</span></div>
+    <div><span class="eyebrow">Lead · 20</span><span class="t-lead">Due cuochi salentini, prodotti del territorio e sapori da tutto il mondo.</span></div>
+    <div><span class="eyebrow">Testo · 17</span><span>Umami nasce dalla connessione di due cuochi salentini, appassionati e ricercatori di prodotti del territorio che contaminano con sapori unici provenienti da tutto il mondo.</span></div>
+    <div><span class="eyebrow">Meta · 14</span><span class="t-meta">Tutti i giorni 19:00–23:30 · mercoledì chiuso</span></div>
+    <div><span class="eyebrow">Mono · 12</span><span class="t-mono">8 pz · Allergeni PES SES · € 13,00</span></div>
+    <div><span class="eyebrow">Marchio</span><span class="t-marchio" style="font-size:1.25rem">Umami Salento</span></div>
+  </div>
+</section>
+
+<!-- ============ SPAZI ============ -->
+<section class="ds-sez" aria-labelledby="h-spazi">
+  <div class="ds-testa"><span class="eyebrow">03</span><h2 id="h-spazi">Spazi e griglia</h2>
+    <p>Scala fissa in multipli di 4. Contenitore massimo 1360 px, margini laterali fluidi da 16 a 48 px. Angoli vivi: un solo raggio, zero, tranne le etichette arrotondate.</p></div>
+  <div class="ds-spazi stack" style="--stack:var(--s-2)" id="spazi"></div>
+</section>
+
+<!-- ============ PULSANTI ============ -->
+<section class="ds-sez" aria-labelledby="h-btn">
+  <div class="ds-testa"><span class="eyebrow">04</span><h2 id="h-btn">Pulsanti</h2>
+    <p>Un primario per schermata. Altezza minima 44 px (48 standard, 56 grande). Testo in mono maiuscolo. Stati: hover, premuto, focus da tastiera, disattivato, in caricamento, aggiunto.</p></div>
+  <div class="stack" style="--stack:var(--s-5)">
+    <div class="ds-riga"><button class="u-btn u-btn--l" type="button">Ordina ora</button><button class="u-btn" type="button">Aggiungi</button><button class="u-btn u-btn--s" type="button">Aggiungi</button></div>
+    <div class="ds-riga"><button class="u-btn u-btn--secondario" type="button">Vedi il menu</button><button class="u-btn u-btn--testo" type="button">Dettagli allergeni</button><button class="u-btn" type="button" disabled>Disattivato</button><button class="u-btn is-loading" type="button" aria-busy="true">Invio</button><button class="u-btn is-aggiunto" type="button">Aggiunto ✓</button></div>
+    <div class="tema-corallo ds-box ds-riga"><button class="u-btn u-btn--inverso" type="button">Su corallo: inverso</button><button class="u-btn" type="button">Su corallo: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button></div>
+    <div class="tema-brace ds-box ds-riga"><button class="u-btn" type="button">Su brace: primario</button><button class="u-btn u-btn--secondario" type="button">Secondario</button><a class="u-link" href="#">Link nel testo</a></div>
+  </div>
+</section>
+
+<!-- ============ ELEMENTI PICCOLI ============ -->
+<section class="ds-sez" aria-labelledby="h-el">
+  <div class="ds-testa"><span class="eyebrow">05</span><h2 id="h-el">Etichette, allergeni, prezzi, quantità</h2>
+    <p>Gli allergeni non sono più numeri da decodificare: hanno un codice di tre lettere, il nome completo per gli screen reader e il riferimento al numero del Regolamento UE 1169/2011.</p></div>
+  <div class="stack" style="--stack:var(--s-5)">
+    <div class="ds-riga"><span class="u-tag">Uramaki special</span><span class="u-tag">8 pz</span><span class="u-tag u-tag--accento">Novità</span><button class="u-tag" type="button" aria-pressed="true">Poke</button><button class="u-tag" type="button" aria-pressed="false">Gyoza</button></div>
+    <ul class="u-allergeni" aria-label="Allergeni" id="allergeni-demo"></ul>
+    <div class="ds-riga"><span class="u-prezzo">€ 13,00</span><span class="u-prezzo"><del>€ 4,00</del><ins>€ 3,00</ins></span></div>
+    <div class="u-qty" role="group" aria-label="Quantità"><button type="button" aria-label="Diminuisci">−</button><input type="number" value="1" min="0" max="20" inputmode="numeric" aria-label="Quantità"><button type="button" aria-label="Aumenta">+</button></div>
+  </div>
+</section>
+
+<!-- ============ SCHEDE PRODOTTO ============ -->
+<section class="ds-sez" aria-labelledby="h-prod" id="menu">
+  <div class="ds-testa"><span class="eyebrow">06</span><h2 id="h-prod">Scheda prodotto</h2>
+    <p>Nomi, categorie e prezzi dal catalogo reale. Tre varianti: con foto (le 30 dello shooting), senza foto (gli altri 80 prodotti, con fondo pieno, iniziale e luogo) e riga compatta per il menu su mobile. Le foto sono provvisorie e non corrispondono al piatto.</p></div>
+  <div class="griglia" style="--min:250px" id="griglia-prodotti"></div>
+</section>
+
+<!-- ============ MENU MOBILE ============ -->
+<section class="ds-sez" aria-labelledby="h-menu">
+  <div class="ds-testa"><span class="eyebrow">07</span><h2 id="h-menu">Menu: categorie e lista</h2>
+    <p>Le categorie restano fisse sotto l'header e scorrono in orizzontale. Su mobile la lista usa le righe compatte con aggiunta rapida e la barra fissa in basso con il totale.</p></div>
+  <div class="ds-mob">
+    <nav class="u-categorie" style="position:relative;top:0" aria-label="Categorie del menu">
+      <ul class="u-categorie__lista" style="padding-inline:var(--s-4)" id="cat-lista"></ul>
+    </nav>
+    <div style="padding:0 var(--s-4)" id="lista-righe"></div>
+    <nav class="u-barra" style="position:relative" aria-label="Azioni rapide"><a href="#">Menu</a><a href="#">Info</a><a class="u-barra__cta" href="#carrello">Carrello · <span id="tot-barra">€ 0,00</span></a></nav>
+  </div>
+</section>
+
+<!-- ============ SERVIZI ============ -->
+<section class="ds-sez" aria-labelledby="h-serv" id="servizi">
+  <div class="ds-testa"><span class="eyebrow">08</span><h2 id="h-serv">Scheda servizio</h2>
+    <p>Per le cinque attività di UMAMI. Formato 4:5, adatto alle scene di preparazione dello shooting. Street food resta in attesa della mascotte e delle foto del truck.</p></div>
+  <div class="griglia" style="--min:220px" id="griglia-servizi"></div>
+</section>
+
+<!-- ============ MODULI ============ -->
+<section class="ds-sez" aria-labelledby="h-form">
+  <div class="ds-testa"><span class="eyebrow">09</span><h2 id="h-form">Moduli</h2>
+    <p>Il primo passo dell'ordine diventa la scelta tra ritiro e consegna con la fascia oraria. Etichette sempre visibili, campi alti 52 px, errori scritti in chiaro accanto al campo.</p></div>
+  <form class="stack" style="--stack:var(--s-5);max-width:640px" onsubmit="return false">
+    <fieldset class="u-scelte">
+      <legend>Come vuoi ricevere l'ordine?</legend>
+      <div class="u-scelta"><input type="radio" name="modo" id="m-ritiro" checked><label for="m-ritiro"><strong>Ritiro</strong><span>Via della Consolazione 55, Leverano</span></label></div>
+      <div class="u-scelta"><input type="radio" name="modo" id="m-consegna"><label for="m-consegna"><strong>Consegna</strong><span>Verifica il CAP · costi in base alla zona</span></label></div>
+    </fieldset>
+    <div class="u-campo"><label for="f-ora">Orario</label>
+      <select class="u-input" id="f-ora"><option>Appena possibile</option><option>20:00 – 20:15</option><option>20:15 – 20:30</option><option>20:30 – 20:45</option></select>
+      <span class="u-campo__aiuto">Fasce di esempio: gli orari reali arriveranno dalla configurazione del negozio.</span></div>
+    <div class="u-campo"><label for="f-nome">Nome</label><input class="u-input" id="f-nome" autocomplete="given-name"></div>
+    <div class="u-campo is-errore"><label for="f-tel">Telefono</label><input class="u-input" id="f-tel" type="tel" autocomplete="tel" value="347 61" aria-invalid="true" aria-describedby="f-tel-err"><span class="u-campo__errore" id="f-tel-err">Il numero sembra incompleto: controlla le cifre.</span></div>
+    <div class="u-campo"><label for="f-note">Note per la cucina <span class="u-facoltativo">(facoltativo)</span></label><textarea class="u-input" id="f-note" placeholder="Es. senza sesamo sul Leverano Roll"></textarea></div>
+  </form>
+</section>
+
+<!-- ============ AVVISI ============ -->
+<section class="ds-sez" aria-labelledby="h-avv">
+  <div class="ds-testa"><span class="eyebrow">10</span><h2 id="h-avv">Avvisi</h2>
+    <p>Colore, icona e testo insieme: il significato non è mai affidato al solo colore.</p></div>
+  <div class="stack" style="--stack:var(--s-3);max-width:640px">
+    <div class="u-avviso u-avviso--ok" role="status"><span class="u-avviso__ico" aria-hidden="true">✓</span><div><strong>Leverano Roll aggiunto al carrello</strong>Totale provvisorio € 13,00</div></div>
+    <div class="u-avviso u-avviso--info"><span class="u-avviso__ico" aria-hidden="true">i</span><div><strong>Mercoledì siamo chiusi</strong>Puoi ordinare per giovedì dalle 19:00.</div></div>
+    <div class="u-avviso u-avviso--errore" role="alert"><span class="u-avviso__ico" aria-hidden="true">!</span><div><strong>Consegna non disponibile per questo CAP</strong>Puoi scegliere il ritiro in negozio.</div></div>
+  </div>
+</section>
+
+<!-- ============ CARRELLO ============ -->
+<section class="ds-sez" aria-labelledby="h-cart" id="carrello">
+  <div class="ds-testa"><span class="eyebrow">11</span><h2 id="h-cart">Carrello e riepilogo</h2>
+    <p>Indicatore dei passi, righe con quantità e note, riepilogo con il totale in evidenza. Le cifre sono di esempio: i calcoli restano a WooCommerce.</p></div>
+  <ol class="u-passi" aria-label="Passi dell'ordine" style="margin-bottom:var(--s-6)"><li class="is-fatto">Menu</li><li aria-current="step">Carrello</li><li>Ritiro o consegna</li><li>Conferma</li></ol>
+  <div class="ds-due">
+    <div id="righe-carrello"></div>
+    <aside class="u-riepilogo" aria-label="Riepilogo ordine">
+      <h3 class="t-l">Riepilogo</h3>
+      <dl><dt>Subtotale</dt><dd>€ 36,00</dd><dt>Ritiro in negozio</dt><dd>€ 0,00</dd><dt class="u-totale">Totale</dt><dd class="u-totale">€ 36,00</dd></dl>
+      <a class="u-btn u-btn--l u-btn--pieno" href="#">Continua</a>
+      <p class="t-meta">Pagamento al ritiro o alla consegna.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ MAPPATURA WOO ============ -->
+<section class="ds-sez" aria-labelledby="h-woo">
+  <div class="ds-testa"><span class="eyebrow">12</span><h2 id="h-woo">Mappatura WooCommerce</h2>
+    <p>Dove andrà applicato ogni componente nel sito originale (Astra, Elementor, WooCommerce classico, Food Store). Da verificare in staging prima dell'integrazione.</p></div>
+  <div class="ds-scroll" tabindex="0" role="region" aria-label="Tabella di mappatura, scorrevole"><table class="ds-tab">
+    <thead><tr><th>Componente</th><th>Classi o template da stilizzare</th><th>Metodo previsto</th></tr></thead>
+    <tbody>
+      <tr><td><code>.u-btn</code></td><td><code>.button</code> <code>.single_add_to_cart_button</code> <code>.checkout-button</code> <code>#place_order</code> <code>.elementor-button</code></td><td>CSS del tema figlio</td></tr>
+      <tr><td><code>.u-prodotto</code></td><td>voce prodotto di Food Store; <code>ul.products li.product</code></td><td>CSS + override del template Food Store nel tema figlio (per <code>aria-label</code> sul pulsante)</td></tr>
+      <tr><td><code>.u-categorie</code></td><td>tab categorie di Food Store</td><td>CSS; link reali al posto di <code>javascript:void(0)</code> se il plugin lo consente</td></tr>
+      <tr><td><code>.u-qty</code></td><td><code>.quantity input.qty</code></td><td>CSS + piccolo JS per i pulsanti − / +</td></tr>
+      <tr><td><code>.u-riga-carrello</code> <code>.u-riepilogo</code></td><td><code>.woocommerce-cart-form</code> <code>.cart_item</code> <code>.cart_totals</code> <code>#order_review</code></td><td>CSS; template <code>cart/cart.php</code> solo se indispensabile</td></tr>
+      <tr><td><code>.u-scelte</code></td><td><code>#shipping_method</code> (Flexible Shipping)</td><td>CSS + ordine dei campi con Checkout Field Editor</td></tr>
+      <tr><td><code>.u-campo</code> <code>.u-input</code></td><td><code>.form-row</code> <code>.input-text</code> <code>select</code> <code>.woocommerce-invalid</code></td><td>CSS</td></tr>
+      <tr><td><code>.u-avviso</code></td><td><code>.woocommerce-message</code> <code>.woocommerce-info</code> <code>.woocommerce-error</code></td><td>CSS</td></tr>
+      <tr><td><code>.u-header</code> <code>.u-footer</code></td><td><code>#masthead</code> <code>#colophon</code> (Astra Header/Footer Builder)</td><td>Builder di Astra + CSS</td></tr>
+      <tr><td>Token</td><td>Colori e font globali di Elementor (oggi quelli predefiniti)</td><td>Kit Elementor allineato a <code>tokens.css</code></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+</div>
+</main>
+
+<footer class="u-footer">
+  <div class="contenitore">
+    <div class="u-footer__griglia">
+      <div><a class="u-logo" href="#" aria-label="UMAMI Salento"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a></div>
+      <div><h2>Ordina</h2><ul><li><a href="#">Menu</a></li><li><a href="#">Carrello</a></li><li><a href="#">Allergeni</a></li></ul></div>
+      <div><h2>Esperienze</h2><ul><li><a href="#">Catering</a></li><li><a href="#">Chef a domicilio</a></li><li><a href="#">Street food</a></li><li><a href="#">Ramen</a></li></ul></div>
+      <div><h2>Dove siamo</h2><ul><li>Via della Consolazione 55</li><li>73045 Leverano (LE)</li><li><a href="tel:+393476168387">+39 347 616 8387</a></li><li>19:00–23:30 · mercoledì chiuso</li></ul></div>
+    </div>
+    <div class="u-footer__base"><span>Design system v0.1 · prototipo con dati dimostrativi</span><span>Nessun ordine reale</span></div>
+  </div>
+</footer>
+
+<nav class="u-barra" aria-label="Azioni rapide"><a href="#menu">Menu</a><a href="#servizi">Info</a><a class="u-barra__cta" href="#carrello">Carrello · <span id="tot-fisso">€ 0,00</span></a></nav>
+
+<script>
+(function () {
+  var IMG = "../../assets/img/provvisorie/";
+  var root = document.documentElement;
+  var eur = function (v) { return "€ " + v.toFixed(2).replace(".", ","); };
+
+  /* ---- allergeni (Reg. UE 1169/2011, ordine della pagina allergeni del sito) ---- */
+  var AL = { 1:["GLU","Glutine"], 2:["CRO","Crostacei"], 3:["UOV","Uova"], 4:["PES","Pesce"], 5:["ARA","Arachidi"], 6:["SOI","Soia"], 7:["LAT","Latte"], 8:["FRU","Frutta a guscio"], 9:["SED","Sedano"], 10:["SEN","Senape"], 11:["SES","Sesamo"], 12:["SOL","Solfiti"], 13:["LUP","Lupini"], 14:["MOL","Molluschi"] };
+  function allergeni(lista) {
+    return '<ul class="u-allergeni" aria-label="Allergeni">' + lista.map(function (n) {
+      return '<li class="u-allergene" title="' + n + ' · ' + AL[n][1] + '"><span aria-hidden="true">' + AL[n][0] + '</span><span class="sr-only">' + AL[n][1] + '</span></li>';
+    }).join("") + "</ul>";
+  }
+  document.getElementById("allergeni-demo").outerHTML = allergeni([1,2,3,4,5,6,7,8,9,10,11,12,13,14]);
+
+  /* ---- pattern toponimi ---- */
+  var luoghi = ["Porto Selvaggio","San Foca","Leverano","Santa Caterina","Porto Badisco","Sant'Andrea","La Strea","Salento"];
+  var p = document.getElementById("pattern"), cols = innerWidth < 640 ? 5 : 11;
+  for (var c = 0; c < cols; c++) {
+    var col = document.createElement("div"); col.className = "u-pattern__col"; var h = "";
+    for (var k = 0; k < 2; k++) for (var i = 0; i < luoghi.length; i++) h += "<span>" + luoghi[(i + c) % luoghi.length] + "</span>";
+    col.innerHTML = h; p.appendChild(col);
+  }
+
+  /* ---- palette con contrasti calcolati ---- */
+  function lum(hex) { return [1,3,5].map(function (i) { var v = parseInt(hex.substr(i,2),16)/255; return v <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4); }).reduce(function (a, v, i) { return a + v * [.2126,.7152,.0722][i]; }, 0); }
+  function cr(a, b) { var x = lum(a), y = lum(b); return (Math.max(x,y)+.05)/(Math.min(x,y)+.05); }
+  function badge(r) { var s = r.toFixed(2).replace(".", ",") + ":1"; return r >= 4.5 ? '<span class="ds-ok">' + s + ' AA</span>' : r >= 3 ? '<span class="ds-ok">' + s + ' grande</span>' : '<span class="ds-no">' + s + '</span>'; }
+  var cs = getComputedStyle(root), out = "";
+  [["corallo","Corallo · marca"],["corallo-scuro","Corallo scuro"],["corallo-profondo","Profondo"],["corallo-chiaro","Corallo chiaro"],["brace","Brace · testo"],["brace-80","Brace 80"],["brace-60","Brace 60"],["riso","Riso · fondo"],["riso-scuro","Riso scuro"],["kraft","Kraft"],["ottone","Ottone"],["elettrico","Elettrico · focus"],["successo","Successo"]].forEach(function (n) {
+    var v = cs.getPropertyValue("--c-" + n[0]).trim().toUpperCase();
+    var rb = cr(v,"#FFFFFF"), rr = cr(v,"#F6F1E7"), rk = cr(v,"#1A0F0D");
+    var fg = rb >= rk ? "#FFFFFF" : "#1A0F0D";
+    out += '<div class="ds-sw" style="background:' + v + ';color:' + fg + '"><b>' + n[1] + '</b><code>' + v + '<br>testo bianco ' + badge(rb) + '<br>su riso ' + badge(rr) + '<br>su brace ' + badge(rk) + '</code></div>';
+  });
+  document.getElementById("palette").innerHTML = out;
+
+  /* ---- spazi ---- */
+  document.getElementById("spazi").innerHTML = [1,2,3,4,5,6,7,8,9,10].map(function (n) {
+    var v = cs.getPropertyValue("--s-" + n).trim(); return '<div><span style="width:60px">--s-' + n + '</span><i style="width:' + v + '"></i><span>' + v + '</span></div>';
+  }).join("");
+
+  /* ---- prodotti reali ---- */
+  var prodotti = [
+    { n:"Leverano Roll", c:"Uramaki special", pz:"8 pz", p:13, img:"copertina-6.jpg", luogo:"Leverano" },
+    { n:"Tartare di tonno", c:"Tartare", pz:"120 g", p:10, img:"tartare2.jpg", d:"Tonno condito con lime e sesamo accompagnato da cetriolo.", al:[4,11] },
+    { n:"Mix gyoza", c:"Gyoza", pz:"6 pz", p:10, d:"Ravioli misti: verdure, maiale, pollo e verdure.", al:[1,6,9,11], luogo:"Salento" },
+    { n:"Porto Selvaggio", c:"Poke", pz:"Bowl", p:13, luogo:"Porto Selvaggio" },
+    { n:"Salento Roll", c:"I vegetariani", pz:"8 pz", p:9, img:"copertina5.jpg", luogo:"Salento" },
+    { n:"Ramune soda", c:"Bevande", pz:"Bottiglia", p:3, pieno:4, luogo:"Leverano" }
+  ];
+  function media(x, riga) {
+    if (x.img) return '<div class="u-prodotto__media"><img src="' + IMG + x.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' + (riga ? "" : '<span class="u-prodotto__badge u-tag" style="border:0">Foto provvisoria</span>') + '</div>';
+    return '<div class="u-prodotto__media" aria-hidden="true"><span class="u-prodotto__iniziale">' + x.n.charAt(0) + '</span><span class="u-prodotto__luogo">' + (x.luogo || "Salento") + '</span></div>';
+  }
+  function prezzo(x) { return '<span class="u-prezzo">' + (x.pieno ? "<del>" + eur(x.pieno) + "</del><ins>" + eur(x.p) + "</ins>" : eur(x.p)) + '</span>'; }
+  document.getElementById("griglia-prodotti").innerHTML = prodotti.map(function (x) {
+    return '<article class="u-prodotto' + (x.img ? "" : " u-prodotto--senza-foto") + '">' + media(x) +
+      '<div class="u-prodotto__corpo"><div class="u-prodotto__meta"><span class="u-tag">' + x.c + '</span><span class="u-tag">' + x.pz + '</span></div>' +
+      '<h3 class="u-prodotto__nome"><a href="#">' + x.n + '</a></h3>' + (x.d ? '<p class="u-prodotto__desc">' + x.d + '</p>' : "") + (x.al ? allergeni(x.al) : "") +
+      '<div class="u-prodotto__piede">' + prezzo(x) + '<button class="u-btn u-btn--s js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello">Aggiungi</button></div></div></article>';
+  }).join("");
+
+  /* ---- categorie + righe compatte ---- */
+  var cat = ["Uramaki special","Uramaki classici","I vegetariani","I non crudi","Poke","Tartare","Gyoza","Bao buns","Sashimi","Nigiri","Hosomaki","Sfizierie","Primi e gastronomia","Dolci","Bevande","Birre"];
+  document.getElementById("cat-lista").innerHTML = cat.map(function (c, i) { return '<li><button class="u-tag" type="button" aria-pressed="' + (i === 0) + '">' + c + '</button></li>'; }).join("");
+  document.getElementById("lista-righe").innerHTML = prodotti.slice(0, 5).map(function (x) {
+    return '<article class="u-prodotto u-prodotto--riga' + (x.img ? "" : " u-prodotto--senza-foto") + '">' + media(x, true) +
+      '<div class="u-prodotto__corpo"><h3 class="u-prodotto__nome">' + x.n + '</h3><span class="t-mono" style="color:var(--text-3)">' + x.pz + ' · ' + eur(x.p) + '</span></div>' +
+      '<div class="u-prodotto__piede"><button class="u-btn u-btn--icona js-aggiungi" type="button" data-p="' + x.p + '" aria-label="Aggiungi ' + x.n + ' al carrello">+</button></div></article>';
+  }).join("");
+
+  /* ---- servizi ---- */
+  var servizi = [
+    { t:"Sushi take away", d:"Italian sushi, poke e tartare da ritirare o con consegna a domicilio.", img:"copertina_3.jpg" },
+    { t:"Ramen", d:"Contenuti in arrivo: produzione artigianale del ramen.", img:"18.jpg" },
+    { t:"Catering", d:"Vassoi per eventi privati e aziendali, servizio on site con open bar.", img:"buffet.jpg" },
+    { t:"Chef a domicilio", d:"Contenuti in arrivo dal cliente.", img:"buffet2.jpg" },
+    { t:"Street food", d:"Food truck, fiere ed eventi. Arriva con la mascotte.", img:"" }
+  ];
+  document.getElementById("griglia-servizi").innerHTML = servizi.map(function (s) {
+    return '<a class="u-servizio" href="#"><div class="u-servizio__media">' + (s.img ? '<img src="' + IMG + s.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' : "") + '</div>' +
+      '<div class="u-servizio__corpo"><h3 class="u-servizio__titolo">' + s.t + '</h3><p class="t-meta">' + s.d + '</p><span class="u-servizio__cta">Scopri</span></div></a>';
+  }).join("");
+
+  /* ---- righe carrello ---- */
+  var carrello = [prodotti[0], prodotti[1], prodotti[4]];
+  document.getElementById("righe-carrello").innerHTML = carrello.map(function (x) {
+    return '<div class="u-riga-carrello"><div class="u-riga-carrello__img">' + (x.img ? '<img src="' + IMG + x.img + '" alt="" onerror="this.remove()">' : x.n.charAt(0)) + '</div>' +
+      '<div><div class="u-riga-carrello__nome">' + x.n + '</div><div class="u-riga-carrello__nota">' + x.pz + '</div>' +
+      '<div class="u-riga-carrello__azioni"><div class="u-qty" role="group" aria-label="Quantità ' + x.n + '"><button type="button" aria-label="Diminuisci">−</button><input type="number" value="1" min="0" aria-label="Quantità"><button type="button" aria-label="Aumenta">+</button></div>' +
+      '<button class="u-riga-carrello__rimuovi" type="button">Rimuovi</button></div></div><span class="u-prezzo">' + eur(x.p) + '</span></div>';
+  }).join("");
+
+  /* ---- interazioni ---- */
+  var n = 0, t = 0;
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".js-aggiungi");
+    if (b) {
+      n++; t += parseFloat(b.dataset.p);
+      document.getElementById("conta").textContent = n;
+      document.getElementById("tot-barra").textContent = eur(t);
+      document.getElementById("tot-fisso").textContent = eur(t);
+      var cb = document.getElementById("btn-carrello"); cb.classList.remove("is-pulsa"); void cb.offsetWidth; cb.classList.add("is-pulsa");
+      if (!b.classList.contains("u-btn--icona")) { var txt = b.textContent; b.classList.add("is-aggiunto"); b.textContent = "Aggiunto ✓"; setTimeout(function () { b.classList.remove("is-aggiunto"); b.textContent = txt; }, 1400); }
+    }
+    var q = e.target.closest(".u-qty button");
+    if (q) { var inp = q.parentNode.querySelector("input"); var v = (parseInt(inp.value, 10) || 0) + (q.getAttribute("aria-label") === "Aumenta" ? 1 : -1); inp.value = Math.max(0, Math.min(20, v)); }
+    var tg = e.target.closest("#cat-lista .u-tag");
+    if (tg) document.querySelectorAll("#cat-lista .u-tag").forEach(function (x) { x.setAttribute("aria-pressed", x === tg); });
+  });
+})();
+</script>
+</body>
+</html>

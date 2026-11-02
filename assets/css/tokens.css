@@ -1,0 +1,125 @@
+/* =========================================================================
+   UMAMI SALENTO — Design tokens  ·  "Rosso Umami"  ·  v0.1 (fase 2)
+   Unica fonte di verità per colori, tipografia, spazi, forme e movimento.
+   In integrazione: questo file va nel tema figlio `umami` e i colori/font
+   globali di Elementor vanno allineati a questi valori.
+   ========================================================================= */
+
+:root {
+  /* ---------- Colori di base (palette) ---------- */
+  --c-corallo:          #C23B2E;  /* colore di marca · bianco sopra 5.30:1 */
+  --c-corallo-scuro:    #8E2A20;  /* hover, testo corallo su chiaro 8.39:1 su bianco */
+  --c-corallo-profondo: #5A1712;  /* superfici scure calde */
+  --c-corallo-chiaro:   #F3D9D4;  /* fondi tenui, evidenze */
+  --c-brace:            #1A0F0D;  /* nero caldo · testo principale */
+  --c-brace-80:         #3B2F2C;  /* testo secondario su chiaro 11.3:1 su riso */
+  --c-brace-60:         #6A5E5A;  /* testo terziario/meta 5.6:1 su riso */
+  --c-riso:             #F6F1E7;  /* bianco caldo · fondo pagina */
+  --c-riso-scuro:       #EAE2D3;  /* fondo alternato, separatori */
+  --c-bianco:           #FFFFFF;
+  --c-kraft:            #D9C3A0;  /* materiale, mai per testo */
+  --c-ottone:           #B8913A;  /* dettagli, mai per testo su chiaro */
+  --c-elettrico:        #1F3CFF;  /* SOLO focus e stati interattivi */
+  --c-successo:         #2F6B3B;  /* 6.2:1 su bianco */
+  --c-attenzione:       #8A5A00;  /* 5.9:1 su bianco */
+
+  /* ---------- Ruoli semantici (usare questi nei componenti) ---------- */
+  --bg:            var(--c-riso);
+  --surface:       var(--c-bianco);
+  --surface-alt:   var(--c-riso-scuro);
+  --text:          var(--c-brace);
+  --text-2:        var(--c-brace-80);
+  --text-3:        var(--c-brace-60);
+  --border:        color-mix(in srgb, var(--c-brace) 14%, transparent);
+  --border-strong: var(--c-brace);
+  --accent:        var(--c-corallo);
+  --accent-hover:  var(--c-corallo-scuro);
+  --on-accent:     var(--c-bianco);
+  --focus:         var(--c-elettrico);
+  --error:         var(--c-corallo-scuro);
+  --success:       var(--c-successo);
+
+  /* ---------- Tipografia ---------- */
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* larghezze (asse wdth) e pesi */
+  --wdth-titolo: 75;   --wght-titolo: 800;
+  --wdth-marchio: 100; --wght-marchio: 500; --track-marchio: .42em;
+  --wdth-testo: 100;   --wght-testo: 400;   --wght-forte: 600;
+
+  /* scala fluida (mobile → desktop) */
+  --fs-mono:    0.75rem;                                /* 12  etichette mono */
+  --fs-s:       0.875rem;                               /* 14  meta */
+  --fs-base:    1.0625rem;                              /* 17  testo */
+  --fs-m:       1.25rem;                                /* 20  lead */
+  --fs-l:       clamp(1.5rem, 1.2rem + 1.2vw, 2rem);    /* 24 → 32  titolo scheda */
+  --fs-xl:      clamp(2rem, 1.4rem + 2.6vw, 3.5rem);    /* 32 → 56  titolo sezione */
+  --fs-xxl:     clamp(2.75rem, 1.6rem + 5vw, 7rem);     /* 44 → 112 titolo pagina */
+  --fs-display: clamp(3.5rem, 1.5rem + 10vw, 12.5rem);  /* 56 → 200 hero */
+
+  --lh-titolo: 0.9;
+  --lh-testo:  1.55;
+  --misura:    66ch;  /* lunghezza riga massima per i testi */
+
+  /* ---------- Spazi (scala 4) ---------- */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;  --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+  --sezione: clamp(var(--s-8), 8vw, var(--s-10));       /* spazio verticale tra sezioni */
+
+  /* ---------- Layout ---------- */
+  --contenitore: 1360px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --colonne: 12;
+
+  /* ---------- Forme ---------- */
+  --r-0: 0;           /* default: angoli vivi, editoriale */
+  --r-s: 2px;
+  --r-pill: 999px;    /* solo etichette e allergeni */
+  --bordo: 1px;
+  --bordo-forte: 2px;
+  --ombra-1: 0 1px 0 color-mix(in srgb, var(--c-brace) 12%, transparent);
+  --ombra-2: 0 18px 40px -18px color-mix(in srgb, var(--c-brace) 45%, transparent);
+
+  /* ---------- Interazione ---------- */
+  --tocco-min: 44px;  /* area minima di tocco WCAG 2.5.5 */
+  --dur-1: 120ms; --dur-2: 200ms; --dur-3: 400ms;
+  --ease: cubic-bezier(.2,.7,.2,1);
+
+  /* ---------- Livelli ---------- */
+  --z-header: 50; --z-barra: 60; --z-overlay: 90;
+}
+
+/* Sezioni scure (sera, street food): si attiva con .tema-brace */
+.tema-brace {
+  --bg: var(--c-brace);
+  --surface: #241714;
+  --surface-alt: #2C1D19;
+  --text: var(--c-riso);
+  --text-2: #D8CFC2;
+  --text-3: #A99D93;
+  --border: color-mix(in srgb, var(--c-riso) 18%, transparent);
+  --border-strong: var(--c-riso);
+  --accent: var(--c-corallo);
+  --accent-hover: #A8322A;
+  --focus: #8FA0FF;
+}
+
+/* Sezioni corallo piene */
+.tema-corallo {
+  --bg: var(--c-corallo);
+  --surface: var(--c-corallo-scuro);
+  --text: var(--c-bianco);
+  --text-2: color-mix(in srgb, #fff 88%, transparent);
+  --text-3: color-mix(in srgb, #fff 78%, transparent);
+  --border: color-mix(in srgb, #fff 35%, transparent);
+  --border-strong: var(--c-bianco);
+  --accent: var(--c-brace);
+  --accent-hover: #000;
+  --on-accent: var(--c-bianco);
+  --focus: var(--c-bianco);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-1: 0ms; --dur-2: 0ms; --dur-3: 0ms; }
+}

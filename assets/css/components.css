@@ -1,0 +1,303 @@
+/* =========================================================================
+   UMAMI — Componenti  ·  prefisso u-
+   Ogni componente indica (in commento) le classi WooCommerce / Food Store
+   a cui andrà applicato in integrazione. Dipende da tokens.css + base.css
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   PULSANTI  ·  Woo: .button, .single_add_to_cart_button, .checkout-button,
+   #place_order, .wc-forward  ·  Elementor: .elementor-button
+   ------------------------------------------------------------------------- */
+.u-btn {
+  --btn-bg: var(--accent); --btn-fg: var(--on-accent); --btn-bd: var(--accent);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: 48px; padding: 0 var(--s-5);
+  background: var(--btn-bg); color: var(--btn-fg);
+  border: var(--bordo-forte) solid var(--btn-bd); border-radius: var(--r-0);
+  font-family: var(--font-mono); font-size: .8125rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase; text-decoration: none; line-height: 1;
+  cursor: pointer; user-select: none; white-space: nowrap;
+  transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease), transform var(--dur-1) var(--ease);
+}
+.u-btn:hover { --btn-bg: var(--accent-hover); --btn-bd: var(--accent-hover); }
+.u-btn:active { transform: translateY(1px); }
+.u-btn[disabled], .u-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; transform: none; }
+
+.u-btn--secondario { --btn-bg: transparent; --btn-fg: var(--text); --btn-bd: var(--border-strong); }
+.u-btn--secondario:hover { --btn-bg: var(--text); --btn-fg: var(--bg); --btn-bd: var(--text); }
+.u-btn--testo { --btn-bg: transparent; --btn-fg: var(--text); --btn-bd: transparent; padding-inline: var(--s-2); text-decoration: underline; text-underline-offset: .3em; }
+.u-btn--testo:hover { --btn-bg: transparent; --btn-bd: transparent; --btn-fg: var(--accent); }
+.u-btn--inverso { --btn-bg: var(--c-bianco); --btn-fg: var(--c-corallo-scuro); --btn-bd: var(--c-bianco); }
+.u-btn--inverso:hover { --btn-bg: var(--c-riso); --btn-bd: var(--c-riso); }
+.u-btn--s { min-height: var(--tocco-min); padding-inline: var(--s-4); }
+.u-btn--l { min-height: 56px; padding-inline: var(--s-6); font-size: .875rem; }
+.u-btn--pieno { width: 100%; }
+.u-btn--icona { min-width: var(--tocco-min); min-height: var(--tocco-min); padding: 0; }
+.u-btn .u-ico { width: 18px; height: 18px; flex: none; }
+
+/* stato "aggiunto" (feedback dopo l'aggiunta al carrello) */
+.u-btn.is-aggiunto { --btn-bg: var(--c-successo); --btn-bd: var(--c-successo); --btn-fg: #fff; }
+/* stato "in caricamento" */
+.u-btn.is-loading { color: transparent; position: relative; pointer-events: none; }
+.u-btn.is-loading::after {
+  content: ""; position: absolute; width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--btn-fg); border-right-color: transparent;
+  animation: u-gira .7s linear infinite;
+}
+@keyframes u-gira { to { transform: rotate(360deg); } }
+
+/* -------------------------------------------------------------------------
+   ETICHETTE  ·  categorie, pezzi, filtri  ·  Food Store: tab categorie
+   ------------------------------------------------------------------------- */
+.u-tag {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 10px;
+  border: var(--bordo) solid currentColor; border-radius: var(--r-pill);
+  font-family: var(--font-mono); font-size: .6875rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; line-height: 1;
+  color: var(--text-2); background: transparent; text-decoration: none;
+}
+button.u-tag, a.u-tag { min-height: var(--tocco-min); padding: 0 var(--s-4); cursor: pointer; color: var(--text); }
+button.u-tag:hover, a.u-tag:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.u-tag[aria-current="true"], .u-tag[aria-pressed="true"], .u-tag.is-attivo {
+  background: var(--text); color: var(--bg); border-color: var(--text);
+}
+.u-tag--accento { color: var(--accent); }
+
+/* -------------------------------------------------------------------------
+   ALLERGENI  ·  sostituisce i numeri 1–14 con codici leggibili e accessibili
+   ------------------------------------------------------------------------- */
+.u-allergeni { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; padding: 0; margin: 0; }
+.u-allergene {
+  display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 6px;
+  border-radius: var(--r-pill); background: var(--surface-alt); color: var(--text-2);
+  font-family: var(--font-mono); font-size: .6875rem; font-weight: 500; letter-spacing: .02em;
+}
+
+/* -------------------------------------------------------------------------
+   PREZZO  ·  Woo: .price, .amount, .woocommerce-Price-amount, ins/del
+   ------------------------------------------------------------------------- */
+.u-prezzo { font-family: var(--font-mono); font-weight: 500; font-size: 1.125rem; letter-spacing: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.u-prezzo del { color: var(--text-3); font-size: .8em; margin-right: 6px; font-weight: 400; }
+.u-prezzo ins { text-decoration: none; color: var(--accent); }
+
+/* -------------------------------------------------------------------------
+   QUANTITÀ  ·  Woo: .quantity input.qty
+   ------------------------------------------------------------------------- */
+.u-qty { display: inline-flex; align-items: stretch; border: var(--bordo-forte) solid var(--border-strong); height: calc(var(--tocco-min) + 2 * var(--bordo-forte)); }
+.u-qty button { all: unset; width: var(--tocco-min); display: grid; place-items: center; cursor: pointer; font-size: 1.25rem; line-height: 1; }
+.u-qty button:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+.u-qty button:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.u-qty input {
+  width: 3ch; border: 0; background: transparent; text-align: center;
+  font-family: var(--font-mono); font-weight: 600; font-size: 1rem; -moz-appearance: textfield; appearance: textfield;
+}
+.u-qty input::-webkit-outer-spin-button, .u-qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* -------------------------------------------------------------------------
+   SCHEDA PRODOTTO  ·  Woo: ul.products li.product · Food Store: voce menu
+   Varianti: con foto (default) · .u-prodotto--senza-foto · .u-prodotto--riga (lista compatta)
+   ------------------------------------------------------------------------- */
+.u-prodotto { display: flex; flex-direction: column; background: var(--surface); border: var(--bordo) solid var(--border); position: relative; }
+.u-prodotto__media { aspect-ratio: 1; background: var(--c-corallo); overflow: hidden; position: relative; }
+.u-prodotto__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-3) var(--ease); }
+.u-prodotto:hover .u-prodotto__media img { transform: scale(1.03); }
+.u-prodotto__badge { position: absolute; top: var(--s-3); left: var(--s-3); background: var(--c-brace); color: var(--c-riso); }
+.u-prodotto__corpo { display: flex; flex-direction: column; gap: var(--s-3); padding: var(--s-4); flex: 1; }
+.u-prodotto__meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.u-prodotto__nome { font-size: clamp(1.375rem, 1.1rem + .8vw, 1.75rem); line-height: .95; }
+.u-prodotto__nome a { text-decoration: none; }
+.u-prodotto__nome a::after { content: ""; position: absolute; inset: 0; } /* tutta la scheda cliccabile */
+.u-prodotto__desc { font-size: var(--fs-s); color: var(--text-2); line-height: 1.45; }
+.u-prodotto__piede { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: auto; padding-top: var(--s-3); border-top: var(--bordo) dashed var(--border); }
+.u-prodotto__piede .u-btn, .u-prodotto__piede .u-qty { position: relative; z-index: 1; } /* sopra il link esteso */
+
+/* senza foto: fondo pieno, iniziale e toponimo verticale */
+.u-prodotto--senza-foto .u-prodotto__media { background: var(--c-corallo-profondo); color: var(--c-riso); display: grid; place-items: center; }
+.u-prodotto__iniziale { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; font-size: clamp(5rem, 14vw, 8rem); line-height: 1; text-transform: uppercase; }
+.u-prodotto__luogo {
+  position: absolute; right: var(--s-3); top: var(--s-3); bottom: var(--s-3); writing-mode: vertical-rl;
+  font-size: .75rem; letter-spacing: .5em; text-transform: uppercase; opacity: .55;
+  font-variation-settings: "wdth" 100; overflow: hidden;
+}
+
+/* riga compatta (menu lungo su mobile) */
+.u-prodotto--riga { flex-direction: row; align-items: center; gap: var(--s-3); padding: var(--s-3) 0; border: 0; border-bottom: var(--bordo) solid var(--border); background: transparent; }
+.u-prodotto--riga .u-prodotto__media { width: 72px; flex: none; }
+.u-prodotto--riga .u-prodotto__corpo { padding: 0; gap: 4px; }
+.u-prodotto--riga .u-prodotto__nome { font-size: 1.25rem; }
+.u-prodotto--riga .u-prodotto__piede { border: 0; padding: 0; margin: 0; }
+.u-prodotto--riga .u-prodotto__iniziale { font-size: 2.25rem; }
+.u-prodotto--riga .u-prodotto__luogo { display: none; }
+
+/* -------------------------------------------------------------------------
+   SCHEDA SERVIZIO  ·  Sushi take away, Ramen, Catering, Chef, Street food
+   ------------------------------------------------------------------------- */
+.u-servizio { display: grid; grid-template-rows: auto 1fr; background: var(--surface); text-decoration: none; color: inherit; border: var(--bordo) solid var(--border); position: relative; overflow: hidden; }
+.u-servizio__media { aspect-ratio: 4 / 5; overflow: hidden; background: var(--c-corallo-profondo); }
+.u-servizio__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-3) var(--ease); }
+.u-servizio:hover .u-servizio__media img { transform: scale(1.04); }
+.u-servizio__corpo { padding: var(--s-5) var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); }
+.u-servizio__titolo { font-size: var(--fs-l); }
+.u-servizio__cta { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: var(--fs-mono); letter-spacing: .06em; text-transform: uppercase; }
+.u-servizio__cta::after { content: "→"; transition: transform var(--dur-1) var(--ease); }
+.u-servizio:hover .u-servizio__cta::after { transform: translateX(4px); }
+
+/* -------------------------------------------------------------------------
+   HEADER  ·  Astra: #masthead, .ast-primary-header-bar  ·  Woo: mini-cart
+   ------------------------------------------------------------------------- */
+.u-header { position: sticky; top: 0; z-index: var(--z-header); background: var(--bg); border-bottom: var(--bordo-forte) solid var(--border-strong); }
+.u-header__riga { display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); min-height: 72px; }
+.u-header__nav { display: flex; gap: var(--s-1); align-items: center; }
+.u-header__nav a {
+  display: inline-flex; align-items: center; min-height: var(--tocco-min); padding: 0 var(--s-3);
+  font-family: var(--font-mono); font-size: .8125rem; letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; border-bottom: 2px solid transparent;
+}
+.u-header__nav a:hover { border-bottom-color: var(--border-strong); }
+.u-header__nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+.u-header__gruppo { display: flex; align-items: center; gap: var(--s-2); }
+.u-header__menu-btn { display: none; }
+@media (max-width: 1023px) {
+  .u-header__nav { display: none; }
+  .u-header__menu-btn { display: inline-flex; }
+  .u-header__riga { min-height: 60px; }
+}
+
+/* Logo segnaposto (sostituire con l'SVG definitivo) */
+.u-logo { display: inline-grid; grid-auto-flow: column; min-height: var(--tocco-min); border: var(--bordo-forte) solid currentColor; text-decoration: none; line-height: 1; }
+.u-logo span { display: flex; align-items: center; padding: 8px 12px; }
+.u-logo span + span { border-left: var(--bordo-forte) solid currentColor; }
+.u-logo__nome { font-weight: 500; font-variation-settings: "wdth" 100; letter-spacing: .42em; padding-right: calc(12px - .42em) !important; font-size: 1.125rem; }
+.u-logo__luogo { font-family: var(--font-mono); font-size: .625rem; letter-spacing: .2em; }
+@media (max-width: 480px) { .u-logo__luogo { display: none !important; } }
+
+/* Pulsante carrello con contatore */
+.u-carrello-btn .u-conta {
+  display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px;
+  border-radius: var(--r-pill); background: var(--on-accent); color: var(--accent);
+  font-size: .75rem; font-weight: 600; letter-spacing: 0;
+}
+.u-carrello-btn.is-pulsa .u-conta { animation: u-pulsa var(--dur-3) var(--ease); }
+@keyframes u-pulsa { 40% { transform: scale(1.35); } }
+
+/* -------------------------------------------------------------------------
+   BARRA MOBILE FISSA (menu · info · carrello)
+   ------------------------------------------------------------------------- */
+.u-barra { position: fixed; inset: auto 0 0 0; z-index: var(--z-barra); display: grid; grid-template-columns: 1fr 1fr 1.6fr; background: var(--c-riso); border-top: var(--bordo-forte) solid var(--c-brace); padding-bottom: env(safe-area-inset-bottom); }
+.u-barra a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--c-brace); }
+.u-barra a.u-barra__cta { background: var(--c-corallo); color: #fff; }
+@media (min-width: 1024px) { .u-barra { display: none; } }
+
+/* -------------------------------------------------------------------------
+   TAB CATEGORIE (menu)  ·  Food Store: navigazione categorie
+   ------------------------------------------------------------------------- */
+.u-categorie { position: sticky; top: 60px; z-index: 10; background: var(--bg); border-bottom: var(--bordo) solid var(--border); }
+@media (min-width: 1024px) { .u-categorie { top: 72px; } }
+.u-categorie__lista { display: flex; gap: var(--s-2); overflow-x: auto; padding-block: var(--s-3); scrollbar-width: none; scroll-snap-type: x proximity; list-style: none; margin: 0; padding-inline: 0; }
+.u-categorie__lista::-webkit-scrollbar { display: none; }
+.u-categorie__lista li { scroll-snap-align: start; }
+
+/* -------------------------------------------------------------------------
+   HERO  ·  immagine o video 16:9 (desktop) / 4:5 (mobile)
+   ------------------------------------------------------------------------- */
+.u-hero { position: relative; min-height: min(92vh, 900px); display: grid; align-items: end; color: #fff; background: var(--c-corallo-profondo); overflow: hidden; isolation: isolate; }
+.u-hero__media { position: absolute; inset: 0; z-index: -2; }
+.u-hero__media img, .u-hero__media video { width: 100%; height: 100%; object-fit: cover; object-position: var(--fuoco, 50% 50%); }
+.u-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(26,15,13,.15) 0%, rgba(26,15,13,.05) 40%, rgba(26,15,13,.78) 100%); }
+.u-hero__testo { padding-block: var(--s-9) var(--s-7); display: grid; gap: var(--s-5); }
+.u-hero__titolo { font-size: var(--fs-display); line-height: .84; max-width: 12ch; }
+.u-hero__azioni { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+.u-hero__pausa { position: absolute; right: var(--gutter); bottom: var(--s-5); z-index: 2; }
+.u-hero__pausa.u-btn { --btn-bg: rgba(26,15,13,.55); --btn-bd: rgba(255,255,255,.6); --btn-fg: #fff; }
+
+/* -------------------------------------------------------------------------
+   PATTERN DEI TOPONIMI (decorativo, aria-hidden)
+   ------------------------------------------------------------------------- */
+.u-pattern { position: absolute; inset: 0; display: flex; justify-content: space-around; overflow: hidden; pointer-events: none; opacity: var(--pattern-opacita, .2); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.u-pattern__col { display: flex; flex-direction: column; align-items: center; gap: var(--s-4); animation: u-scorri 70s linear infinite; }
+.u-pattern__col:nth-child(even) { animation-direction: reverse; animation-duration: 85s; }
+.u-pattern__col span { writing-mode: vertical-rl; font-size: .8125rem; font-variation-settings: "wdth" 100; letter-spacing: .5em; text-transform: uppercase; white-space: nowrap; }
+@keyframes u-scorri { to { transform: translateY(-50%); } }
+@media (prefers-reduced-motion: reduce) { .u-pattern__col { animation: none; } }
+@media (max-width: 640px) { .u-pattern { --pattern-opacita: .12; } }
+
+/* -------------------------------------------------------------------------
+   MODULI  ·  Woo: .form-row, label, .input-text, select, textarea, .woocommerce-invalid
+   ------------------------------------------------------------------------- */
+.u-campo { display: grid; gap: 6px; }
+.u-campo label { font-weight: var(--wght-forte); font-size: var(--fs-s); }
+.u-campo .u-facoltativo { font-weight: 400; color: var(--text-3); }
+.u-input {
+  width: 100%; min-height: 52px; padding: 0 var(--s-4);
+  background: var(--surface); border: var(--bordo-forte) solid var(--border-strong); border-radius: var(--r-0);
+  font-size: 1rem; transition: border-color var(--dur-1), box-shadow var(--dur-1);
+}
+textarea.u-input { min-height: 112px; padding-block: var(--s-3); resize: vertical; }
+.u-input::placeholder { color: var(--text-3); }
+.u-input:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 30%, transparent); }
+.u-campo__aiuto { font-size: var(--fs-s); color: var(--text-3); }
+.u-campo.is-errore .u-input { border-color: var(--error); }
+.u-campo__errore { display: none; font-size: var(--fs-s); color: var(--error); font-weight: var(--wght-forte); }
+.u-campo__errore::before { content: "⚠ "; }
+.u-campo.is-errore .u-campo__errore { display: block; }
+
+/* Scelta a schede (Ritiro / Consegna, fasce orarie) · Woo: #shipping_method */
+.u-scelte { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); border: 0; padding: 0; margin: 0; }
+.u-scelte legend { font-weight: var(--wght-forte); margin-bottom: var(--s-3); padding: 0; }
+.u-scelta { position: relative; }
+.u-scelta input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.u-scelta label { display: grid; gap: 4px; padding: var(--s-4); min-height: 72px; border: var(--bordo-forte) solid var(--border); background: var(--surface); cursor: pointer; transition: border-color var(--dur-1), background var(--dur-1); }
+.u-scelta label strong { font-size: 1.0625rem; }
+.u-scelta label span { font-size: var(--fs-s); color: var(--text-3); }
+.u-scelta input:hover + label { border-color: var(--border-strong); }
+.u-scelta input:checked + label { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--surface)); box-shadow: inset 0 0 0 1px var(--accent); }
+.u-scelta input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* -------------------------------------------------------------------------
+   AVVISI  ·  Woo: .woocommerce-message, .woocommerce-info, .woocommerce-error
+   ------------------------------------------------------------------------- */
+.u-avviso { display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4); border-left: 4px solid var(--avviso, var(--text)); background: var(--surface); font-size: var(--fs-s); }
+.u-avviso strong { display: block; font-size: var(--fs-base); }
+.u-avviso--ok { --avviso: var(--success); }
+.u-avviso--info { --avviso: var(--c-brace-60); }
+.u-avviso--errore { --avviso: var(--error); }
+.u-avviso__ico { flex: none; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: var(--avviso); color: #fff; font-size: .8125rem; font-weight: 700; }
+
+/* -------------------------------------------------------------------------
+   CARRELLO E RIEPILOGO  ·  Woo: .woocommerce-cart-form, .cart_item, .cart_totals,
+   #order_review, .shop_table  ·  Food Store: carrello laterale
+   ------------------------------------------------------------------------- */
+.u-riga-carrello { display: grid; grid-template-columns: 64px 1fr auto; gap: var(--s-3); align-items: center; padding-block: var(--s-4); border-bottom: var(--bordo) solid var(--border); }
+.u-riga-carrello__img { aspect-ratio: 1; background: var(--c-corallo-profondo); color: var(--c-riso); display: grid; place-items: center; overflow: hidden; font-weight: 800; font-variation-settings: "wdth" 75; font-size: 1.75rem; }
+.u-riga-carrello__img img { width: 100%; height: 100%; object-fit: cover; }
+.u-riga-carrello__nome { font-weight: var(--wght-forte); line-height: 1.2; }
+.u-riga-carrello__nota { font-size: var(--fs-s); color: var(--text-3); }
+.u-riga-carrello__azioni { display: flex; align-items: center; gap: var(--s-3); margin-top: 6px; }
+.u-riga-carrello__rimuovi { font-size: var(--fs-s); color: var(--text-2); text-decoration: underline; text-underline-offset: .2em; background: none; border: 0; padding: 0; min-height: var(--tocco-min); cursor: pointer; }
+
+.u-riepilogo { background: var(--surface); border: var(--bordo-forte) solid var(--border-strong); padding: var(--s-5); display: grid; gap: var(--s-3); }
+.u-riepilogo dl { display: grid; grid-template-columns: 1fr auto; gap: var(--s-2) var(--s-4); margin: 0; }
+.u-riepilogo dt { color: var(--text-2); }
+.u-riepilogo dd { font-family: var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.u-riepilogo .u-totale { border-top: var(--bordo-forte) solid var(--border-strong); padding-top: var(--s-3); font-weight: 700; font-size: 1.25rem; color: var(--text); }
+
+/* Passi del checkout */
+.u-passi { display: flex; gap: var(--s-2); list-style: none; padding: 0; margin: 0; counter-reset: passo; flex-wrap: wrap; }
+.u-passi li { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: var(--fs-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); counter-increment: passo; }
+.u-passi li::before { content: counter(passo); width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: var(--bordo) solid currentColor; }
+.u-passi li[aria-current="step"] { color: var(--text); }
+.u-passi li[aria-current="step"]::before { background: var(--accent); border-color: var(--accent); color: #fff; }
+.u-passi li.is-fatto::before { content: "✓"; background: var(--text); color: var(--bg); border-color: var(--text); }
+
+/* -------------------------------------------------------------------------
+   FOOTER  ·  Astra: #colophon
+   ------------------------------------------------------------------------- */
+.u-footer { background: var(--c-brace); color: var(--c-riso); padding-block: var(--s-8) calc(var(--s-6) + 56px); }
+@media (min-width: 1024px) { .u-footer { padding-bottom: var(--s-6); } }
+.u-footer__griglia { display: grid; gap: var(--s-6); grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.u-footer h2 { font-size: var(--fs-mono); font-family: var(--font-mono); font-weight: 500; letter-spacing: .06em; color: #A99D93; margin-bottom: var(--s-3); }
+.u-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.u-footer a { text-decoration: none; display: inline-flex; min-height: 32px; align-items: center; }
+.u-footer a:hover { text-decoration: underline; text-underline-offset: .25em; }
+.u-footer__base { margin-top: var(--s-7); padding-top: var(--s-4); border-top: var(--bordo) solid color-mix(in srgb, var(--c-riso) 20%, transparent); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); font-size: var(--fs-s); color: #A99D93; }
