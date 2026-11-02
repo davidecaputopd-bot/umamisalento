@@ -82,7 +82,7 @@ a { color: inherit; }
 .sezione { padding-block: var(--sezione); }
 .stack > * + * { margin-top: var(--stack, var(--s-4)); }
 .griglia { display: grid; gap: var(--gap, var(--s-6) var(--s-5)); grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 280px)), 1fr)); }
-.tema-brace, .tema-corallo { background: var(--bg); color: var(--text); }
+.tema-lacca, .tema-brace, .tema-inchiostro, .tema-corallo { background: var(--bg); color: var(--text); }
 
 /* Immagini: contorno neutro interno, i bordi non si sciolgono nel fondo */
 .u-prodotto__media img, .u-servizio__media img, .u-riga-carrello__img img { outline: 1px solid rgba(0,0,0,.06); outline-offset: -1px; }
@@ -116,3 +116,38 @@ html:not(.js) .rivela, html:not(.js) .rivela-img { opacity: 1; transform: none; 
 }
 .salta-contenuto { position: absolute; left: var(--s-4); top: -100px; z-index: 100; background: var(--c-brace); color: var(--c-riso); padding: var(--s-3) var(--s-4); }
 .salta-contenuto:focus { top: var(--s-4); }
+
+/* =========================================================================
+   MATERIA E LUCE  ·  v0.5
+   ========================================================================= */
+
+/* Carta: fibra appena percettibile su tutto il fondo (come carta washi o menu stampato).
+   Overlay fisso, nessuna immagine esterna, non intercetta i clic. */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--carta-fibra); background-size: 240px; opacity: .07; mix-blend-mode: multiply;
+}
+body > * { position: relative; z-index: 1; }
+body > .u-header, body > .u-barra, body > .u-toast-area, body > .u-cassetto, body > .u-velo { position: fixed; }
+body > .u-header { position: sticky; }
+
+/* Lacca: luce di candela calda dall'alto a sinistra + riflesso d'ottone in basso */
+.tema-lacca, .tema-brace { background-image: var(--luce-candela); background-color: var(--bg); }
+.tema-inchiostro { background-image: radial-gradient(80% 60% at 50% 0%, rgba(255,176,112,.08), rgba(255,176,112,0) 70%); }
+
+/* Filetto d'ottone (separatore editoriale) */
+.u-filo { border: 0; height: 1px; background: var(--filo); opacity: .7; margin: 0; }
+.u-filo--corto { width: 48px; }
+
+/* Foto: grading caldo e vignetta leggera, uniformano scatti diversi (anche i provvisori) */
+.u-foto-calda { position: relative; isolation: isolate; }
+.u-foto-calda::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background:
+    radial-gradient(120% 90% at 50% 40%, rgba(0,0,0,0) 55%, rgba(43,15,12,.28) 100%),
+    linear-gradient(180deg, rgba(255,190,140,.08), rgba(43,15,12,.06));
+  mix-blend-mode: multiply;
+}
+
+/* Superfici sollevate: luce morbida invece dei bordi */
+.u-sollevata { background: var(--surface); box-shadow: var(--ombra-2); border-radius: var(--r-l, 20px); }

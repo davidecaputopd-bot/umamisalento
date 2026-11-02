@@ -51,3 +51,16 @@ Le immagini non sono salvate nel repository perché sono di terzi.
 - **Testi sui fondi:** il testo normale sta solo su bianco, riso o brace, oppure bianco sul rosso. Il testo rosso su brace va usato solo in dimensione grande (3.5:1).
 - **Ottone e kraft:** non sono colori per il testo su bianco.
 - **Pattern animato:** rispetta l'impostazione di sistema "riduci movimento" ed è più tenue su mobile, per non disturbare la lettura.
+
+## v0.5: colore, materia, luce, interfaccia ed esperienza d'uso (2/11/2026)
+
+Derivati dallo studio mondiale (`STUDIO-SETTORE.md`).
+
+| Area | Scelta | Riferimento |
+|---|---|---|
+| **Colore** | Carta `#F2EDE4`, inchiostro `#16100E`, **lacca** `#2B0F0C` (rosso-nero delle lacche urushi), **ottone** `#B08D57`; il corallo `#C23B2E` diventa **segnale** (carrello, stato, un accento per pagina) | Noma (crema + verde scuro), Qissa (blu notte + oro), IRONHILL (oliva + giallo) |
+| **Pulsanti primari** | Inchiostro, non corallo | Alta ristorazione: il colore non urla |
+| **Materia** | Fibra di carta appena visibile sul fondo; grana sulle superfici scure; filetti in ottone | Carta dei menu stampati, Daikan, stoviglie in ottone (Lalaon) |
+| **Luce** | Sezioni in lacca illuminate "a candela" dall'alto a sinistra; ombre calde a strati al posto dei bordi; grading caldo e vignetta sulle foto per uniformare scatti diversi | Fascia serale 19:00–23:30 |
+| **Interfaccia** | Superfici sollevate con luce morbida; schede senza box; navigazione a 5 voci; stato aperto/chiuso nell'header | Noma, Mirazur, Central |
+| **Esperienza** | **Cassetto del carrello** laterale su desktop e dal basso su mobile: non si lascia il menu per vedere l'ordine. Focus intrappolato, ESC per chiudere. **Stato calcolato dagli orari reali** ("Aperto · chiude alle 23:30", "Chiuso il mercoledì · apre giovedì alle 19:00"). Toast di conferma con accesso diretto al cassetto | Pattern dei siti d'ordine più curati; riduce i cambi di pagina |

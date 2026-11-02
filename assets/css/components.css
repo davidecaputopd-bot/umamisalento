@@ -80,7 +80,7 @@ button.u-tag:active, a.u-tag:active { transform: scale(.97); }
    ------------------------------------------------------------------------- */
 .u-prezzo { font-family: var(--font-mono); font-size: .9375rem; white-space: nowrap; }
 .u-prezzo del { color: var(--text-3); margin-right: 8px; }
-.u-prezzo ins { text-decoration: none; color: var(--accent); }
+.u-prezzo ins { text-decoration: none; color: var(--segnale); }
 
 /* -------------------------------------------------------------------------
    QUANTITÀ  ·  Woo: .quantity input.qty
@@ -150,7 +150,7 @@ button.u-tag:active, a.u-tag:active { transform: scale(.97); }
 .u-header__nav { display: flex; gap: var(--s-1); align-items: center; }
 .u-header__nav a { display: inline-flex; align-items: center; min-height: var(--tocco-min); padding: 0 var(--s-3); font-size: .9375rem; text-decoration: none; color: var(--text-2); transition: color var(--dur-1) var(--ease-colore); }
 @media (hover: hover) and (pointer: fine) { .u-header__nav a:hover { color: var(--text); } }
-.u-header__nav a[aria-current="page"] { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: .5em; }
+.u-header__nav a[aria-current="page"] { color: var(--text); text-decoration: underline; text-decoration-color: var(--segnale); text-decoration-thickness: 1.5px; text-underline-offset: .5em; }
 .u-header__gruppo { display: flex; align-items: center; gap: var(--s-2); }
 .u-header__menu-btn { display: none; }
 @media (max-width: 1023px) { .u-header__nav { display: none; } .u-header__menu-btn { display: inline-flex; } .u-header__riga { min-height: 64px; } }
@@ -170,7 +170,8 @@ button.u-tag:active, a.u-tag:active { transform: scale(.97); }
    ------------------------------------------------------------------------- */
 .u-barra { position: fixed; inset: auto 0 0 0; z-index: var(--z-barra); display: grid; grid-template-columns: 1fr 1fr 1.7fr; gap: var(--s-2); padding: var(--s-2) var(--s-3) calc(var(--s-2) + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--c-riso) 92%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--border); }
 .u-barra a { display: flex; align-items: center; justify-content: center; min-height: 48px; font-size: .9375rem; text-decoration: none; color: var(--c-brace); border-radius: var(--r-pill); }
-.u-barra a.u-barra__cta { background: var(--c-corallo); color: #fff; font-weight: var(--wght-forte); }
+.u-barra a.u-barra__cta { background: var(--c-inchiostro); color: var(--c-carta); font-weight: var(--wght-forte); }
+.u-barra a.u-barra__cta .u-conta { background: var(--c-corallo); color: #fff; }
 @media (min-width: 1024px) { .u-barra { display: none; } }
 
 /* -------------------------------------------------------------------------
@@ -244,7 +245,7 @@ textarea.u-input { min-height: 112px; padding-block: var(--s-3); resize: vertica
 .u-scelta label::after { content: ""; position: absolute; right: var(--s-4); top: var(--s-4); width: 18px; height: 18px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--text) 35%, transparent); box-shadow: inset 0 0 0 0 var(--accent); transition: box-shadow var(--dur-2) var(--ease), border-color var(--dur-1) var(--ease-colore); }
 .u-scelta input:hover + label { border-color: color-mix(in srgb, var(--text) 40%, transparent); }
 .u-scelta input:checked + label { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
-.u-scelta input:checked + label::after { border-color: var(--accent); box-shadow: inset 0 0 0 5px var(--accent); }
+.u-scelta input:checked + label::after { border-color: var(--segnale); box-shadow: inset 0 0 0 5px var(--segnale); }
 .u-scelta input:focus-visible + label { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* -------------------------------------------------------------------------
@@ -302,3 +303,53 @@ textarea.u-input { min-height: 112px; padding-block: var(--s-3); resize: vertica
 .u-toast__ico { flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--c-successo); display: grid; place-items: center; font-size: .6875rem; }
 .u-toast a { margin-left: auto; padding: 8px 14px; border-radius: var(--r-pill); background: var(--c-riso); color: var(--c-brace); text-decoration: none; font-weight: var(--wght-forte); font-size: .875rem; }
 @media (prefers-reduced-motion: reduce) { @starting-style { .u-toast { transform: none; } } .u-toast.is-uscita { transform: none; } }
+
+/* =========================================================================
+   v0.5 · LUCE, MATERIA, UX
+   ========================================================================= */
+
+/* Pulsante "segnale" (corallo): solo carrello e un'azione chiave per pagina */
+.u-btn--segnale { --btn-bg: var(--segnale); --btn-bd: var(--segnale); --btn-fg: var(--on-segnale); }
+@media (hover: hover) and (pointer: fine) { .u-btn--segnale:hover { --btn-bg: var(--c-corallo-scuro); --btn-bd: var(--c-corallo-scuro); } }
+.u-btn--segnale .u-conta { background: #fff; color: var(--c-corallo); }
+.u-conta { font-variant-numeric: tabular-nums; }
+
+/* Foto prodotto: sollevamento lieve con luce calda al passaggio */
+.u-prodotto__media, .u-servizio__media { transition: box-shadow var(--dur-3) var(--ease), transform var(--dur-3) var(--ease); }
+@media (hover: hover) and (pointer: fine) {
+  .u-prodotto:hover .u-prodotto__media, .u-servizio:hover .u-servizio__media { box-shadow: var(--ombra-2); transform: translateY(-2px); }
+}
+
+/* -------------------------------------------------------------------------
+   STATO APERTO / CHIUSO (calcolato dagli orari reali, aggiornato ogni minuto)
+   ------------------------------------------------------------------------- */
+.u-stato { display: inline-flex; align-items: center; gap: 8px; font-size: .875rem; color: var(--text-2); white-space: nowrap; }
+.u-stato::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); }
+.u-stato.is-aperto::before { background: var(--c-successo); box-shadow: 0 0 0 0 rgba(47,107,59,.5); animation: u-respiro 2.4s var(--ease) infinite; }
+.u-stato.is-presto::before { background: var(--c-ottone); }
+@keyframes u-respiro { 70% { box-shadow: 0 0 0 6px rgba(47,107,59,0); } 100% { box-shadow: 0 0 0 0 rgba(47,107,59,0); } }
+@media (prefers-reduced-motion: reduce) { .u-stato.is-aperto::before { animation: none; } }
+@media (max-width: 1023px) { .u-header .u-stato { display: none; } }
+
+/* -------------------------------------------------------------------------
+   CASSETTO DEL CARRELLO (side sheet)  ·  Woo: mini-cart / Food Store cart
+   Si apre a destra senza lasciare il menu; ESC e clic sul velo chiudono.
+   ------------------------------------------------------------------------- */
+.u-velo { position: fixed; inset: 0; z-index: calc(var(--z-overlay) - 1); background: rgba(22,16,14,.38); backdrop-filter: blur(2px); opacity: 0; visibility: hidden; transition: opacity var(--dur-3) var(--ease), visibility 0s linear var(--dur-3); }
+.u-velo.is-aperto { opacity: 1; visibility: visible; transition: opacity var(--dur-3) var(--ease); }
+.u-cassetto {
+  position: fixed; z-index: var(--z-overlay); top: 0; right: 0; bottom: 0; width: min(460px, 100vw);
+  display: grid; grid-template-rows: auto 1fr auto; background: var(--c-carta-chiara); color: var(--c-inchiostro);
+  box-shadow: var(--ombra-3); transform: translateX(104%); visibility: hidden;
+  transition: transform 520ms cubic-bezier(.32,.72,0,1), visibility 0s linear 520ms;
+}
+.u-cassetto.is-aperto { transform: none; visibility: visible; transition: transform 520ms cubic-bezier(.32,.72,0,1); }
+@media (max-width: 640px) { .u-cassetto { top: auto; height: 88vh; width: 100vw; border-radius: 24px 24px 0 0; transform: translateY(104%); } .u-cassetto.is-aperto { transform: none; } }
+.u-cassetto__testa { display: flex; align-items: center; justify-content: space-between; padding: var(--s-5) var(--s-5) var(--s-4); border-bottom: 1px solid var(--border); }
+.u-cassetto__testa h2 { font-size: 1.75rem; }
+.u-cassetto__corpo { overflow: auto; padding: 0 var(--s-5); overscroll-behavior: contain; }
+.u-cassetto__piede { padding: var(--s-4) var(--s-5) calc(var(--s-5) + env(safe-area-inset-bottom)); border-top: 1px solid var(--border); display: grid; gap: var(--s-3); background: var(--c-carta-chiara); }
+.u-cassetto__totale { display: flex; justify-content: space-between; align-items: baseline; }
+.u-cassetto__totale strong { font-family: var(--font-display); font-weight: var(--wght-titolo); font-size: 1.75rem; }
+.u-cassetto__vuoto { padding: var(--s-8) 0; text-align: center; color: var(--text-3); }
+@media (prefers-reduced-motion: reduce) { .u-cassetto, .u-cassetto.is-aperto { transition-duration: 1ms; } }

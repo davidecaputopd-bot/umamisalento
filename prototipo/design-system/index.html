@@ -38,6 +38,13 @@
   .ds-due { display: grid; gap: var(--s-6); grid-template-columns: 1fr; }
   @media (min-width: 1024px) { .ds-due { grid-template-columns: 1.4fr 1fr; } }
   img.manca { display: none; }
+  .ds-materia { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .ds-mat { min-height: 220px; padding: var(--s-5); border-radius: 20px; display: grid; align-content: space-between; gap: var(--s-4); }
+  .ds-foto2 { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: var(--s-6); }
+  .ds-foto { aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--c-carta-scura); }
+  .ds-foto img { width: 100%; height: 100%; object-fit: cover; }
+  .ds-foto2 figcaption { margin-top: 8px; }
+  .ds-servizi { padding: var(--s-7) var(--s-5); border-radius: 28px; }
 </style>
 </head>
 <body>
@@ -51,7 +58,8 @@
       <a href="#" aria-current="page">Menu</a><a href="#">Ramen</a><a href="#">Catering</a><a href="#">Street food</a><a href="#">Chi siamo</a>
     </nav>
     <div class="u-header__gruppo">
-      <a class="u-btn u-btn--s u-carrello-btn" href="#carrello" id="btn-carrello">Carrello <span class="u-conta" id="conta">0</span><span class="sr-only"> articoli</span></a>
+      <span class="u-stato" id="stato" role="status">Orari</span>
+      <button class="u-btn u-btn--s u-btn--segnale u-carrello-btn js-apri-carrello" type="button" id="btn-carrello" aria-controls="cassetto" aria-expanded="false">Carrello <span class="u-conta" id="conta">0</span><span class="sr-only"> articoli</span></button>
       <button class="u-btn u-btn--secondario u-btn--icona u-header__menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false">
         <svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
       </button>
@@ -63,13 +71,13 @@
 
 <!-- ============ HERO ============ -->
 <section class="u-hero u-grana" aria-labelledby="hero-t">
-  <div class="u-hero__media"><img src="../../assets/img/provvisorie/copertina_misto.jpg" alt="" onerror="this.classList.add('manca')"></div>
+  <div class="u-hero__media u-foto-calda"><img src="../../assets/img/provvisorie/copertina_misto.jpg" alt="" onerror="this.classList.add('manca')"></div>
   <div class="contenitore u-hero__testo">
-    <p class="u-hero__segue" style="--i:0;opacity:.85">Design system v0.4 · componente hero</p>
+    <p class="u-hero__segue" style="--i:0;opacity:.85">Design system v0.5 · componente hero</p>
     <h1 class="u-hero__titolo" id="hero-t"><span class="u-hero__riga"><span style="--i:0">Italian sushi</span></span><span class="u-hero__riga"><span style="--i:1"><em>a Leverano</em></span></span></h1>
     <p class="t-lead u-hero__segue" style="--i:1;color:#fff;max-width:44ch">Gastronomia di mare, take away e catering. Foto provvisoria: in produzione qui gira il video 16:9.</p>
     <div class="u-hero__azioni u-hero__segue" style="--i:2">
-      <a class="u-btn u-btn--l" href="#menu">Ordina ora</a>
+      <a class="u-btn u-btn--l u-btn--inverso" href="#menu">Ordina per stasera</a>
       <a class="u-btn u-btn--l u-btn--secondario" style="--text:#fff" href="#servizi">Catering ed eventi</a>
     </div>
   </div>
@@ -80,9 +88,25 @@
 <!-- ============ COLORI ============ -->
 <section class="ds-sez" aria-labelledby="h-col">
   <div class="ds-testa"><span class="eyebrow">01</span><h2 id="h-col">Colori</h2>
-    <p>Un solo colore di marca, il corallo, con scuri e chiari derivati. Contrasti calcolati dal vivo secondo WCAG 2.1: AA richiede 4,5:1 per il testo normale e 3:1 per quello grande.</p></div>
+    <p>Carta, inchiostro, lacca, ottone e corallo come segnale. Contrasti calcolati dal vivo secondo WCAG 2.1: AA richiede 4,5:1 per il testo normale e 3:1 per quello grande.</p></div>
   <div class="griglia" style="--min:170px;--gap:var(--s-3)" id="palette"></div>
-  <p class="ds-nota">Kraft e ottone: solo superfici e dettagli, mai testo. Elettrico: solo per il focus da tastiera.</p>
+  <p class="ds-nota">Ottone: filetti e dettagli, mai testo su carta. Il blu del focus da tastiera non fa parte della palette di marca.</p>
+</section>
+
+<!-- ============ LUCE E MATERIA ============ -->
+<section class="ds-sez" aria-labelledby="h-luce">
+  <div class="ds-testa"><span class="eyebrow">01b</span><h2 id="h-luce">Luce, materia <em>e colore</em></h2>
+    <p>Quattro materiali al posto di un colore riempitivo. Carta per il fondo, con una fibra appena visibile. Inchiostro per testo e pulsanti. Lacca rosso-nera, illuminata come da una candela, per le sezioni serali. Ottone per i filetti. Il corallo diventa un segnale: carrello, stato, un accento per pagina.</p></div>
+  <div class="ds-materia">
+    <div class="ds-mat" style="background:var(--c-carta-chiara);box-shadow:var(--ombra-2)"><span class="eyebrow">Carta · superficie sollevata</span><p class="t-l">Luce morbida al posto dei bordi</p></div>
+    <div class="ds-mat tema-lacca u-grana"><span class="eyebrow">Lacca · luce di candela</span><hr class="u-filo u-filo--corto"><p class="t-l">Ramen, <em>la sera</em></p></div>
+    <div class="ds-mat tema-inchiostro"><span class="eyebrow">Inchiostro</span><p class="t-l">Footer e notte</p></div>
+    <div class="ds-mat" style="display:grid;align-content:space-between"><span class="eyebrow">Corallo · segnale</span><p><button class="u-btn u-btn--segnale" type="button">Carrello <span class="u-conta">2</span></button></p></div>
+  </div>
+  <div class="ds-foto2">
+    <figure><div class="ds-foto"><img src="../../assets/img/provvisorie/tartare2.jpg" alt="" onerror="this.classList.add('manca')"></div><figcaption class="t-meta">Foto originale</figcaption></figure>
+    <figure><div class="ds-foto u-foto-calda"><img src="../../assets/img/provvisorie/tartare2.jpg" alt="" onerror="this.classList.add('manca')"></div><figcaption class="t-meta">Con grading caldo e vignetta: uniforma scatti diversi</figcaption></figure>
+  </div>
 </section>
 
 <!-- ============ TIPOGRAFIA ============ -->
@@ -156,7 +180,7 @@
 <section class="ds-sez" aria-labelledby="h-serv" id="servizi">
   <div class="ds-testa"><span class="eyebrow">08</span><h2 id="h-serv">Le cinque <em>anime</em> di Umami</h2>
     <p>Per le cinque attività di UMAMI. Formato 4:5, adatto alle scene di preparazione dello shooting. Street food resta in attesa della mascotte e delle foto del truck.</p></div>
-  <div class="griglia" style="--min:220px" id="griglia-servizi"></div>
+  <div class="tema-lacca u-grana ds-servizi"><div class="griglia" style="--min:220px" id="griglia-servizi"></div></div>
 </section>
 
 <!-- ============ MODULI ============ -->
@@ -229,7 +253,7 @@
 </div>
 </main>
 
-<footer class="u-footer u-grana">
+<footer class="u-footer tema-inchiostro u-grana">
   <div class="contenitore">
     <div class="u-footer__griglia">
       <div><a class="u-logo" href="#" aria-label="UMAMI Salento"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a></div>
@@ -237,12 +261,18 @@
       <div><h2>Esperienze</h2><ul><li><a href="#">Catering</a></li><li><a href="#">Chef a domicilio</a></li><li><a href="#">Street food</a></li><li><a href="#">Ramen</a></li></ul></div>
       <div><h2>Dove siamo</h2><ul><li>Via della Consolazione 55</li><li>73045 Leverano (LE)</li><li><a href="tel:+393476168387">+39 347 616 8387</a></li><li>19:00–23:30 · mercoledì chiuso</li></ul></div>
     </div>
-    <div class="u-footer__base"><span>Design system v0.1 · prototipo con dati dimostrativi</span><span>Nessun ordine reale</span></div>
+    <div class="u-footer__base"><span>Design system v0.5 · prototipo con dati dimostrativi</span><span>Nessun ordine reale</span></div>
   </div>
 </footer>
 
 <div class="u-toast-area" id="toast" role="status" aria-live="polite"></div>
-<nav class="u-barra" aria-label="Azioni rapide"><a href="#menu">Menu</a><a href="#servizi">Info</a><a class="u-barra__cta" href="#carrello">Carrello · <span id="tot-fisso">€ 0,00</span></a></nav>
+<nav class="u-barra" aria-label="Azioni rapide"><a href="#menu">Menu</a><a href="#servizi">Info</a><a class="u-barra__cta js-apri-carrello" href="#carrello" aria-controls="cassetto">Carrello · <span id="tot-fisso">€ 0,00</span></a></nav>
+<div class="u-velo" id="velo" hidden></div>
+<aside class="u-cassetto" id="cassetto" role="dialog" aria-modal="true" aria-labelledby="cassetto-t" hidden>
+  <div class="u-cassetto__testa"><h2 id="cassetto-t">Il tuo <em>ordine</em></h2><button class="u-btn u-btn--secondario u-btn--icona js-chiudi" type="button" aria-label="Chiudi il carrello"><svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="u-cassetto__corpo" id="cassetto-righe"><p class="u-cassetto__vuoto">Il carrello è vuoto.<br>Scegli dal menu: lo trovi qui.</p></div>
+  <div class="u-cassetto__piede"><div class="u-cassetto__totale"><span class="t-meta">Totale</span><strong id="cassetto-tot">€ 0,00</strong></div><a class="u-btn u-btn--l u-btn--pieno" href="#carrello">Continua · ritiro o consegna</a><p class="t-meta" style="text-align:center">Pagamento al ritiro o alla consegna</p></div>
+</aside>
 
 <script>
 (function () {
@@ -273,11 +303,11 @@
   function cr(a, b) { var x = lum(a), y = lum(b); return (Math.max(x,y)+.05)/(Math.min(x,y)+.05); }
   function badge(r) { var s = r.toFixed(2).replace(".", ",") + ":1"; return r >= 4.5 ? '<span class="ds-ok">' + s + ' AA</span>' : r >= 3 ? '<span class="ds-ok">' + s + ' grande</span>' : '<span class="ds-no">' + s + '</span>'; }
   var cs = getComputedStyle(root), out = "";
-  [["corallo","Corallo · marca"],["corallo-scuro","Corallo scuro"],["corallo-profondo","Profondo"],["corallo-chiaro","Corallo chiaro"],["brace","Brace · testo"],["brace-80","Brace 80"],["brace-60","Brace 60"],["riso","Riso · fondo"],["riso-scuro","Riso scuro"],["kraft","Kraft"],["ottone","Ottone"],["elettrico","Elettrico · focus"],["successo","Successo"]].forEach(function (n) {
+  [["carta","Carta · fondo"],["carta-chiara","Carta chiara"],["carta-scura","Carta scura"],["inchiostro","Inchiostro · testo"],["inchiostro-60","Inchiostro 60"],["lacca","Lacca · profondo"],["lacca-2","Lacca riflesso"],["ottone","Ottone · filetti"],["ottone-chiaro","Ottone chiaro"],["corallo","Corallo · segnale"],["corallo-chiaro","Corallo su scuro"],["successo","Successo"]].forEach(function (n) {
     var v = cs.getPropertyValue("--c-" + n[0]).trim().toUpperCase();
-    var rb = cr(v,"#FFFFFF"), rr = cr(v,"#F6F1E7"), rk = cr(v,"#1A0F0D");
-    var fg = rb >= rk ? "#FFFFFF" : "#1A0F0D";
-    out += '<div class="ds-sw rivela" style="--i:' + (out.split('ds-sw').length % 7) + ';background:' + v + ';color:' + fg + '"><b>' + n[1] + '</b><code>' + v + '<br>testo bianco ' + badge(rb) + '<br>su riso ' + badge(rr) + '<br>su brace ' + badge(rk) + '</code></div>';
+    var rb = cr(v,"#FFFFFF"), rr = cr(v,"#F2EDE4"), rk = cr(v,"#16100E");
+    var fg = rb >= rk ? "#FFFFFF" : "#16100E";
+    out += '<div class="ds-sw rivela" style="--i:' + (out.split('ds-sw').length % 7) + ';background:' + v + ';color:' + fg + '"><b>' + n[1] + '</b><code>' + v + '<br>testo bianco ' + badge(rb) + '<br>su carta ' + badge(rr) + '<br>su inchiostro ' + badge(rk) + '</code></div>';
   });
   document.getElementById("palette").innerHTML = out;
 
@@ -296,7 +326,7 @@
     { n:"Ramune soda", c:"Bevande", pz:"Bottiglia", p:3, pieno:4, luogo:"Leverano" }
   ];
   function media(x, riga) {
-    if (x.img) return '<div class="u-prodotto__media"><img src="' + IMG + x.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' + (riga ? "" : '<span class="u-prodotto__badge">Foto provvisoria</span>') + '</div>';
+    if (x.img) return '<div class="u-prodotto__media u-foto-calda"><img src="' + IMG + x.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' + (riga ? "" : '<span class="u-prodotto__badge">Foto provvisoria</span>') + '</div>';
     return '<div class="u-prodotto__media" aria-hidden="true"><span class="u-prodotto__iniziale">' + x.n.charAt(0) + '</span><span class="u-prodotto__luogo">' + (x.luogo || "Salento") + '</span></div>';
   }
   function prezzo(x) { return '<span class="u-prezzo">' + (x.pieno ? "<del>" + eur(x.pieno) + "</del><ins>" + eur(x.p) + "</ins>" : eur(x.p)) + '</span>'; }
@@ -325,7 +355,7 @@
     { t:"Street food", d:"Food truck, fiere ed eventi. Arriva con la mascotte.", img:"" }
   ];
   document.getElementById("griglia-servizi").innerHTML = servizi.map(function (s, i) {
-    return '<a class="u-servizio rivela" style="--i:' + i + '" href="#"><div class="u-servizio__media rivela-img" style="--i:' + i + '">' + (s.img ? '<img src="' + IMG + s.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' : "") + '</div>' +
+    return '<a class="u-servizio rivela" style="--i:' + i + '" href="#"><div class="u-servizio__media u-foto-calda rivela-img" style="--i:' + i + '">' + (s.img ? '<img src="' + IMG + s.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' : "") + '</div>' +
       '<div class="u-servizio__corpo"><h3 class="u-servizio__titolo">' + s.t + '</h3><p class="t-meta">' + s.d + '</p><span class="u-servizio__cta">Scopri</span></div></a>';
   }).join("");
 
@@ -348,7 +378,7 @@
   function toast(nome, totale) {
     var area = document.getElementById("toast");
     var el = document.createElement("div"); el.className = "u-toast";
-    el.innerHTML = '<span class="u-toast__ico" aria-hidden="true">✓</span><span><b>' + nome + '</b> aggiunto · ' + eur(totale) + '</span><a href="#carrello">Carrello</a>';
+    el.innerHTML = '<span class="u-toast__ico" aria-hidden="true">✓</span><span><b>' + nome + '</b> aggiunto · ' + eur(totale) + '</span><a href="#carrello" class="js-apri-carrello">Carrello</a>';
     area.appendChild(el);
     while (area.children.length > 2) area.removeChild(area.firstChild);
     setTimeout(function () { el.classList.add("is-uscita"); setTimeout(function () { el.remove(); }, 160); }, 2600);
@@ -362,12 +392,52 @@
   var hd = document.querySelector(".u-header");
   addEventListener("scroll", function () { hd.classList.toggle("is-scorso", scrollY > 8); }, { passive: true });
 
+  /* ---- stato aperto/chiuso dagli orari reali: tutti i giorni 19:00–23:30, mercoledì chiuso ---- */
+  function aggiornaStato() {
+    var el = document.getElementById("stato"); if (!el) return;
+    var d = new Date(), g = d.getDay(), m = d.getHours() * 60 + d.getMinutes();
+    var apre = 19 * 60, chiude = 23 * 60 + 30, mer = 3;
+    el.classList.remove("is-aperto", "is-presto");
+    if (g !== mer && m >= apre && m < chiude) { el.classList.add("is-aperto"); el.textContent = "Aperto · chiude alle 23:30"; }
+    else if (g !== mer && m < apre) { el.classList.add("is-presto"); el.textContent = "Apre alle 19:00 · ordina ora"; }
+    else { var dom = (g + 1) % 7 === mer ? "giovedì" : "domani"; el.textContent = (g === mer ? "Chiuso il mercoledì · " : "Chiuso · ") + "apre " + (g === mer ? "giovedì" : dom) + " alle 19:00"; }
+  }
+  aggiornaStato(); setInterval(aggiornaStato, 60000);
+
+  /* ---- cassetto del carrello ---- */
+  var cass = document.getElementById("cassetto"), velo = document.getElementById("velo"), ultimoFocus = null, righe = {};
+  function disegnaCassetto() {
+    var c = document.getElementById("cassetto-righe"), k = Object.keys(righe), tot = 0;
+    if (!k.length) { c.innerHTML = '<p class="u-cassetto__vuoto">Il carrello è vuoto.<br>Scegli dal menu: lo trovi qui.</p>'; }
+    else c.innerHTML = k.map(function (nome) { var r = righe[nome]; tot += r.p * r.q;
+      return '<div class="u-riga-carrello"><div class="u-riga-carrello__img">' + nome.charAt(0) + '</div><div><div class="u-riga-carrello__nome">' + nome + '</div><div class="u-riga-carrello__nota">' + r.q + ' × ' + eur(r.p) + '</div></div><span class="u-prezzo">' + eur(r.p * r.q) + '</span></div>'; }).join("");
+    k.forEach(function (nome) { if (!c.innerHTML) return; });
+    document.getElementById("cassetto-tot").textContent = eur(k.reduce(function (a, nome) { return a + righe[nome].p * righe[nome].q; }, 0));
+  }
+  function apri() { ultimoFocus = document.activeElement; disegnaCassetto(); cass.hidden = false; velo.hidden = false;
+    requestAnimationFrame(function () { cass.classList.add("is-aperto"); velo.classList.add("is-aperto"); });
+    document.getElementById("btn-carrello").setAttribute("aria-expanded", "true"); setTimeout(function () { cass.querySelector(".js-chiudi").focus(); }, 60); document.body.style.overflow = "hidden"; }
+  function chiudi() { cass.classList.remove("is-aperto"); velo.classList.remove("is-aperto"); document.body.style.overflow = "";
+    document.getElementById("btn-carrello").setAttribute("aria-expanded", "false");
+    setTimeout(function () { cass.hidden = true; velo.hidden = true; }, 520); if (ultimoFocus) ultimoFocus.focus(); }
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".js-apri-carrello")) { e.preventDefault(); apri(); }
+    if (e.target.closest(".js-chiudi") || e.target === velo) chiudi();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && cass.classList.contains("is-aperto")) chiudi();
+    if (e.key === "Tab" && cass.classList.contains("is-aperto")) { var f = cass.querySelectorAll("button,a[href]"), a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+  });
+
   /* ---- interazioni ---- */
   var n = 0, t = 0;
   document.addEventListener("click", function (e) {
     var b = e.target.closest(".js-aggiungi");
     if (b) {
       n++; t += parseFloat(b.dataset.p);
+      var nomeP = b.getAttribute("aria-label").replace("Aggiungi ", "").replace(" al carrello", "");
+      righe[nomeP] = righe[nomeP] || { p: parseFloat(b.dataset.p), q: 0 }; righe[nomeP].q++;
       document.getElementById("conta").textContent = n;
       document.getElementById("tot-barra").textContent = eur(t);
       document.getElementById("tot-fisso").textContent = eur(t);
