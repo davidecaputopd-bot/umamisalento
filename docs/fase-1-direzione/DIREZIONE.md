@@ -26,7 +26,13 @@ Le immagini non sono salvate nel repository perché sono di terzi.
 - **Logo:** lo ridisegna Davide. Il prototipo usa un **segnaposto** dichiarato e modulare, in una versione verticale e in una orizzontale.
 - **Mascotte:** arriverà con la parte del food truck. Lo spazio è già riservato nel sistema: hero dello street food, stati vuoti, conferma d'ordine.
 
-## Decisioni aperte (da scegliere nella moodboard)
+## Decisioni prese il 2/11/2026
+
+- **Colore:** corallo `#C23B2E`.
+- **Tipografia:** abbinamento **C**, cioè Bricolage Grotesque (marchio, titoli condensati, testo) con IBM Plex Mono (dati, prezzi, allergeni).
+- **Video:** orizzontale 16:9. Il ritaglio verticale per mobile lo preparo io (vedi `CONTENUTI-MEDIA.md`).
+
+## Opzioni valutate
 
 - **Colore:** corallo `#C23B2E` oppure rosso puro `#D21F1A`. Entrambi raggiungono il contrasto **5.3:1 con il bianco** (livello AA). Il corallo mantiene continuità con l'arancio `#C1581E` del marchio attuale.
 - **Tipografia:** tre abbinamenti.
