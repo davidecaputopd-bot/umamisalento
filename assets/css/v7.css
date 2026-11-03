@@ -169,3 +169,20 @@ body > .v7-header.is-solida { position: sticky; top: 0; }
 .h-info dt { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .12em; font-size: .6875rem; }
 .u-footer .u-logo__nome { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; letter-spacing: .06em; font-size: 1.75rem; }
 .u-footer .u-logo__luogo { display: none; }
+
+/* =========================================================================
+   v0.8 · RAME MARRONE SFUMATO (la fascia scura di prima, in rame) + arancione Umami
+   ========================================================================= */
+:root {
+  --c-rame-1: #3A1E12;   /* marrone rame, luce */
+  --c-rame-2: #160D08;   /* marrone rame, ombra */
+  --rame-sfumato: radial-gradient(90% 70% at 18% 0%, rgba(200,113,65,.34), rgba(200,113,65,0) 62%),
+                  radial-gradient(60% 55% at 88% 100%, rgba(191,109,64,.20), rgba(191,109,64,0) 70%),
+                  linear-gradient(160deg, var(--c-rame-1), var(--c-rame-2) 70%);
+}
+.tema-lacca, .tema-brace, .tema-inchiostro, .u-footer { background-color: var(--c-rame-2); background-image: var(--rame-sfumato); }
+.tema-inchiostro, .u-footer { --text-3: #BFAE90; --segnale: var(--c-corallo-chiaro); }
+.v7-hero { background-color: var(--c-rame-2); background-image: var(--rame-sfumato); }
+.v7-hero__media::after { background: linear-gradient(180deg, rgba(22,13,8,.25), rgba(58,30,18,.45)); }
+.v7-carrello .u-conta, .u-barra a.u-barra__cta .u-conta { background: var(--c-corallo); color: var(--c-inchiostro); }
+.u-btn--segnale { --btn-bg: var(--c-corallo); --btn-bd: var(--c-corallo); --btn-fg: var(--c-inchiostro); }

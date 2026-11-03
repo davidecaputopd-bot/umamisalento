@@ -24,3 +24,9 @@ In `docs/fase-3/schermate/`. Fatte su questa macchina, dove le foto provvisorie 
 - Il font: Archivo è gratuito; Hagrid (Sakazuki) ha licenza a pagamento.
 - La pagina `prototipo/design-system/` è ancora alla v0.5: la aggiorno quando confermi la direzione.
 - Il sito vero non è stato toccato.
+
+## Aggiornamento v0.8 (colori)
+- Accento: **arancione Umami meno saturo** `#BF6D40` (dal `#DD6727` del sito), con varianti scura e chiara per i contrasti.
+- Sezioni scure (apertura, servizi, footer): **rame marrone sfumato**, da `#3A1E12` a `#160D08` con luce calda.
+- Crema confermata `#F5E4C7`.
+- Verifiche ripetute: percorso d'ordine completo ok, 0 problemi di accessibilità, nessuno sbordo su mobile. Schermate aggiornate.

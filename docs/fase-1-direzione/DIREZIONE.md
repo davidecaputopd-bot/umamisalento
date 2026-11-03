@@ -86,3 +86,11 @@ Pezzi scelti dalla board dei vincitori Awwwards nel cibo (Siti del giorno e Menz
 **Tipografia:** un solo font, Archivo (Google Fonts), largo (`font-stretch: 125%`): titoli maiuscoli a peso 500, testo a 400. Niente serif né corsivo; l'accento è il rame. Hagrid (il font di Sakazuki) è commerciale: alternativa da valutare con licenza del cliente.
 
 **Forme:** angoli vivi ovunque; la pillola resta solo per i pulsanti.
+
+## v0.8 · Colori definiti da Davide
+- **Arancione Umami meno saturo**: dall'arancione dei pulsanti del sito attuale (`#DD6727`, saturazione 73%) abbassato al 50%.
+  - `#BF6D40` accento: titoli grandi su crema (3,1:1), testo nero sopra (5,1:1), contatore del carrello
+  - `#8E4F2D` scuro: testo piccolo su crema (5,1:1), pulsanti con testo bianco (6,4:1)
+  - `#C87141` chiaro: accenti sui fondi scuri (4,3–5,5:1)
+- **Rame marrone sfumato** (la fascia scura di prima, in rame): da `#3A1E12` a `#160D08` con luce calda arancio in alto a sinistra. Usato per apertura, servizi e footer.
+- **Crema** invariata: `#F5E4C7`. **Nero** `#100B06`.

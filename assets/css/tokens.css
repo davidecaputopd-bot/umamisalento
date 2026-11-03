@@ -19,9 +19,9 @@
   --c-lacca-2:          #3D1611;  /* riflesso della lacca */
   --c-ottone:           #B08D57;  /* filetti e dettagli metallici · mai testo su carta */
   --c-ottone-chiaro:    #C9A877;  /* ottone su fondi scuri · 8:1 su lacca */
-  --c-corallo:          #B0603A;  /* v0.7 RAME: arancione vecchio poco saturo · bianco sopra 4.6:1 · testo grande su crema 3.7:1 */
-  --c-corallo-scuro:    #9C4A27;  /* rame scuro: testo piccolo su crema 4.9:1, pulsanti con testo bianco 6.1:1 */
-  --c-corallo-chiaro:   #D08A5E;  /* rame chiaro: su nero 7:1 */
+  --c-corallo:          #BF6D40;  /* v0.8 ARANCIONE UMAMI meno saturo (da #DD6727 del sito): titoli grandi su crema 3.1:1, testo nero sopra 5.1:1 */
+  --c-corallo-scuro:    #8E4F2D;  /* testo piccolo su crema 5.1:1, pulsanti con testo bianco 6.4:1 */
+  --c-corallo-chiaro:   #C87141;  /* su nero 5.5:1, sul marrone rame 4.3–5.4:1 */
   --c-bianco:           #FFFFFF;
   --c-successo:         #2F6B3B;
   --c-attenzione:       #8A5A00;
