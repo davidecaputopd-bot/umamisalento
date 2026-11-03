@@ -225,3 +225,13 @@ body > .v7-header.is-solida { position: sticky; top: 0; }
 .v7-mob__piede { grid-template-columns: minmax(0, 1fr); }
 .v7-mob__piede a.u-btn { font-family: var(--font-sans); font-stretch: 100%; font-size: 1.0625rem; font-weight: var(--wght-forte); text-transform: none; border: 1px solid var(--c-inchiostro); min-height: 56px; white-space: normal; }
 html.menu-aperto .u-barra { display: none; }
+
+/* =========================================================================
+   v1.0 · FONDO BIANCO (al posto della crema)
+   Il bianco resta pulito: niente fibra di carta; le superfici secondarie sono un grigio caldo appena accennato.
+   ========================================================================= */
+:root { --c-carta: #FFFFFF; --c-carta-chiara: #FFFFFF; --c-carta-scura: #F3EFEA; }
+body::before { display: none; }
+/* titoli grandi: arancione pieno (3,95:1 sul bianco, sufficiente per testo grande) */
+h1 em, h2 em, .t-display em, .t-xxl em, .t-xl em, .m-testa h1 em, .v7-sez-testa h2 em { color: var(--c-corallo); }
+.tema-lacca h2 em, .tema-brace h2 em, .tema-inchiostro h2 em { color: var(--c-corallo-chiaro); }

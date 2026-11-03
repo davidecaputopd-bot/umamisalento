@@ -93,4 +93,4 @@ Pezzi scelti dalla board dei vincitori Awwwards nel cibo (Siti del giorno e Menz
   - `#8E4F2D` scuro: testo piccolo su crema (5,1:1), pulsanti con testo bianco (6,4:1)
   - `#C87141` chiaro: accenti sui fondi scuri (4,3–5,5:1)
 - **Rame marrone sfumato** (la fascia scura di prima, in rame): da `#3A1E12` a `#160D08` con luce calda arancio in alto a sinistra. Usato per apertura, servizi e footer.
-- **Crema** invariata: `#F5E4C7`. **Nero** `#100B06`.
+- **Fondo bianco** `#FFFFFF` (v1.0, al posto della crema `#F5E4C7`). **Nero** `#100B06`.

@@ -37,3 +37,9 @@ In `docs/fase-3/schermate/`. Fatte su questa macchina, dove le foto provvisorie 
 - **Menu mobile**: pannello a tutto schermo che blocca lo scorrimento della pagina, categorie come pulsanti da 44 px, in fondo carrello e chiamata. La barra in basso si nasconde mentre il menu è aperto.
 - **Barra in basso su mobile**: voci in maiuscolo come la testata, carrello in arancione.
 - Verifiche: percorso d'ordine ok, 0 problemi di accessibilità, nessuno sbordo.
+
+## Aggiornamento v1.0 · fondo bianco
+- Fondo **bianco** `#FFFFFF` al posto della crema; superfici secondarie (riquadri foto) grigio caldo appena accennato `#F3EFEA`. Tolta la fibra di carta, che sul bianco sporcava.
+- Titoli grandi con l'**arancione pieno** `#CB622A` (3,95:1 sul bianco, valido per testo grande); testo piccolo in arancione scuro `#974A21` (6,3:1).
+- Sezioni scure invariate (rame marrone sfumato).
+- Verifiche: percorso d'ordine ok, 0 problemi di accessibilità, nessuno sbordo.
