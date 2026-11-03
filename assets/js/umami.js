@@ -248,8 +248,9 @@
       var a = mb.getAttribute("aria-expanded") === "true";
       mb.setAttribute("aria-expanded", String(!a)); mb.setAttribute("aria-label", a ? "Apri il menu" : "Chiudi il menu"); nm.hidden = a;
       if (hdx) hdx.classList.toggle("is-mega", !a);
+      doc.body.style.overflow = a ? "" : "hidden"; root.classList.toggle("menu-aperto", !a);
     });
-    if (nm) nm.addEventListener("click", function (e) { if (e.target.closest("a")) { nm.hidden = true; mb.setAttribute("aria-expanded", "false"); mb.setAttribute("aria-label", "Apri il menu"); if (hdx) hdx.classList.remove("is-mega"); } });
+    if (nm) nm.addEventListener("click", function (e) { if (e.target.closest("a, .js-apri-carrello")) { nm.hidden = true; doc.body.style.overflow = ""; root.classList.remove("menu-aperto"); mb.setAttribute("aria-expanded", "false"); mb.setAttribute("aria-label", "Apri il menu"); if (hdx) hdx.classList.remove("is-mega"); } });
 
     doc.addEventListener("click", function (e) {
       var t = e.target;

@@ -40,7 +40,11 @@ def testata(P,R,attiva='',solida=False,cassa=False):
   <nav class="u-nav-mobile v7-mob" id="nav-mobile" aria-label="Principale, mobile" hidden>
     <ul class="v7-mob__lista">{mob}
       <li><a class="v7-mob__titolo" href="{P}#servizi">Catering.</a></li><li><a class="v7-mob__titolo" href="{P}#chi-siamo">Chi siamo.</a></li></ul>
-    <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
+    <div class="v7-mob__piede">
+      <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
+      <button class="u-btn u-btn--l u-btn--segnale js-apri-carrello" type="button">Carrello · <span data-totale>€ 0,00</span></button>
+      <a class="u-btn u-btn--l u-btn--secondario" href="tel:+393476168387">Chiama +39 347 616 8387</a>
+    </div>
   </nav>
 </header>'''
 PAGINE=[('prototipo/index.html','','../','',False,False),('prototipo/ordina/index.html','../','../../','menu',True,False),('prototipo/checkout/index.html','../','../../','',True,True)]

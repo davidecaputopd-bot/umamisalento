@@ -30,3 +30,10 @@ In `docs/fase-3/schermate/`. Fatte su questa macchina, dove le foto provvisorie 
 - Sezioni scure (apertura, servizi, footer): **rame marrone sfumato**, da `#3A1E12` a `#160D08` con luce calda.
 - Crema confermata `#F5E4C7`.
 - Verifiche ripetute: percorso d'ordine completo ok, 0 problemi di accessibilità, nessuno sbordo su mobile. Schermate aggiornate.
+
+## Aggiornamento v0.9 (richieste di Davide)
+- **Arancione più saturo**: `#CB622A`, vicino all'arancione del sito `#DD6727`; scuro `#974A21` per testo piccolo, chiaro `#D97945` sui fondi scuri. La luce nella sfumatura rame è più arancione.
+- **Proporzioni delle schede**: piatti con foto 4:3 (meno alte), descrizione su 2 righe, allergeni e pulsante allineati in fondo a tutte le schede. Servizi su 3 colonne larghe con foto 3:2 invece di 5 strette.
+- **Menu mobile**: pannello a tutto schermo che blocca lo scorrimento della pagina, categorie come pulsanti da 44 px, in fondo carrello e chiamata. La barra in basso si nasconde mentre il menu è aperto.
+- **Barra in basso su mobile**: voci in maiuscolo come la testata, carrello in arancione.
+- Verifiche: percorso d'ordine ok, 0 problemi di accessibilità, nessuno sbordo.

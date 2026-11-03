@@ -176,7 +176,7 @@ body > .v7-header.is-solida { position: sticky; top: 0; }
 :root {
   --c-rame-1: #3A1E12;   /* marrone rame, luce */
   --c-rame-2: #160D08;   /* marrone rame, ombra */
-  --rame-sfumato: radial-gradient(90% 70% at 18% 0%, rgba(200,113,65,.34), rgba(200,113,65,0) 62%),
+  --rame-sfumato: radial-gradient(90% 70% at 18% 0%, rgba(217,121,69,.38), rgba(217,121,69,0) 62%),
                   radial-gradient(60% 55% at 88% 100%, rgba(191,109,64,.20), rgba(191,109,64,0) 70%),
                   linear-gradient(160deg, var(--c-rame-1), var(--c-rame-2) 70%);
 }
@@ -186,3 +186,42 @@ body > .v7-header.is-solida { position: sticky; top: 0; }
 .v7-hero__media::after { background: linear-gradient(180deg, rgba(22,13,8,.25), rgba(58,30,18,.45)); }
 .v7-carrello .u-conta, .u-barra a.u-barra__cta .u-conta { background: var(--c-corallo); color: var(--c-inchiostro); }
 .u-btn--segnale { --btn-bg: var(--c-corallo); --btn-bd: var(--c-corallo); --btn-fg: var(--c-inchiostro); }
+
+/* =========================================================================
+   v0.9 · proporzioni delle schede, menu mobile, barra in basso
+   ========================================================================= */
+/* Piatti: foto 4:3 (meno alte), testo compatto, piede allineato in fondo a tutte le schede */
+.v7-prodotti { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+.v7-prod { display: flex; flex-direction: column; }
+.v7-prod__media { aspect-ratio: 4 / 3; }
+.v7-prod__corpo { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 20px; }
+.v7-prod__nome { font-size: 1.125rem; }
+.v7-prod__desc { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-width: none; }
+.v7-prod__piede { margin-top: auto; padding-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(16,11,6,.12); }
+.v7-prod__piede .u-allergeni { gap: 0 .6em; }
+.v7-prod__piede .u-btn { flex: none; }
+/* Servizi: 3 colonne larghe, foto 3:2 invece di 5 colonne strette 4:5 */
+.h-servizi { --min: 320px; --gap: 48px 24px; }
+.h-servizi .u-servizio__media { aspect-ratio: 3 / 2; }
+/* Menu a tendina: foto meno alte */
+.v7-mega__foto { aspect-ratio: 4 / 3; }
+
+/* Menu mobile: pannello a tutto schermo sotto la testata, scorrimento interno */
+@media (max-width: 1023px) {
+  .v7-mob { position: fixed; inset: 64px 0 0 0; z-index: var(--z-overlay); max-height: none; overflow-y: auto; overscroll-behavior: contain;
+    background: var(--c-carta); color: var(--c-inchiostro); padding: 8px 16px calc(24px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 20px; border-top: 1px solid rgba(16,11,6,.14); }
+  .v7-mob[hidden] { display: none !important; }
+  .v7-mob__lista > li { padding-block: 16px; }
+  .v7-mob a.v7-mob__titolo { font-size: 2.25rem; min-height: 48px; }
+  .v7-mob__gruppo ul { gap: 6px; margin-top: 10px; }
+  .v7-mob__gruppo ul a { font-size: .8125rem; letter-spacing: .08em; min-height: 44px; padding: 0 14px; border: 1px solid rgba(16,11,6,.22); border-radius: 999px; }
+  .v7-mob__piede { display: grid; gap: 12px; margin-top: auto; }
+  .v7-mob__piede .u-btn { width: 100%; }
+}
+/* Barra in basso su mobile: stessa voce della testata, carrello in arancione */
+.u-barra { background: color-mix(in srgb, var(--c-carta) 94%, transparent); border-top: 1px solid rgba(16,11,6,.14); grid-template-columns: 1fr 1fr 1.8fr; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.u-barra a { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .08em; font-size: .75rem; color: var(--c-inchiostro); border-radius: 0; }
+.u-barra a.u-barra__cta { background: var(--c-corallo); color: var(--c-inchiostro); font-weight: 600; border-radius: 999px; letter-spacing: .04em; }
+.v7-mob__piede { grid-template-columns: minmax(0, 1fr); }
+.v7-mob__piede a.u-btn { font-family: var(--font-sans); font-stretch: 100%; font-size: 1.0625rem; font-weight: var(--wght-forte); text-transform: none; border: 1px solid var(--c-inchiostro); min-height: 56px; white-space: normal; }
+html.menu-aperto .u-barra { display: none; }

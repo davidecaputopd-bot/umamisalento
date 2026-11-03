@@ -19,9 +19,9 @@
   --c-lacca-2:          #3D1611;  /* riflesso della lacca */
   --c-ottone:           #B08D57;  /* filetti e dettagli metallici · mai testo su carta */
   --c-ottone-chiaro:    #C9A877;  /* ottone su fondi scuri · 8:1 su lacca */
-  --c-corallo:          #BF6D40;  /* v0.8 ARANCIONE UMAMI meno saturo (da #DD6727 del sito): titoli grandi su crema 3.1:1, testo nero sopra 5.1:1 */
-  --c-corallo-scuro:    #8E4F2D;  /* testo piccolo su crema 5.1:1, pulsanti con testo bianco 6.4:1 */
-  --c-corallo-chiaro:   #C87141;  /* su nero 5.5:1, sul marrone rame 4.3–5.4:1 */
+  --c-corallo:          #CB622A;  /* v0.9 ARANCIONE UMAMI (vicino a #DD6727 del sito, un filo meno saturo): titoli grandi su crema 3.2:1, testo nero sopra 5:1 */
+  --c-corallo-scuro:    #974A21;  /* testo piccolo su crema 5.1:1, pulsanti con testo bianco 6.3:1 */
+  --c-corallo-chiaro:   #D97945;  /* sui fondi rame/neri 4.9–6.3:1 */
   --c-bianco:           #FFFFFF;
   --c-successo:         #2F6B3B;
   --c-attenzione:       #8A5A00;
