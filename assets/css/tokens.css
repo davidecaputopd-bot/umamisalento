@@ -19,9 +19,9 @@
   --c-lacca-2:          #3D1611;  /* riflesso della lacca */
   --c-ottone:           #B08D57;  /* filetti e dettagli metallici · mai testo su carta */
   --c-ottone-chiaro:    #C9A877;  /* ottone su fondi scuri · 8:1 su lacca */
-  --c-corallo:          #C3122B;  /* segnale · bianco sopra 5.3:1 · su carta 4.55:1 */
-  --c-corallo-scuro:    #8E2A20;
-  --c-corallo-chiaro:   #E38A7F;  /* corallo su fondi scuri · 7:1 su lacca */
+  --c-corallo:          #B0603A;  /* v0.7 RAME: arancione vecchio poco saturo · bianco sopra 4.6:1 · testo grande su crema 3.7:1 */
+  --c-corallo-scuro:    #9C4A27;  /* rame scuro: testo piccolo su crema 4.9:1, pulsanti con testo bianco 6.1:1 */
+  --c-corallo-chiaro:   #D08A5E;  /* rame chiaro: su nero 7:1 */
   --c-bianco:           #FFFFFF;
   --c-successo:         #2F6B3B;
   --c-attenzione:       #8A5A00;
@@ -44,7 +44,7 @@
   --accent:        var(--c-inchiostro);   /* pulsanti primari: inchiostro, come l'alta ristorazione */
   --accent-hover:  #000;
   --on-accent:     var(--c-carta);
-  --segnale:       var(--c-corallo);      /* carrello, stato "aperto", accenti puntuali */
+  --segnale:       var(--c-corallo-scuro);      /* carrello, stato "aperto", accenti puntuali */
   --on-segnale:    var(--c-bianco);
   --filo:          var(--c-ottone);       /* filetti metallici */
   --focus:         var(--c-fuoco);

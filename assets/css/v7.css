@@ -46,7 +46,7 @@ body > .v7-header { position: fixed; inset: 0 0 auto 0; }
 .v7-mega__col { display: grid; grid-template-rows: auto 1fr auto; gap: 14px; min-width: 0; }
 .v7-mega__links { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .v7-mega__links a { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; font-size: .75rem; letter-spacing: .14em; display: inline-flex; min-height: 30px; align-items: center; }
-@media (hover: hover) and (pointer: fine) { .v7-mega__links a:hover { color: var(--c-corallo); } }
+@media (hover: hover) and (pointer: fine) { .v7-mega__links a:hover { color: var(--c-corallo-scuro); } }
 .v7-mega__foto { aspect-ratio: 4 / 5; overflow: hidden; background: var(--c-carta-scura); }
 .v7-mega__foto img { width: 100%; height: 100%; object-fit: cover; }
 .v7-mega__titolo { font-family: var(--font-display); font-stretch: 125%; font-weight: 500; font-size: 2.25rem; line-height: 1; text-transform: uppercase; letter-spacing: -0.01em; }
@@ -87,6 +87,7 @@ body > .v7-header { position: fixed; inset: 0 0 auto 0; }
 .v7-colonna p { max-width: 34ch; margin-inline: auto; font-family: var(--font-display); font-stretch: 112%; font-size: clamp(1.0625rem, .9rem + .4vw, 1.35rem); line-height: 1.25; }
 .v7-gigante, .v7-colonna .v7-gigante { max-width: none; font-family: var(--font-display); font-stretch: 125%; font-weight: 500; text-transform: uppercase; font-size: clamp(2.6rem, .6rem + 8vw, 8rem); line-height: .9; letter-spacing: .005em; }
 .v7-gigante em { font-style: normal; color: var(--c-corallo); }
+.v7-hero__cta::before { background: var(--c-corallo-chiaro) !important; }
 .v7-timbro { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; letter-spacing: .3em; font-size: .9375rem; padding: 10px 14px 10px 18px; border: 1.5px solid currentColor; }
 
 /* ---------- Prodotti (Bucks Sauce): due colori, prodotto protagonista ---------- */
@@ -102,3 +103,69 @@ body > .v7-header { position: fixed; inset: 0 0 auto 0; }
 .v7-prod .u-btn { justify-self: start; }
 .v7-prod__badge { position: absolute; top: 12px; left: 12px; font-size: .6875rem; background: var(--c-carta); padding: 3px 8px; }
 .v7-sez-testa { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+
+/* ---------- Testata piena (pagine interne) e menu mobile a gruppi ---------- */
+body > .v7-header.is-solida { position: sticky; top: 0; }
+.v7-header.is-solida { background: var(--c-carta); color: var(--c-inchiostro); border-bottom: 1px solid rgba(16,11,6,.12); }
+.v7-voce[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .45em; }
+.v7-mob { max-height: calc(100svh - 64px); overflow: auto; padding-block: 8px 28px; }
+.v7-mob__lista { list-style: none; margin: 0; padding: 0; display: grid; }
+.v7-mob__lista > li { border-bottom: 1px solid rgba(16,11,6,.14); padding-block: 14px; max-width: none; }
+.v7-mob a.v7-mob__titolo { font-family: var(--font-display); font-stretch: 125%; font-weight: 500; font-size: 2rem; text-transform: uppercase; line-height: 1; border: 0; min-height: 44px; display: flex; align-items: center; }
+.v7-mob__gruppo ul { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 18px; }
+.v7-mob__gruppo ul a { font-family: var(--font-display); font-stretch: 125%; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; min-height: 36px; display: inline-flex; align-items: center; font-weight: 400; border: 0; }
+
+/* ---------- Pagina MENU v0.7 ---------- */
+.m-testa { justify-items: center; text-align: center; padding-block: clamp(56px, 8vw, 120px) 32px; }
+.m-testa__riga { flex-direction: column; align-items: center; gap: 28px; }
+.m-testa h1 { font-weight: 500; font-size: clamp(3.5rem, 1rem + 10vw, 10rem); line-height: .85; }
+.m-testa .eyebrow { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; color: var(--text-2); }
+.m-cerca { width: min(100%, 440px); }
+.m-cerca .u-input { border-radius: 0; border: 0; border-bottom: 1.5px solid var(--c-inchiostro); background: transparent; text-align: center; padding-inline: 44px; }
+.m-cerca .u-input:focus { box-shadow: none; border-bottom-color: var(--c-corallo-scuro); }
+.m-legenda { text-align: center; }
+.m-legenda ul { margin-inline: auto; text-align: left; }
+.m-categorie { border-top: 1px solid rgba(16,11,6,.14); border-bottom: 1px solid rgba(16,11,6,.14); background: color-mix(in srgb, var(--c-carta) 94%, transparent); }
+.m-categorie .u-categorie__lista { justify-content: safe center; gap: 4px 22px; padding-block: 6px; }
+.m-categorie a.u-tag { border: 0; border-radius: 0; padding: 0; min-height: 44px; background: none; color: var(--c-inchiostro);
+  font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; font-size: .75rem; letter-spacing: .12em; }
+.m-categorie a.u-tag[aria-current="true"] { background: none; color: var(--c-corallo-scuro); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .6em; }
+@media (hover: hover) and (pointer: fine) { .m-categorie a.u-tag:hover { color: var(--c-corallo-scuro); } }
+.m-sezione__testa { border-bottom: 1.5px solid var(--c-inchiostro); }
+.m-sezione__testa h2 { font-weight: 500; }
+.m-sezione__testa .t-mono { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .1em; font-size: .75rem; }
+.m-voce { border-bottom-color: rgba(16,11,6,.14); }
+.m-voce__nome { font-family: var(--font-display); font-stretch: 125%; font-weight: 600; text-transform: uppercase; font-size: 1.0625rem; letter-spacing: .01em; }
+.m-voce__foto { border-radius: 0; }
+.m-voce .u-btn--secondario, .v7-prod .u-btn--secondario { border-color: var(--c-inchiostro); }
+.u-qty { border-color: var(--c-inchiostro); }
+.m-fine { text-align: center; }
+
+/* ---------- Forme v0.7: angoli vivi (Sakazuki, Bucks Sauce); pillola solo per i pulsanti ---------- */
+:root { --r-m: 0px; --r-l: 0px; --r-s: 0px; }
+.u-input { background: transparent; border-color: rgba(16,11,6,.35); }
+.u-scelta label { background: transparent; }
+.u-riepilogo { background: transparent; border: 1.5px solid var(--c-inchiostro); }
+.c-blocco__testa { border-bottom: 1.5px solid var(--c-inchiostro); }
+.c-blocco__testa h2, .u-riepilogo h2 { font-weight: 500; }
+.c-fascia label { font-family: var(--font-display); font-stretch: 112%; }
+.u-cassetto { background: var(--c-carta); }
+.u-cassetto__piede { background: var(--c-carta); }
+.u-cassetto__testa h2 { font-weight: 500; }
+.u-riga-carrello__img { border-radius: 0; }
+.u-footer h2 { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; }
+
+/* ---------- Sezioni basse della Home in due colori ---------- */
+.tema-lacca, .tema-brace { --bg: var(--c-inchiostro); --surface: #1E1610; --surface-alt: #2A2018; --text: var(--c-carta); --text-2: #E2CFAE; --text-3: #BFAE90;
+  --segnale: var(--c-corallo-chiaro); --filo: var(--c-corallo-chiaro); background-image: radial-gradient(70% 60% at 15% 0%, rgba(208,138,94,.14), rgba(208,138,94,0) 70%); }
+.tema-lacca em, .tema-brace em { color: var(--c-corallo-chiaro); }
+.u-servizio__titolo { font-family: var(--font-display); font-stretch: 125%; font-weight: 500; text-transform: uppercase; font-size: clamp(1.25rem, 1rem + .6vw, 1.6rem); line-height: 1; }
+.u-servizio__media, .u-prodotto__media { border-radius: 0; }
+.u-servizio__cta { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .08em; font-size: .75rem; }
+.h-passi li { border-top: 1.5px solid var(--c-inchiostro); }
+.h-passi li::before { font-family: var(--font-display); font-stretch: 125%; font-size: 2.5rem; color: var(--c-corallo); line-height: 1; }
+.h-passi h3 { font-family: var(--font-display); font-stretch: 125%; font-weight: 600; text-transform: uppercase; font-size: 1.25rem; }
+.eyebrow { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; }
+.h-info dt { font-family: var(--font-display); font-stretch: 125%; text-transform: uppercase; letter-spacing: .12em; font-size: .6875rem; }
+.u-footer .u-logo__nome { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; letter-spacing: .06em; font-size: 1.75rem; }
+.u-footer .u-logo__luogo { display: none; }

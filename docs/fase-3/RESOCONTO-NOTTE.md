@@ -1,0 +1,26 @@
+# Resoconto · lavoro notturno v0.7
+
+## Fatto
+1. **Colore rame** su tutto il sito (sostituisce il rosso): `#B0603A`, con varianti scura e chiara per i contrasti AA.
+2. **Testata condivisa** su Home, Menu e Cassa (generata da `strumenti/testata.py`):
+   - voci a sinistra con scorrimento al passaggio, marchio al centro, carrello a destra (Sakazuki);
+   - menu a tendina con Sushi., Cucina., Da bere. e piatti firmati (Watchhouse);
+   - su mobile lo stesso menu diventa un elenco a gruppi a tutto schermo;
+   - in Cassa la testata si riduce (torna al menu, marchio, stato), per non uscire a metà ordine.
+3. **Home** completa in stile v0.7: apertura, colonna centrata, prodotti a filo, passi, servizi su nero, dove e quando, footer.
+4. **Menu**: titolo gigante centrato, ricerca a riga, categorie in maiuscolo tracciato (non più pillole), nomi dei piatti in maiuscolo largo.
+5. **Cassa e carrello**: angoli vivi, riepilogo a filo nero, stessi titoli.
+6. **Bug corretto** (c'era dalla fase 3): in Cassa i campi indirizzo comparivano anche con "Ritiro", e con carrello vuoto si vedevano sia il messaggio sia il modulo. Causa: `display:grid` vinceva sull'attributo `hidden`. Corretto per tutto il sito.
+
+## Verifiche
+- Percorso completo (aggiungi, quantità, cassetto, ricerca, categorie, errori in cassa, conferma) su desktop e mobile: tutto funziona.
+- Accessibilità (axe, WCAG 2.1 AA): 0 problemi su Home, Menu, cassetto e Cassa.
+- Nessuno sbordo laterale su mobile.
+
+## Schermate
+In `docs/fase-3/schermate/`. Fatte su questa macchina, dove le foto provvisorie non sono disponibili: al posto delle foto vedi riquadri crema. Nello spazio di lavoro online le foto ci sono.
+
+## Da decidere con te
+- Il font: Archivo è gratuito; Hagrid (Sakazuki) ha licenza a pagamento.
+- La pagina `prototipo/design-system/` è ancora alla v0.5: la aggiorno quando confermi la direzione.
+- Il sito vero non è stato toccato.

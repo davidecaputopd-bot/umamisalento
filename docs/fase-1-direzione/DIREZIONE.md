@@ -64,3 +64,25 @@ Derivati dallo studio mondiale (`STUDIO-SETTORE.md`).
 | **Luce** | Sezioni in lacca illuminate "a candela" dall'alto a sinistra; ombre calde a strati al posto dei bordi; grading caldo e vignetta sulle foto per uniformare scatti diversi | Fascia serale 19:00–23:30 |
 | **Interfaccia** | Superfici sollevate con luce morbida; schede senza box; navigazione a 5 voci; stato aperto/chiuso nell'header | Noma, Mirazur, Central |
 | **Esperienza** | **Cassetto del carrello** laterale su desktop e dal basso su mobile: non si lascia il menu per vedere l'ordine. Focus intrappolato, ESC per chiudere. **Stato calcolato dagli orari reali** ("Aperto · chiude alle 23:30", "Chiuso il mercoledì · apre giovedì alle 19:00"). Toast di conferma con accesso diretto al cassetto | Pattern dei siti d'ordine più curati; riduce i cambi di pagina |
+
+---
+
+## v0.7 · Direzione dai siti premiati (scelte di Davide)
+
+Pezzi scelti dalla board dei vincitori Awwwards nel cibo (Siti del giorno e Menzioni d'onore 2025–2026):
+
+| Pezzo | Sito | Cosa prendiamo |
+|---|---|---|
+| 1–2 | Sakazuki (Sito del giorno) | Apertura a tutto schermo; testo in cornice simmetrica: nome al centro, due testi brevi ai lati, barra in basso con link, orologio, invito all'azione |
+| 3 | Sakazuki | Colonna centrata: testo piccolo, parola gigante, marchio, parola gigante, testo piccolo |
+| 5 | Bucks Sauce (Sito del giorno) | Due soli colori: nero `#100B06` e crema `#F5E4C7`; prodotto protagonista in griglia a filo |
+| 15 | Watchhouse (Menzione d'onore) | Menu a tendina: colonne di categorie con foto e titolo, piatti in evidenza a destra |
+
+**Colore accento: rame** (arancione vecchio poco saturo), al posto di corallo e rosso.
+- `#B0603A` rame: pulsanti con testo bianco (4,6:1), titoli grandi su crema (3,7:1)
+- `#9C4A27` rame scuro: testo piccolo su crema (4,9:1)
+- `#D08A5E` rame chiaro: su nero (7:1)
+
+**Tipografia:** un solo font, Archivo (Google Fonts), largo (`font-stretch: 125%`): titoli maiuscoli a peso 500, testo a 400. Niente serif né corsivo; l'accento è il rame. Hagrid (il font di Sakazuki) è commerciale: alternativa da valutare con licenza del cliente.
+
+**Forme:** angoli vivi ovunque; la pillola resta solo per i pulsanti.

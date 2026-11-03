@@ -26,7 +26,7 @@
       <a class="v7-voce" href="#servizi"><span class="v7-roll"><span data-t="Ramen">Ramen</span></span></a><a class="v7-voce" href="#servizi"><span class="v7-roll"><span data-t="Catering">Catering</span></span></a><a class="v7-voce" href="#servizi"><span class="v7-roll"><span data-t="Street food">Street food</span></span></a><a class="v7-voce" href="#chi-siamo"><span class="v7-roll"><span data-t="Chi siamo">Chi siamo</span></span></a>
       <button class="u-btn u-btn--secondario u-btn--icona u-header__menu-btn" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav-mobile"><svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
     </nav>
-    <a class="v7-marchio" href="./" aria-label="UMAMI Salento, home">UMAMI</a>
+    <a class="v7-marchio" href="" aria-label="UMAMI Salento, home">UMAMI</a>
     <div class="v7-header__dx">
       <span class="u-stato" data-stato style="color:inherit">Tutti i giorni 19:00–23:30</span>
       <button class="v7-voce v7-carrello u-carrello-btn js-apri-carrello" type="button" aria-controls="cassetto" aria-expanded="false" data-solo-js><span class="v7-roll"><span data-t="Carrello">Carrello</span></span><span class="u-conta" data-conta>0</span><span class="sr-only"> articoli</span></button>
@@ -38,8 +38,9 @@
     <div class="v7-mega__col"><ul class="v7-mega__links"><li><a href="ordina/#dolci">Dolci</a></li><li><a href="ordina/#bevande">Bevande</a></li><li><a href="ordina/#birre">Birre</a></li><li><a href="ordina/#vini">Vini e bollicine</a></li></ul><div class="v7-mega__foto"><img src="../assets/img/provvisorie/copertina5.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')"></div><a class="v7-mega__titolo" href="ordina/#dolci">Da bere.</a></div>
     <div class="v7-mega__firme" id="mega-firme"></div>
   </div>
-  <nav class="u-nav-mobile" id="nav-mobile" aria-label="Principale, mobile" hidden>
-    <ul><li><a href="ordina/">Menu</a></li><li><a href="#servizi">Ramen</a></li><li><a href="#servizi">Catering</a></li><li><a href="#servizi">Street food</a></li><li><a href="#chi-siamo">Chi siamo</a></li></ul>
+  <nav class="u-nav-mobile v7-mob" id="nav-mobile" aria-label="Principale, mobile" hidden>
+    <ul class="v7-mob__lista"><li class="v7-mob__gruppo"><a class="v7-mob__titolo" href="ordina/#uramaki-special">Sushi.</a><ul><li><a href="ordina/#uramaki-special">Uramaki special</a></li><li><a href="ordina/#uramaki-classici">Uramaki classici</a></li><li><a href="ordina/#vegetariani">I vegetariani</a></li><li><a href="ordina/#non-crudi">I non crudi</a></li><li><a href="ordina/#hosomaki">Hosomaki</a></li><li><a href="ordina/#sashimi">Sashimi e nigiri</a></li></ul></li><li class="v7-mob__gruppo"><a class="v7-mob__titolo" href="ordina/#tartare">Cucina.</a><ul><li><a href="ordina/#tartare">Tartare</a></li><li><a href="ordina/#poke">Poke</a></li><li><a href="ordina/#bao">Bao buns</a></li><li><a href="ordina/#gyoza">Gyoza</a></li><li><a href="ordina/#sfizierie">Sfizierie</a></li><li><a href="ordina/#primi">Primi e gastronomia</a></li></ul></li><li class="v7-mob__gruppo"><a class="v7-mob__titolo" href="ordina/#dolci">Da bere.</a><ul><li><a href="ordina/#dolci">Dolci</a></li><li><a href="ordina/#bevande">Bevande</a></li><li><a href="ordina/#birre">Birre</a></li><li><a href="ordina/#vini">Vini e bollicine</a></li></ul></li>
+      <li><a class="v7-mob__titolo" href="#servizi">Catering.</a></li><li><a class="v7-mob__titolo" href="#chi-siamo">Chi siamo.</a></li></ul>
     <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
   </nav>
 </header>
@@ -144,24 +145,7 @@
       '<div class="v7-prod__corpo"><div class="v7-prod__riga"><h3 class="v7-prod__nome">' + U.esc(x.nome) + '</h3>' + U.prezzo(x) + '</div>' +
       '<p class="v7-prod__desc">' + U.esc(x.d) + '</p>' + U.allergeni(x.al) + U.bottoneAggiungi(x) + '</div></article>';
   }).join("");
-  /* menu a tendina: piatti firmati a destra (Watchhouse) */
-  document.getElementById("mega-firme").innerHTML = '<p class="v7-mega__links" style="margin:0"><a href="ordina/">Piatti firmati</a></p>' + firme.slice(0, 3).map(function (id) {
-    var x = P[id]; return '<a href="ordina/#' + x.cat + '"><b>' + U.esc(x.nome) + '</b><span>' + U.esc(x.d) + '</span></a>';
-  }).join("");
-  /* menu a tendina: apertura al clic, al passaggio su desktop, ESC per chiudere */
-  var mb = document.getElementById("mega-btn"), mg = document.getElementById("mega"), hd = document.querySelector(".v7-header"), tM = 0;
-  function mega(on) { mg.hidden = !on; mb.setAttribute("aria-expanded", String(on)); hd.classList.toggle("is-mega", on); }
-  mb.addEventListener("click", function () { mega(mg.hidden); });
-  if (matchMedia("(hover: hover)").matches) {
-    mb.addEventListener("mouseenter", function () { clearTimeout(tM); mega(true); });
-    hd.addEventListener("mouseleave", function () { tM = setTimeout(function () { mega(false); }, 180); });
-    mg.addEventListener("mouseenter", function () { clearTimeout(tM); });
-  }
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !mg.hidden) { mega(false); mb.focus(); } });
-  /* orologio di Leverano (Sakazuki: "JAPAN, 09:54:01") */
-  var orol = document.getElementById("orologio");
-  function ora() { orol.textContent = "Leverano, " + new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", hour: "2-digit", minute: "2-digit", second: "2-digit" }).format(new Date()); }
-  ora(); setInterval(ora, 1000);
+
 
   /* Servizi: testi dal sito attuale; dove mancano, lo dichiariamo */
   var servizi = [

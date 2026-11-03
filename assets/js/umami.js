@@ -210,7 +210,7 @@
 
     // header compatto quando si scorre
     var hd = doc.querySelector(".u-header");
-    if (hd) addEventListener("scroll", function () { hd.classList.toggle("is-scorso", scrollY > 8); }, { passive: true });
+    if (hd && !hd.classList.contains("v7-header")) addEventListener("scroll", function () { hd.classList.toggle("is-scorso", scrollY > 8); }, { passive: true });
 
     // comparsa in pagina
     var io = "IntersectionObserver" in window ? new IntersectionObserver(function (voci) {
@@ -219,12 +219,37 @@
     UMAMI.osserva = function (ambito) { (ambito || doc).querySelectorAll(".rivela:not(.is-visibile), .rivela-img:not(.is-visibile)").forEach(function (el) { io ? io.observe(el) : el.classList.add("is-visibile"); }); };
     UMAMI.osserva();
 
+    // v0.7 · menu a tendina (Watchhouse): piatti firmati a destra, clic, passaggio, ESC
+    var mbx = doc.getElementById("mega-btn"), mg = doc.getElementById("mega"), hdx = doc.querySelector(".v7-header"), tM = 0;
+    if (mbx && mg) {
+      var fm = doc.getElementById("mega-firme");
+      if (fm) fm.innerHTML = '<p class="v7-mega__links" style="margin:0"><a href="' + R + 'prototipo/ordina/">Piatti firmati</a></p>' + Object.keys(FOTO).slice(0, 3).map(function (id) {
+        var x = PRODOTTI[id]; return x ? '<a href="' + R + 'prototipo/ordina/#' + x.cat + '"><b>' + esc(x.nome) + '</b><span>' + esc(x.d) + '</span></a>' : "";
+      }).join("");
+      var mega = function (on) { mg.hidden = !on; mbx.setAttribute("aria-expanded", String(on)); hdx.classList.toggle("is-mega", on); };
+      mbx.addEventListener("click", function () { mega(mg.hidden); });
+      if (matchMedia("(hover: hover)").matches) {
+        mbx.addEventListener("mouseenter", function () { clearTimeout(tM); mega(true); });
+        hdx.addEventListener("mouseleave", function () { tM = setTimeout(function () { mega(false); }, 180); });
+        mg.addEventListener("mouseenter", function () { clearTimeout(tM); });
+      }
+      mg.addEventListener("click", function (e) { if (e.target.closest("a")) mega(false); });
+      doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && !mg.hidden) { mega(false); mbx.focus(); } });
+    }
+    // v0.7 · orologio di Leverano (Sakazuki)
+    var orol = doc.getElementById("orologio");
+    if (orol) { var ora = function () { orol.textContent = "Leverano, " + new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", hour: "2-digit", minute: "2-digit", second: "2-digit" }).format(new Date()); }; ora(); setInterval(ora, 1000); }
+    // header trasparente solo sopra l'apertura
+    if (hdx && !hdx.classList.contains("is-solida")) { var sc = function () { hdx.classList.toggle("is-scorso", scrollY > innerHeight - 80); }; addEventListener("scroll", sc, { passive: true }); sc(); }
+
     // menu di navigazione su mobile
     var mb = doc.querySelector(".u-header__menu-btn"), nm = doc.getElementById("nav-mobile");
     if (mb && nm) mb.addEventListener("click", function () {
       var a = mb.getAttribute("aria-expanded") === "true";
       mb.setAttribute("aria-expanded", String(!a)); mb.setAttribute("aria-label", a ? "Apri il menu" : "Chiudi il menu"); nm.hidden = a;
+      if (hdx) hdx.classList.toggle("is-mega", !a);
     });
+    if (nm) nm.addEventListener("click", function (e) { if (e.target.closest("a")) { nm.hidden = true; mb.setAttribute("aria-expanded", "false"); mb.setAttribute("aria-label", "Apri il menu"); if (hdx) hdx.classList.remove("is-mega"); } });
 
     doc.addEventListener("click", function (e) {
       var t = e.target;

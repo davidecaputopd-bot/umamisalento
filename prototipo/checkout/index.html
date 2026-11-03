@@ -13,19 +13,18 @@
 <link rel="stylesheet" href="../../assets/css/base.css">
 <link rel="stylesheet" href="../../assets/css/components.css">
 <link rel="stylesheet" href="../../assets/css/pagine.css">
+<link rel="stylesheet" href="../../assets/css/v7.css">
 <style>img.manca { display: none; } .u-barra { display: none; } .u-footer { padding-bottom: var(--s-6); }</style>
 </head>
 <body>
 <a class="salta-contenuto" href="#contenuto">Salta al contenuto</a>
 
 <!-- In cassa l'header si riduce: niente navigazione che porti fuori a metà ordine -->
-<header class="u-header">
-  <div class="contenitore u-header__riga">
-    <a class="u-logo" href="../" aria-label="UMAMI Salento, home"><span class="u-logo__nome">UMAMI</span><span class="u-logo__luogo">SALENTO</span></a>
-    <div class="u-header__gruppo">
-      <span class="u-stato" data-stato>Tutti i giorni 19:00–23:30</span>
-      <a class="u-btn u-btn--s u-btn--testo" href="../ordina/">Torna al menu</a>
-    </div>
+<header class="u-header v7-header is-solida">
+  <div class="v7-header__riga">
+    <nav class="v7-header__nav" aria-label="Ritorno"><a class="v7-voce" href="../ordina/"><span class="v7-roll"><span data-t="← Menu">← Menu</span></span></a></nav>
+    <a class="v7-marchio" href="../" aria-label="UMAMI Salento, home">UMAMI</a>
+    <div class="v7-header__dx"><span class="u-stato" data-stato style="color:inherit">Tutti i giorni 19:00–23:30</span></div>
   </div>
 </header>
 
