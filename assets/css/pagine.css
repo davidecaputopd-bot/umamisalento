@@ -26,8 +26,8 @@
 
 /* Dichiarazione: serif grande, una frase sola */
 .h-dichiarazione { display: grid; gap: var(--s-7); grid-template-columns: 1fr; }
-.h-dichiarazione__frase { font-family: var(--font-display); font-size: clamp(2rem, 1.2rem + 3.2vw, 4.25rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 20ch; text-wrap: balance; }
-.h-dichiarazione__frase em { font-style: italic; }
+.h-dichiarazione__frase { font-family: var(--font-display); font-size: clamp(1.9rem, 1rem + 3.4vw, 4.25rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 20ch; text-wrap: balance; }
+.h-dichiarazione__frase em { font-style: normal; color: var(--segnale); }
 .h-dichiarazione__testo { display: grid; gap: var(--s-4); align-content: end; color: var(--text-2); }
 @media (min-width: 1024px) { .h-dichiarazione { grid-template-columns: 1.6fr 1fr; align-items: end; } }
 
@@ -131,3 +131,9 @@
 
 /* Comportamenti JS non disponibili: rendiamo visibile ciò che serve */
 html:not(.js) [data-solo-js] { display: none; }
+
+/* v0.6 */
+.h-dichiarazione__frase { font-weight: 800; font-stretch: 125%; text-transform: uppercase; line-height: .92; letter-spacing: -0.03em; max-width: 18ch; }
+.m-voce__nome, .u-prodotto__nome { font-family: var(--font-sans); font-weight: 800; font-stretch: 112%; font-size: 1.25rem; letter-spacing: -0.015em; line-height: 1.1; }
+.u-hero__titolo { max-width: none; }
+.u-nav-mobile a { font-weight: 800; font-stretch: 125%; text-transform: uppercase; }

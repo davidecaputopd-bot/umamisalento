@@ -9,7 +9,7 @@
   /* ---------- Colori di base · "carta, inchiostro, lacca, ottone, corallo" ----------
      Dallo studio mondiale: crema + un solo colore profondo + un metallo (Noma, Qissa, Ironhill).
      Il corallo smette di essere riempitivo: è un SEGNALE (carrello, stato, accento). */
-  --c-carta:            #F2EDE4;  /* fondo pagina, carta calda */
+  --c-carta:            #ECE3D8;  /* fondo pagina, carta calda */
   --c-carta-scura:      #E7E0D3;  /* superfici secondarie, schede senza foto */
   --c-carta-chiara:     #FAF7F1;  /* superfici sollevate (campi, cassetto) */
   --c-inchiostro:       #16100E;  /* testo e pulsanti primari · 16.2:1 su carta */
@@ -19,7 +19,7 @@
   --c-lacca-2:          #3D1611;  /* riflesso della lacca */
   --c-ottone:           #B08D57;  /* filetti e dettagli metallici · mai testo su carta */
   --c-ottone-chiaro:    #C9A877;  /* ottone su fondi scuri · 8:1 su lacca */
-  --c-corallo:          #C23B2E;  /* segnale · bianco sopra 5.3:1 · su carta 4.55:1 */
+  --c-corallo:          #C3122B;  /* segnale · bianco sopra 5.3:1 · su carta 4.55:1 */
   --c-corallo-scuro:    #8E2A20;
   --c-corallo-chiaro:   #E38A7F;  /* corallo su fondi scuri · 7:1 su lacca */
   --c-bianco:           #FFFFFF;
@@ -55,14 +55,14 @@
      Formula "upscale moderno" (Noma, Mirazur, Qissa, Eleven Madison Park):
      serif per i titoli, grottesco per testo e interfaccia, mono per i dati.
      Warbler Display (DJR) · Neue Haas Grotesk Text (Monotype) · Input Mono (DJR), via Adobe Fonts. */
-  --font-display: "warbler-display", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --font-sans:    "neue-haas-grotesk-text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono:    "input-mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:    "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "Archivo", "Helvetica Neue", Arial, sans-serif; /* v0.6: niente mono, cifre tabellari */
 
-  --wght-titolo: 400;  /* serif a peso normale: eleganza da dimensione + tratto sottile */
+  --wght-titolo: 800;  /* serif a peso normale: eleganza da dimensione + tratto sottile */
   --wght-testo: 400;   /* 55 Roman */
   --wght-forte: 500;   /* 65 Medium */
-  --track-titolo: -0.018em;
+  --track-titolo: -0.03em;
   --track-marchio: .32em;
 
   /* scala fluida (mobile → desktop) */
@@ -71,9 +71,9 @@
   --fs-base:    1.125rem;                               /* 18  testo */
   --fs-m:       clamp(1.25rem, 1.1rem + .5vw, 1.5rem);  /* 20 → 24  lead */
   --fs-l:       clamp(1.5rem, 1.25rem + 1vw, 2.125rem); /* 24 → 34  titolo scheda */
-  --fs-xl:      clamp(2.25rem, 1.5rem + 3vw, 4.5rem);   /* 36 → 72  titolo sezione */
-  --fs-xxl:     clamp(3rem, 1.8rem + 5vw, 7.5rem);      /* 48 → 120 titolo pagina */
-  --fs-display: clamp(3.25rem, 1.6rem + 7.5vw, 10rem);  /* 52 → 160 hero */
+  --fs-xl:      clamp(2rem, 1.2rem + 3.4vw, 4.75rem);   /* 36 → 72  titolo sezione */
+  --fs-xxl:     clamp(2.5rem, 1.2rem + 5vw, 7rem);      /* 48 → 120 titolo pagina */
+  --fs-display: clamp(2.5rem, .4rem + 8.6vw, 10.5rem);  /* 52 → 160 hero */
 
   --lh-titolo: 1.0;
   --lh-testo:  1.5;

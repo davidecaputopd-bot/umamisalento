@@ -151,3 +151,14 @@ body > .u-header { position: sticky; }
 
 /* Superfici sollevate: luce morbida invece dei bordi */
 .u-sollevata { background: var(--surface); box-shadow: var(--ombra-2); border-radius: var(--r-l, 20px); }
+
+/* =========================================================================
+   v0.6 · DIREZIONE DAI SITI PREMIATI (Sakazuki, Crav Burgers)
+   Un solo font, Archivo: largo e nerissimo per i titoli, normale per il testo.
+   Niente serif, niente corsivo: l'accento è il rosso.
+   ========================================================================= */
+h1, h2, .t-display, .t-xxl, .t-xl { font-stretch: 125%; text-transform: uppercase; line-height: .9; }
+h3, .t-l { font-stretch: 112%; font-weight: 700; letter-spacing: -0.02em; }
+h1 em, h2 em, h3 em, .t-display em, .t-xxl em, .t-xl em, .t-corsivo, .h-dichiarazione__frase em { font-style: normal; color: var(--segnale); }
+.t-mono, .u-prezzo, .u-allergene { font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.u-allergene { font-weight: 600; }
