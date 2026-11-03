@@ -255,3 +255,4 @@ h1 em, h2 em, .t-display em, .t-xxl em, .t-xl em, .m-testa h1 em, .v7-sez-testa 
 /* Passi: numeri neri, filo arancione spesso */
 .h-passi li { border-top: 4px solid var(--c-corallo); }
 .h-passi li::before { color: var(--c-inchiostro); }
+.u-cassetto__testa h2 { font-family: var(--font-display); font-stretch: 112%; font-weight: 600; text-transform: none; letter-spacing: -0.02em; }

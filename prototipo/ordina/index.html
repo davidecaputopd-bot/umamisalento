@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../../assets/css/components.css">
 <link rel="stylesheet" href="../../assets/css/pagine.css">
 <link rel="stylesheet" href="../../assets/css/v7.css">
+<link rel="stylesheet" href="../../assets/css/interne.css">
 <style>img.manca { display: none; }</style>
 </head>
 <body>
@@ -51,9 +52,9 @@
 
 <main id="contenuto">
   <div class="contenitore m-testa">
-    <p class="eyebrow">Ritiro o consegna · pagamento alla fine</p>
+    <h1 class="m-testa__etichetta">Il menu.</h1>
     <div class="m-testa__riga">
-      <h1>Il <em>menu</em></h1>
+      <p class="m-testa__frase">Uramaki, poke, tartare, gyoza e bao, da ritirare in Via della Consolazione o con consegna a domicilio. Paghi alla fine.</p>
       <div class="m-cerca" role="search" data-solo-js>
         <label class="sr-only" for="cerca">Cerca nel menu</label>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
@@ -120,7 +121,7 @@
   }
   document.getElementById("menu").innerHTML = U.CATALOGO.map(function (c) {
     return '<section class="m-sezione" id="' + c.id + '" aria-labelledby="t-' + c.id + '">' +
-      '<div class="m-sezione__testa"><h2 id="t-' + c.id + '">' + c.nome + "</h2>" + '<span class="t-mono">' + (c.nota ? c.nota + " · " : "") + c.prodotti.length + " voci</span></div>" +
+      '<div class="m-sezione__testa"><h2 id="t-' + c.id + '">' + c.nome + ".</h2>" + '<span class="t-mono">' + (c.nota ? c.nota + " · " : "") + c.prodotti.length + " voci</span></div>" +
       '<ul class="m-lista" role="list">' + c.prodotti.map(voce).join("") + "</ul></section>";
   }).join("");
 
@@ -129,7 +130,7 @@
   lista.querySelectorAll("a").forEach(function (a) { link[a.getAttribute("href").slice(1)] = a; });
   function attiva(id) {
     Object.keys(link).forEach(function (k) { if (k === id) link[k].setAttribute("aria-current", "true"); else link[k].removeAttribute("aria-current"); });
-    var a = link[id]; if (a) lista.scrollTo({ left: a.parentNode.offsetLeft - 16, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    var a = link[id]; if (a) lista.scrollTo({ left: lista.scrollLeft + a.getBoundingClientRect().left - lista.getBoundingClientRect().left - parseFloat(getComputedStyle(lista).paddingLeft), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
   /* attiva = ultima sezione il cui inizio ha superato la barra delle categorie */
   var sezioni = [].slice.call(document.querySelectorAll(".m-sezione")), corrente = "", rq = 0;

@@ -20,3 +20,9 @@ Blocca anche i browser automatici (controllo di sicurezza di Vercel): non studia
 - Palcoscenico in 3 capitoli con le nostre foto e velatura di luce arancio (al posto delle fasce colorate).
 - Sotto, la parte per ordinare in stile Watchhouse: due pannelli (Ordina il menu. / Catering.), enunciato, piatti firmati, tessere (Ramen, Chef a domicilio, Street food), dove e quando.
 - Tolte le parti inventate: i 3 passi, la fascia arancione piena, la fascia servizi.
+
+## Menu e Cassa (v2)
+Stessa logica di Watchhouse applicata alle pagine interne (`assets/css/interne.css`):
+- titoli in minuscolo normale col punto, peso 600, niente maiuscoli giganti;
+- Menu: etichetta "Il menu." a sinistra e frase grande a destra; categorie col punto; ogni categoria con il nome fisso a sinistra mentre i piatti scorrono a destra;
+- Cassa: blocchi con riga sottile sopra e titolo col punto, riepilogo senza riquadro, fascia oraria scelta e pulsante di conferma in arancione con testo nero.

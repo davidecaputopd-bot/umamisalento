@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../../assets/css/components.css">
 <link rel="stylesheet" href="../../assets/css/pagine.css">
 <link rel="stylesheet" href="../../assets/css/v7.css">
+<link rel="stylesheet" href="../../assets/css/interne.css">
 <style>img.manca { display: none; } .u-barra { display: none; } .u-footer { padding-bottom: var(--s-6); }</style>
 </head>
 <body>
@@ -33,7 +34,7 @@
     <ol class="u-passi" aria-label="Passaggi dell'ordine">
       <li class="is-fatto">Menu</li><li aria-current="step">Ritiro o consegna</li><li>Conferma</li>
     </ol>
-    <h1>Quasi <em>pronto</em></h1>
+    <h1>Quasi pronto.</h1>
   </div>
 
   <div id="vista-vuota" hidden>
@@ -51,7 +52,7 @@
 
       <fieldset class="c-blocco">
         <legend class="sr-only">Come vuoi ricevere l'ordine</legend>
-        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">01</span><h2>Come lo ricevi</h2></div>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">01</span><h2>Come lo ricevi.</h2></div>
         <div class="u-scelte">
           <div class="u-scelta"><input type="radio" name="servizio" id="s-ritiro" value="ritiro" checked><label for="s-ritiro"><strong>Ritiro</strong><span>Via della Consolazione 55, Leverano</span></label></div>
           <div class="u-scelta"><input type="radio" name="servizio" id="s-consegna" value="consegna"><label for="s-consegna"><strong>Consegna</strong><span>A domicilio · costo in base alla zona</span></label></div>
@@ -67,7 +68,7 @@
 
       <fieldset class="c-blocco">
         <legend class="sr-only">Orario</legend>
-        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">02</span><h2>Per che ora</h2></div>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">02</span><h2>Per che ora.</h2></div>
         <p class="c-fasce-giorno" id="fasce-giorno"></p>
         <div class="c-fasce" id="fasce" role="radiogroup" aria-labelledby="fasce-giorno"></div>
         <p class="u-campo__aiuto">Fasce di 15 minuti negli orari di apertura, con 30 minuti di preparazione: valori di esempio, quelli veri vengono dalla configurazione di Food Store.</p>
@@ -75,7 +76,7 @@
 
       <fieldset class="c-blocco">
         <legend class="sr-only">I tuoi dati</legend>
-        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">03</span><h2>I tuoi dati</h2></div>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">03</span><h2>I tuoi dati.</h2></div>
         <div class="c-due">
           <div class="u-campo" data-campo="nome"><label for="f-nome">Nome</label><input class="u-input" id="f-nome" name="billing_first_name" autocomplete="given-name" aria-describedby="e-nome"><span class="u-campo__errore" id="e-nome">Scrivi il tuo nome.</span></div>
           <div class="u-campo" data-campo="cognome"><label for="f-cognome">Cognome</label><input class="u-input" id="f-cognome" name="billing_last_name" autocomplete="family-name" aria-describedby="e-cognome"><span class="u-campo__errore" id="e-cognome">Scrivi il tuo cognome.</span></div>
@@ -87,7 +88,7 @@
 
       <fieldset class="c-blocco">
         <legend class="sr-only">Pagamento</legend>
-        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">04</span><h2>Pagamento</h2></div>
+        <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">04</span><h2>Pagamento.</h2></div>
         <!-- Woo: unico metodo attivo oggi sul sito = cod (pagamento alla consegna) -->
         <div class="c-pagamento"><strong id="pag-t">Al ritiro</strong><span id="pag-d">Paghi in negozio quando ritiri l'ordine.</span></div>
       </fieldset>
@@ -99,7 +100,7 @@
     </form>
 
     <aside class="u-riepilogo" aria-labelledby="riep-t">
-      <h2 id="riep-t" class="t-l">Il tuo ordine</h2>
+      <h2 id="riep-t" class="t-l">Il tuo ordine.</h2>
       <div class="c-righe" id="righe"></div>
       <dl>
         <dt>Prodotti</dt><dd data-totale>€ 0,00</dd>

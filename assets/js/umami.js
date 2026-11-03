@@ -99,7 +99,7 @@
       '<div class="u-toast-area" id="toast" role="status" aria-live="polite"></div>' +
       '<div class="u-velo" id="velo" hidden></div>' +
       '<aside class="u-cassetto" id="cassetto" role="dialog" aria-modal="true" aria-labelledby="cassetto-t" hidden>' +
-        '<div class="u-cassetto__testa"><h2 id="cassetto-t">Il tuo <em>ordine</em></h2><button class="u-btn u-btn--secondario u-btn--icona js-chiudi" type="button" aria-label="Chiudi il carrello"><svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+        '<div class="u-cassetto__testa"><h2 id="cassetto-t">Il tuo ordine.</h2><button class="u-btn u-btn--secondario u-btn--icona js-chiudi" type="button" aria-label="Chiudi il carrello"><svg class="u-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
         '<div class="u-cassetto__corpo" id="cassetto-righe"></div>' +
         '<div class="u-cassetto__piede" id="cassetto-piede"></div>' +
       "</aside>";

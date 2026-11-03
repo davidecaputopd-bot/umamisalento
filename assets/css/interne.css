@@ -1,0 +1,62 @@
+/* =========================================================================
+   UMAMI — Pagine interne v2 (Menu, Cassa) · stessa logica della Home v2
+   Watchhouse: titoli in minuscolo normale col punto, peso 600, niente maiuscoli
+   giganti; etichetta a sinistra e contenuto a destra; righe sottili;
+   l'arancione solo per azioni e stati (carrello, attivo, scelta).
+   ========================================================================= */
+h1, h2 { text-transform: none; }
+.m-testa h1, .c-testa h1, .m-sezione__testa h2, .c-blocco__testa h2, .u-riepilogo h2, .u-cassetto__testa h2 {
+  font-family: var(--font-display); font-stretch: 112%; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; text-transform: none; }
+
+/* ---------- MENU: testa a due colonne (etichetta / frase + ricerca) ---------- */
+.m-testa { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px 48px; justify-items: stretch; text-align: left; padding-block: clamp(48px, 7vw, 104px) 32px; }
+@media (max-width: 760px) { .m-testa { grid-template-columns: 1fr; } }
+.m-testa h1.m-testa__etichetta { font-size: 1.125rem; }
+.m-testa__riga { display: grid; gap: 28px; align-items: start; justify-items: start; }
+.m-testa__frase { font-family: var(--font-display); font-stretch: 112%; font-weight: 500; font-size: clamp(1.6rem, 1rem + 2vw, 2.75rem); line-height: 1.1; letter-spacing: -0.02em; max-width: 26ch; }
+.m-cerca { width: min(100%, 420px); }
+.m-cerca .u-input { text-align: left; padding-left: 32px; border-bottom: 1px solid rgba(16,11,6,.35); }
+.m-cerca svg { left: 0; }
+.m-legenda { grid-column: 2; text-align: left; }
+@media (max-width: 760px) { .m-legenda { grid-column: 1; } }
+.m-legenda ul { margin-inline: 0; }
+
+/* Categorie: testo normale col punto, attiva sottolineata in arancione */
+.m-categorie .u-categorie__lista { justify-content: flex-start; gap: 4px 24px; }
+.m-categorie a.u-tag { font-family: var(--font-sans); font-stretch: 100%; text-transform: none; letter-spacing: 0; font-size: .9375rem; }
+.m-categorie a.u-tag::after { content: "."; }
+.m-categorie a.u-tag[aria-current="true"] { color: var(--c-inchiostro); text-decoration-color: var(--c-corallo); text-decoration-thickness: 2px; }
+
+/* Sezioni: etichetta fissa a sinistra, piatti a destra */
+.m-sezione { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 0 48px; padding-block: 56px 8px; }
+@media (max-width: 760px) { .m-sezione { grid-template-columns: 1fr; padding-top: 40px; } }
+.m-sezione__testa { position: sticky; top: 140px; align-self: start; display: grid; gap: 6px; padding-top: 12px; border-bottom: 0; border-top: 1px solid rgba(16,11,6,.25); }
+@media (max-width: 760px) { .m-sezione__testa { position: static; } }
+.m-sezione__testa h2 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem); }
+.m-sezione__testa .t-mono { margin-left: 0; font-family: var(--font-sans); font-stretch: 100%; text-transform: none; letter-spacing: 0; font-size: .875rem; color: var(--text-3); }
+.m-lista { grid-template-columns: 1fr !important; border-top: 1px solid rgba(16,11,6,.25); }
+@media (max-width: 760px) { .m-lista { border-top: 0; } }
+.m-voce { padding-block: 20px; }
+.m-voce__nome { font-family: var(--font-display); font-stretch: 112%; font-weight: 600; text-transform: none; font-size: 1.1875rem; letter-spacing: -0.01em; }
+.m-voce__desc { color: var(--text-3); max-width: 52ch; }
+.m-voce__foto { width: 104px; }
+.m-voce--foto { grid-template-columns: 104px 1fr auto; }
+
+/* ---------- CASSA ---------- */
+.c-testa { padding-block: clamp(40px, 6vw, 88px) 24px; }
+.c-testa h1 { font-size: clamp(2.25rem, 1.4rem + 3vw, 4rem); }
+.u-passi li { font-size: .875rem; }
+.u-passi li[aria-current="step"]::before { background: var(--c-corallo); border-color: var(--c-corallo); color: var(--c-inchiostro); }
+.c-blocco__testa { border-bottom: 0; border-top: 1px solid rgba(16,11,6,.25); padding: 12px 0 0; }
+.c-blocco__testa .t-mono { font-family: var(--font-sans); font-stretch: 100%; color: var(--text-3); font-size: .875rem; }
+.c-blocco__testa h2 { font-size: 1.5rem; }
+.u-riepilogo { border: 0; border-top: 1px solid rgba(16,11,6,.25); padding: 12px 0 0; }
+.u-riepilogo h2 { font-size: 1.5rem; }
+.u-riepilogo .u-totale { font-family: var(--font-display); font-stretch: 112%; font-weight: 600; }
+.u-scelta label { border-color: rgba(16,11,6,.25); }
+.u-scelta input:checked + label { border-color: var(--c-inchiostro); box-shadow: inset 0 0 0 1px var(--c-inchiostro); }
+.c-fascia input:checked + label { background: var(--c-corallo); border-color: var(--c-corallo); color: var(--c-inchiostro); }
+.c-fascia label { font-family: var(--font-sans); font-stretch: 100%; }
+.c-pagamento { box-shadow: none; border: 1px solid var(--c-inchiostro); background: transparent; }
+#invia { --btn-bg: var(--c-corallo); --btn-bd: var(--c-corallo); --btn-fg: var(--c-inchiostro); }
+.m-categorie .u-categorie__lista { scroll-padding-inline: var(--gutter); }
