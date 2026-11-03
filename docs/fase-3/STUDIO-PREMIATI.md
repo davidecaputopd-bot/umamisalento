@@ -26,3 +26,10 @@ Stessa logica di Watchhouse applicata alle pagine interne (`assets/css/interne.c
 - titoli in minuscolo normale col punto, peso 600, niente maiuscoli giganti;
 - Menu: etichetta "Il menu." a sinistra e frase grande a destra; categorie col punto; ogni categoria con il nome fisso a sinistra mentre i piatti scorrono a destra;
 - Cassa: blocchi con riga sottile sopra e titolo col punto, riepilogo senza riquadro, fascia oraria scelta e pulsante di conferma in arancione con testo nero.
+
+## Revisione v2.1 (dopo la valutazione complessiva)
+- **Una sola lingua tipografica**: maiuscolo largo solo per il marchio e il palcoscenico; barra in alto, menu a tendina, etichette, barra mobile e footer in minuscolo normale.
+- **Home più corta**: il palcoscenico passa da 3 a 2 capitoli; il pulsante "Ordina per stasera" è nel secondo.
+- **Fasce orarie**: prima l'ora (Ore 19… Ore 23), poi i 4 quarti d'ora di quell'ora: 9 pulsanti invece di 18.
+- **Allergeni per esteso** ("Allergeni uova, pesce, soia…") al posto dei codici a tre lettere.
+- **Un solo carrello su mobile**: resta quello nella barra in basso; nella testata è nascosto.

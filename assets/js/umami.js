@@ -21,9 +21,8 @@
   var AL = { 1:["GLU","Glutine"], 2:["CRO","Crostacei"], 3:["UOV","Uova"], 4:["PES","Pesce"], 5:["ARA","Arachidi"], 6:["SOI","Soia"], 7:["LAT","Latte"], 8:["FRU","Frutta a guscio"], 9:["SED","Sedano"], 10:["SEN","Senape"], 11:["SES","Sesamo"], 12:["SOL","Solfiti"], 13:["LUP","Lupini"], 14:["MOL","Molluschi"] };
   function allergeni(lista) {
     if (!lista || !lista.length) return "";
-    return '<ul class="u-allergeni" aria-label="Allergeni">' + lista.map(function (n) {
-      return '<li class="u-allergene" title="' + AL[n][1] + '"><span aria-hidden="true">' + AL[n][0] + '</span><span class="sr-only">' + AL[n][1] + '</span></li>';
-    }).join("") + "</ul>";
+    // v2: nome per esteso (i codici a tre lettere erano criptici)
+    return '<p class="u-allergeni-testo"><span class="u-allergeni-testo__et">Allergeni</span> ' + lista.map(function (n) { return AL[n][1].toLowerCase(); }).join(", ") + "</p>";
   }
 
   /* ---- catalogo: i dati restano grezzi, qui solo presentazione ---- */

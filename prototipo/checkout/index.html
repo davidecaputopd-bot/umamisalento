@@ -70,7 +70,8 @@
         <legend class="sr-only">Orario</legend>
         <div class="c-blocco__testa" aria-hidden="true"><span class="t-mono">02</span><h2>Per che ora.</h2></div>
         <p class="c-fasce-giorno" id="fasce-giorno"></p>
-        <div class="c-fasce" id="fasce" role="radiogroup" aria-labelledby="fasce-giorno"></div>
+        <div class="c-fasce c-fasce--ore" id="ore" role="radiogroup" aria-label="Ora"></div>
+        <div class="c-fasce" id="fasce" role="radiogroup" aria-label="Quarto d'ora"></div>
         <p class="u-campo__aiuto">Fasce di 15 minuti negli orari di apertura, con 30 minuti di preparazione: valori di esempio, quelli veri vengono dalla configurazione di Food Store.</p>
       </fieldset>
 
@@ -170,9 +171,20 @@
   /* fasce orarie */
   var f = U.fasce();
   $("fasce-giorno").textContent = f.fasce.length ? f.giorno + " · scegli una fascia" : "Nessuna fascia disponibile";
-  $("fasce").innerHTML = f.fasce.map(function (t, i) {
-    return '<div class="c-fascia"><input type="radio" name="fascia" id="fa-' + i + '" value="' + t + '"' + (i === 0 ? " checked" : "") + '><label for="fa-' + i + '">' + t + "</label></div>";
+  /* prima l'ora (19, 20, 21…), poi i quarti d'ora di quell'ora: 5 + 4 pulsanti invece di 18 */
+  var perOra = {};
+  f.fasce.forEach(function (t) { var h = t.slice(0, 2); (perOra[h] = perOra[h] || []).push(t); });
+  var ore = Object.keys(perOra);
+  $("ore").innerHTML = ore.map(function (h, i) {
+    return '<div class="c-fascia"><input type="radio" name="ora" id="ora-' + h + '" value="' + h + '"' + (i === 0 ? " checked" : "") + '><label for="ora-' + h + '">Ore ' + h + "</label></div>";
   }).join("");
+  function quarti(h) {
+    $("fasce").innerHTML = (perOra[h] || []).map(function (t, i) {
+      return '<div class="c-fascia"><input type="radio" name="fascia" id="fa-' + i + '" value="' + t + '"' + (i === 0 ? " checked" : "") + '><label for="fa-' + i + '">' + t + "</label></div>";
+    }).join("");
+  }
+  if (ore.length) quarti(ore[0]);
+  $("ore").addEventListener("change", function (e) { if (e.target.name === "ora") quarti(e.target.value); });
 
   /* validazione: al primo invio mostra tutto, poi aggiorna mentre si corregge */
   var regole = {
