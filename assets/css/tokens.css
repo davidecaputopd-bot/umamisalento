@@ -19,9 +19,9 @@
   --c-lacca-2:          #3D1611;  /* riflesso della lacca */
   --c-ottone:           #B08D57;  /* filetti e dettagli metallici · mai testo su carta */
   --c-ottone-chiaro:    #C9A877;  /* ottone su fondi scuri · 8:1 su lacca */
-  --c-corallo:          #CB622A;  /* v0.9 ARANCIONE UMAMI (vicino a #DD6727 del sito, un filo meno saturo): titoli grandi su crema 3.2:1, testo nero sopra 5:1 */
+  --c-corallo:          #EE7E3F;  /* v1.1 ARANCIONE UMAMI chiaro: si usa come FONDO con testo nero sopra (7,2:1), mai come testo sul bianco */
   --c-corallo-scuro:    #974A21;  /* testo piccolo su crema 5.1:1, pulsanti con testo bianco 6.3:1 */
-  --c-corallo-chiaro:   #D97945;  /* sui fondi rame/neri 4.9–6.3:1 */
+  --c-corallo-chiaro:   #EE7E3F;  /* testo arancione solo sui fondi scuri (7:1) */
   --c-bianco:           #FFFFFF;
   --c-successo:         #2F6B3B;
   --c-attenzione:       #8A5A00;

@@ -235,3 +235,23 @@ body::before { display: none; }
 /* titoli grandi: arancione pieno (3,95:1 sul bianco, sufficiente per testo grande) */
 h1 em, h2 em, .t-display em, .t-xxl em, .t-xl em, .m-testa h1 em, .v7-sez-testa h2 em { color: var(--c-corallo); }
 .tema-lacca h2 em, .tema-brace h2 em, .tema-inchiostro h2 em { color: var(--c-corallo-chiaro); }
+
+/* =========================================================================
+   v1.1 · ARANCIONE CHIARO COME FONDO, NON COME TESTO
+   Come nei siti premiati (Sakazuki, Bucks Sauce): il colore riempie superfici,
+   il testo resta nero. Sul bianco l'accento nei titoli è una fascia arancione
+   sotto la parola, il testo resta nero e leggibile.
+   ========================================================================= */
+h1 em, h2 em, .t-display em, .t-xxl em, .t-xl em, .m-testa h1 em, .v7-sez-testa h2 em, .h-dichiarazione__frase em, .v7-gigante em {
+  color: inherit; background: linear-gradient(transparent 62%, var(--c-corallo) 62%, var(--c-corallo) 86%, transparent 86%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; padding-inline: .04em; }
+.tema-lacca h2 em, .tema-brace h2 em, .tema-inchiostro h2 em { color: var(--c-corallo); background: none; padding: 0; }
+/* Colonna "Chi siamo" su fondo arancione pieno */
+.v7-colonna { background: var(--c-corallo); color: var(--c-inchiostro); max-width: none; margin: 0; padding-inline: var(--gutter); }
+.v7-colonna .v7-gigante em { background: none; color: var(--c-inchiostro); padding: 0; }
+.v7-colonna .u-btn { --btn-bg: var(--c-inchiostro); --btn-bd: var(--c-inchiostro); --btn-fg: #fff; }
+/* Pulsanti segnale e contatori: arancione con testo nero */
+.u-btn--segnale, .u-barra a.u-barra__cta { --btn-bg: var(--c-corallo); --btn-bd: var(--c-corallo); --btn-fg: var(--c-inchiostro); }
+/* Passi: numeri neri, filo arancione spesso */
+.h-passi li { border-top: 4px solid var(--c-corallo); }
+.h-passi li::before { color: var(--c-inchiostro); }
