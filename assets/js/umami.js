@@ -240,7 +240,7 @@
     var orol = doc.getElementById("orologio");
     if (orol) { var ora = function () { orol.textContent = "Leverano, " + new Intl.DateTimeFormat("it-IT", { timeZone: "Europe/Rome", hour: "2-digit", minute: "2-digit", second: "2-digit" }).format(new Date()); }; ora(); setInterval(ora, 1000); }
     // header trasparente solo sopra l'apertura
-    if (hdx && !hdx.classList.contains("is-solida")) { var sc = function () { hdx.classList.toggle("is-scorso", scrollY > innerHeight - 80); }; addEventListener("scroll", sc, { passive: true }); sc(); }
+    if (hdx && !hdx.classList.contains("is-solida") && !doc.querySelector(".palco")) { var sc = function () { hdx.classList.toggle("is-scorso", scrollY > innerHeight - 80); }; addEventListener("scroll", sc, { passive: true }); sc(); }
 
     // menu di navigazione su mobile
     var mb = doc.querySelector(".u-header__menu-btn"), nm = doc.getElementById("nav-mobile");

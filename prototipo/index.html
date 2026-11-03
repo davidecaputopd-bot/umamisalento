@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../assets/css/components.css">
 <link rel="stylesheet" href="../assets/css/pagine.css">
 <link rel="stylesheet" href="../assets/css/v7.css">
+<link rel="stylesheet" href="../assets/css/home.css">
 <style>img.manca { display: none; }</style>
 </head>
 <body>
@@ -51,72 +52,87 @@
 
 <main id="contenuto">
 
-<!-- APERTURA (Sakazuki 1–2) · in produzione: video 16:9 in loop, muto, con pausa -->
-<section class="v7-hero" aria-labelledby="hero-t">
-  <div class="v7-hero__media"><img src="../assets/img/provvisorie/copertina_misto.jpg" alt="" fetchpriority="high" onerror="this.classList.add('manca')"></div>
-  <p class="v7-hero__nota" aria-hidden="true">foto provvisoria · qui il video 16:9</p>
-  <div class="v7-hero__centro">
-    <p class="v7-hero__lato v7-hero__lato--sx">Italian sushi<br>e gastronomia<br>di mare</p>
-    <h1 class="v7-hero__marchio" id="hero-t">UMAMI<span class="sr-only"> Salento, Italian sushi a Leverano</span></h1>
-    <p class="v7-hero__lato v7-hero__lato--dx">Ritiro<br>e consegna<br>a Leverano</p>
+<!-- PALCOSCENICO (Sakazuki): una foto ferma a tutto schermo, il testo scorre sopra in capitoli,
+     la foto cambia in dissolvenza a ogni capitolo, cornice fissa (link, orologio, Ordina).
+     In produzione: i fondi diventano il video 16:9 e le scene di preparazione dello shooting. -->
+<section class="palco" aria-label="Umami Salento">
+  <div class="palco__fondi" aria-hidden="true">
+    <img class="is-attivo" data-cap="0" src="../assets/img/provvisorie/copertina_misto.jpg" alt="" fetchpriority="high" onerror="this.classList.add('manca')">
+    <img data-cap="1" src="../assets/img/provvisorie/18.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')">
+    <img data-cap="2" src="../assets/img/provvisorie/copertina-6.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')">
+    <span class="palco__nota">foto provvisorie · qui il video e le scene di preparazione</span>
   </div>
-  <div class="v7-hero__piede">
-    <nav class="v7-hero__link" aria-label="Contatti rapidi"><a href="tel:+393476168387">(Tel)</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+della+Consolazione+55+73045+Leverano+LE" rel="noopener">(Maps)</a></nav>
-    <p class="v7-hero__orologio"><span id="orologio">Leverano</span></p>
-    <a class="v7-hero__cta" href="ordina/">Ordina</a>
+
+  <div class="palco__cap palco__cap--apertura" data-cap="0">
+    <p class="palco__lato palco__lato--sx">Italian sushi<br>e gastronomia<br>di mare</p>
+    <h1 class="palco__marchio">UMAMI<span class="sr-only"> Salento, Italian sushi a Leverano</span></h1>
+    <p class="palco__lato palco__lato--dx">Ritiro<br>e consegna<br>a Leverano</p>
+  </div>
+
+  <div class="palco__cap" data-cap="1" id="chi-siamo">
+    <p class="palco__piccolo">Umami nasce dalla connessione di due cuochi salentini, appassionati e ricercatori di prodotti del territorio</p>
+    <h2 class="palco__gigante">Il territorio<br><span class="palco__segno" aria-hidden="true">✕</span><br>il mondo</h2>
+    <p class="palco__piccolo">che contaminano con sapori unici provenienti da tutto il mondo.</p>
+  </div>
+
+  <div class="palco__cap" data-cap="2">
+    <p class="palco__etichetta">Ogni sera</p>
+    <p class="palco__frase">Gastronomia di mare e Italian sushi. Ritiro in Via della Consolazione, consegna a domicilio, catering in Salento.</p>
+    <a class="u-btn u-btn--l u-btn--segnale" href="ordina/">Ordina per stasera</a>
+  </div>
+
+  <div class="palco__cornice">
+    <nav class="palco__link" aria-label="Contatti rapidi"><a href="tel:+393476168387">(Tel)</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+della+Consolazione+55+73045+Leverano+LE" rel="noopener">(Maps)</a></nav>
+    <p class="palco__orologio"><span id="orologio">Leverano</span></p>
+    <a class="palco__cta" href="ordina/">Ordina</a>
   </div>
 </section>
 
-<!-- COLONNA CENTRATA (Sakazuki 3) · testo reale da "Chi siamo" -->
-<section class="contenitore v7-colonna" id="chi-siamo" aria-labelledby="chi-t">
-  <p class="rivela">Umami nasce dalla connessione di due cuochi salentini, appassionati e ricercatori di prodotti del territorio</p>
-  <h2 class="v7-gigante rivela" id="chi-t" style="--i:1">Il territorio</h2>
-  <span class="v7-timbro rivela" style="--i:2" aria-hidden="true">UMAMI</span>
-  <p class="v7-gigante rivela" style="--i:3" aria-hidden="true"><em>Il mondo</em></p>
-  <p class="rivela" style="--i:4">che contaminano con sapori unici provenienti da tutto il mondo.</p>
-  <a class="u-btn u-btn--l rivela" style="--i:5" href="ordina/">Guarda il menu</a>
+<!-- DUE PANNELLI (Watchhouse "Shop coffee."): foto grandi affiancate, titolo col punto, riga e freccia -->
+<section class="duo" aria-label="Ordina o prenota un catering">
+  <a class="duo__pannello" href="ordina/">
+    <img src="../assets/img/provvisorie/tartare2.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')">
+    <span class="duo__num" aria-hidden="true">01</span>
+    <span class="duo__testo"><span class="duo__titolo">Ordina il menu.</span><span class="duo__riga">Ritiro o consegna stasera <span aria-hidden="true">→</span></span></span>
+  </a>
+  <a class="duo__pannello" href="tel:+393476168387" id="servizi">
+    <img src="../assets/img/provvisorie/buffet.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')">
+    <span class="duo__num" aria-hidden="true">02</span>
+    <span class="duo__testo"><span class="duo__titolo">Catering.</span><span class="duo__sotto">Vassoi per eventi privati e aziendali, servizio on site con open bar.</span><span class="duo__riga">Chiama per un preventivo <span aria-hidden="true">→</span></span></span>
+  </a>
 </section>
 
-<!-- PIATTI FIRMATI · nomi, prezzi e descrizioni dal catalogo reale; foto provvisorie -->
-<section class="sezione" style="padding-top:0" aria-labelledby="firme-t">
-  <div class="contenitore">
-    <div class="v7-sez-testa"><h2 id="firme-t">Il Salento, <em>in un roll</em></h2><a class="u-btn u-btn--secondario" href="ordina/">Tutto il menu</a></div>
-    <div class="v7-prodotti" id="firme"></div>
+<!-- ENUNCIATO (Watchhouse "Modern Coffee."): etichetta a sinistra, frase grande a destra -->
+<section class="enunciato contenitore" aria-labelledby="enu-t">
+  <h2 class="enunciato__etichetta" id="enu-t">Umami Salento.</h2>
+  <p class="enunciato__frase rivela">Due cuochi salentini, i prodotti del territorio e i sapori di tutto il mondo: Italian sushi, poke, tartare e cucina di mare, da ritirare o con consegna a domicilio.</p>
+</section>
+
+<!-- PIATTI FIRMATI -->
+<section class="contenitore firme" aria-labelledby="firme-t">
+  <div class="firme__testa"><h2 class="enunciato__etichetta" id="firme-t">Piatti firmati.</h2><a class="firme__tutto" href="ordina/">Tutto il menu <span aria-hidden="true">→</span></a></div>
+  <div class="firme__griglia" id="firme"></div>
+</section>
+
+<!-- ALTRE ANIME (Watchhouse: tessere con l'etichetta dentro la foto) -->
+<section class="contenitore tessere" aria-labelledby="anime-t">
+  <h2 class="enunciato__etichetta" id="anime-t">Non solo take away.</h2>
+  <div class="tessere__griglia">
+    <div class="tessera"><img src="../assets/img/provvisorie/18.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')"><span class="tessera__nome">Ramen</span><span class="tessera__nota">Contenuti in arrivo</span></div>
+    <div class="tessera"><img src="../assets/img/provvisorie/buffet2.jpg" alt="" loading="lazy" onerror="this.classList.add('manca')"><span class="tessera__nome">Chef a domicilio</span><span class="tessera__nota">Contenuti in arrivo</span></div>
+    <div class="tessera"><span class="tessera__nome">Street food</span><span class="tessera__nota">Arriva con la mascotte</span></div>
   </div>
 </section>
 
-<!-- COME SI ORDINA -->
-<section class="sezione" style="padding-top:0" aria-labelledby="come-t">
-  <div class="contenitore">
-    <div class="p-testa"><p class="eyebrow">Ordinare online</p><h2 id="come-t">Pronto <em>per stasera</em></h2></div>
-    <ol class="h-passi">
-      <li class="rivela"><h3>Scegli dal menu</h3><p>Uramaki, poke, tartare, gyoza, bao e bevande. Allergeni indicati su ogni piatto.</p></li>
-      <li class="rivela" style="--i:1"><h3>Ritiro o consegna</h3><p>Scegli l'orario. Ritiri in Via della Consolazione 55 a Leverano, oppure lo portiamo a casa tua.</p></li>
-      <li class="rivela" style="--i:2"><h3>Paghi alla fine</h3><p>Il pagamento avviene al ritiro o alla consegna.</p></li>
-    </ol>
-  </div>
-</section>
-
-<!-- SERVIZI · fascia in lacca -->
-<section class="sezione tema-lacca u-grana" id="servizi" aria-labelledby="serv-t">
-  <div class="contenitore">
-    <div class="p-testa"><p class="eyebrow">Non solo take away</p><h2 id="serv-t">Le anime <em>di Umami</em></h2><hr class="u-filo u-filo--corto"></div>
-    <div class="griglia h-servizi" id="servizi-griglia"></div>
-  </div>
-</section>
-
-<!-- DOVE E QUANDO -->
-<section class="sezione" aria-labelledby="info-t">
-  <div class="contenitore h-info">
-    <div class="stack" style="--stack:var(--s-4)"><p class="eyebrow">Dove e quando</p><h2 id="info-t">Via della Consolazione, <em>Leverano</em></h2>
-      <p class="t-lead">Passa a ritirare o chiamaci per un evento.</p></div>
-    <dl class="rivela">
-      <dt>Indirizzo</dt><dd>Via della Consolazione 55<br>73045 Leverano (LE)<br><a class="u-link" href="https://www.google.com/maps/search/?api=1&amp;query=Via+della+Consolazione+55+73045+Leverano+LE" rel="noopener">Apri in Maps</a></dd>
-      <dt>Orari</dt><dd>Tutti i giorni 19:00–23:30<br>Mercoledì chiuso<br><span class="u-stato" data-stato></span></dd>
-      <dt>Telefono</dt><dd><a class="u-link" href="tel:+393476168387">+39 347 616 8387</a></dd>
-      <dt>Catering</dt><dd>Province di Lecce, Taranto e Brindisi</dd>
-    </dl>
-  </div>
+<!-- DOVE E QUANDO: stessa impaginazione etichetta / contenuto -->
+<section class="enunciato contenitore" aria-labelledby="info-t">
+  <h2 class="enunciato__etichetta" id="info-t">Dove e quando.</h2>
+  <dl class="info">
+    <div><dt>Indirizzo</dt><dd>Via della Consolazione 55<br>73045 Leverano (LE)<br><a class="u-link" href="https://www.google.com/maps/search/?api=1&amp;query=Via+della+Consolazione+55+73045+Leverano+LE" rel="noopener">Apri in Maps</a></dd></div>
+    <div><dt>Orari</dt><dd>Tutti i giorni 19:00–23:30<br>Mercoledì chiuso<br><span class="u-stato" data-stato></span></dd></div>
+    <div><dt>Telefono</dt><dd><a class="u-link" href="tel:+393476168387">+39 347 616 8387</a></dd></div>
+    <div><dt>Catering</dt><dd>Province di Lecce, Taranto e Brindisi</dd></div>
+  </dl>
 </section>
 
 </main>
@@ -140,31 +156,34 @@
 <script>
 (function () {
   var U = window.UMAMI, P = U.PRODOTTI;
-  /* Piatti firmati: quelli con i nomi del territorio o la ricetta di casa */
+  /* Piatti firmati: i roll col nome del territorio e la ricetta di casa */
   var firme = ["leverano-roll", "umami-roll", "salento-roll", "tartare-di-tonno"];
   document.getElementById("firme").innerHTML = firme.map(function (id, i) {
     var x = P[id]; if (!x) return "";
-    return '<article class="v7-prod rivela" style="--i:' + i + '">' +
-      '<div class="v7-prod__media"><img src="' + U.IMG + x.foto + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')"></div><span class="v7-prod__badge">Foto provvisoria</span>' +
-      '<div class="v7-prod__corpo"><div class="v7-prod__riga"><h3 class="v7-prod__nome">' + U.esc(x.nome) + '</h3>' + U.prezzo(x) + '</div>' +
-      '<p class="v7-prod__desc">' + U.esc(x.d) + '</p><div class="v7-prod__piede">' + U.allergeni(x.al) + U.bottoneAggiungi(x) + '</div></div></article>';
+    return '<article class="piatto rivela" style="--i:' + i + '">' +
+      '<div class="piatto__foto"><img src="' + U.IMG + x.foto + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')"><span class="piatto__badge">Foto provvisoria</span></div>' +
+      '<div class="piatto__riga"><h3 class="piatto__nome">' + U.esc(x.nome) + '.</h3>' + U.prezzo(x) + '</div>' +
+      '<p class="piatto__desc">' + U.esc(x.d) + '</p>' +
+      '<div class="piatto__piede">' + U.allergeni(x.al) + U.bottoneAggiungi(x) + '</div></article>';
   }).join("");
 
-
-  /* Servizi: testi dal sito attuale; dove mancano, lo dichiariamo */
-  var servizi = [
-    { t: "Sushi take away", d: "Italian sushi, poke e tartare da ritirare o con consegna a domicilio.", img: "copertina_3.jpg", href: "ordina/", cta: "Ordina" },
-    { t: "Catering", d: "Vassoi per eventi privati e aziendali, servizio on site con open bar.", img: "buffet.jpg", href: "tel:+393476168387", cta: "Chiama per un preventivo" },
-    { t: "Ramen", d: "Contenuti in arrivo: produzione artigianale del ramen.", img: "18.jpg" },
-    { t: "Chef a domicilio", d: "Contenuti in arrivo dal cliente.", img: "buffet2.jpg" },
-    { t: "Street food", d: "Food truck, fiere ed eventi. Arriva con la mascotte.", img: "" }
-  ];
-  document.getElementById("servizi-griglia").innerHTML = servizi.map(function (s, i) {
-    var tag = s.href ? "a" : "div";
-    return "<" + tag + ' class="u-servizio rivela' + (s.img ? "" : " u-servizio--in-arrivo") + '" style="--i:' + i + '"' + (s.href ? ' href="' + s.href + '"' : "") + ">" +
-      '<div class="u-servizio__media u-foto-calda rivela-img" style="--i:' + i + '">' + (s.img ? '<img src="' + U.IMG + s.img + '" alt="" loading="lazy" onerror="this.classList.add(\'manca\')">' : "<span>foto in arrivo</span>") + "</div>" +
-      '<div class="u-servizio__corpo"><h3 class="u-servizio__titolo">' + s.t + '</h3><p class="t-meta">' + s.d + "</p>" + (s.cta ? '<span class="u-servizio__cta">' + s.cta + "</span>" : "") + "</div></" + tag + ">";
-  }).join("");
+  /* Palcoscenico: la foto di fondo cambia col capitolo in vista */
+  var fondi = document.querySelectorAll(".palco__fondi img");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) {
+        if (!v.isIntersecting) return;
+        var n = v.target.getAttribute("data-cap");
+        fondi.forEach(function (f) { f.classList.toggle("is-attivo", f.getAttribute("data-cap") === n); });
+        v.target.classList.add("is-in-scena");
+      });
+    }, { threshold: 0.45 });
+    document.querySelectorAll(".palco__cap").forEach(function (c) { io.observe(c); });
+  }
+  /* la testata resta trasparente per tutto il palcoscenico */
+  var palco = document.querySelector(".palco"), hd = document.querySelector(".v7-header");
+  function sopra() { if (hd && palco) hd.classList.toggle("is-scorso", palco.getBoundingClientRect().bottom < 80); }
+  addEventListener("scroll", sopra, { passive: true }); sopra();
   U.osserva();
 })();
 </script>
